@@ -1,8 +1,8 @@
-##Interface: 100007
-##Title: MouseoverActionBars
-##Author: Slothpala
-##Version: @project-version@
-##SavedVariables: MouseoverActionBarsDB
+## Interface: 100100
+## Title: MouseoverActionBars
+## Author: Slothpala
+## Version: @project-version@
+## SavedVariables: MouseoverActionBarsDB
 ## X-Curse-Project-ID: 686646
 
 #Libs
