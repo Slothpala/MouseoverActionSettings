@@ -1,0 +1,19 @@
+##Interface: 100007
+##Title: MouseoverActionBars
+##Author: Slothpala
+##Version: @project-version@
+##SavedVariables: MouseoverActionBarsDB
+## X-Curse-Project-ID: 686646
+
+#Libs
+embeds.xml
+
+#Config
+Core.lua
+DB\DB.lua
+Options\Options.lua
+
+#Modules
+include_modules.xml
+
+
