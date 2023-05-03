@@ -708,6 +708,7 @@ local options = {
                             get = "GetStatus",
                             set = "SetStatus",
                             hidden = AB1,
+                            width = 0.4,
                         },
                         Combat2 = {
                             type = "toggle",
@@ -715,6 +716,7 @@ local options = {
                             get = "GetStatus",
                             set = "SetStatus",
                             hidden = AB2,
+                            width = 0.4,
                         },
                         Combat3 = {
                             type = "toggle",
@@ -722,6 +724,7 @@ local options = {
                             get = "GetStatus",
                             set = "SetStatus",
                             hidden = AB3,
+                            width = 0.4,
                         },
                         Combat4 = {
                             type = "toggle",
@@ -729,6 +732,7 @@ local options = {
                             get = "GetStatus",
                             set = "SetStatus",
                             hidden = AB4,
+                            width = 0.4,
                         },
                         Combat5 = {
                             type = "toggle",
@@ -736,6 +740,7 @@ local options = {
                             get = "GetStatus",
                             set = "SetStatus",
                             hidden = AB5,
+                            width = 0.4,
                         },
                         Combat6 = {
                             type = "toggle",
@@ -743,6 +748,7 @@ local options = {
                             get = "GetStatus",
                             set = "SetStatus",
                             hidden = AB6,
+                            width = 0.4,
                         },
                         Combat7 = {
                             type = "toggle",
@@ -750,6 +756,7 @@ local options = {
                             get = "GetStatus",
                             set = "SetStatus",
                             hidden = AB7,
+                            width = 0.4,
                         },
                         Combat8 = {
                             type = "toggle",
@@ -757,6 +764,7 @@ local options = {
                             get = "GetStatus",
                             set = "SetStatus",
                             hidden = AB8,
+                            width = 0.4,
                         },
                         Combat9 = {
                             type = "toggle",
@@ -764,6 +772,7 @@ local options = {
                             get = "GetStatus",
                             set = "SetStatus",
                             hidden = AB9,
+                            width = 0.45,
                         },
                         Combat10 = {
                             type = "toggle",
@@ -771,6 +780,7 @@ local options = {
                             get = "GetStatus",
                             set = "SetStatus",
                             hidden = AB10,
+                            width = 0.6,
                         },
                     },
                 },
