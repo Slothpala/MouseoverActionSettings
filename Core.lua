@@ -103,14 +103,28 @@ MouseoverUnit.fadeouttimer = 2
 function MouseoverUnit:RestoreHide()
     for i=1, #self.Components do
         --no double check, validation has to be done when adding Components
-        self.Components[i]:SetAlpha(self.minalpha)
-        --causes taint in combat which makes it kind of useless
-        --UIFrameFadeOut(self.Components[i], 0.25, self.maxalpha, self.minalpha)
+        --self.Components[i]:SetAlpha(self.minalpha)
+        --new attempt for fading needs testing first to make sure it doesn't taint
+        if not self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP then
+            --@debug@
+            print("animation created for: ".. self.Components[i]:GetDebugName())
+             --@end-debug@
+            self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP = self.Components[i]:CreateAnimationGroup()
+            self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:SetToFinalAlpha(true)
+            self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION = self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:CreateAnimation("Alpha")
+            self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetFromAlpha(self.maxalpha)
+            self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetToAlpha(self.minalpha)
+            self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetDuration(0.3)
+        end
+
+
+        self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:Play()
     end
 end
 MouseoverUnit.Hide = MouseoverUnit.RestoreHide
 function MouseoverUnit:RestoreShow()
     for i=1, #self.Components do
+        self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:Stop()
         self.Components[i]:SetAlpha(self.maxalpha)
     end
 end
