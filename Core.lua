@@ -100,24 +100,17 @@ MouseoverUnit.LinksPresent = false
 MouseoverUnit.maxalpha = 1
 MouseoverUnit.minalpha = 0
 MouseoverUnit.fadeouttimer = 2
+
 function MouseoverUnit:RestoreHide()
     for i=1, #self.Components do
-        --no double check, validation has to be done when adding Components
-        --self.Components[i]:SetAlpha(self.minalpha)
-        --new attempt for fading needs testing first to make sure it doesn't taint
         if not self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP then
-            --@debug@
-            print("animation created for: ".. self.Components[i]:GetDebugName())
-             --@end-debug@
             self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP = self.Components[i]:CreateAnimationGroup()
             self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:SetToFinalAlpha(true)
             self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION = self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:CreateAnimation("Alpha")
             self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetFromAlpha(self.maxalpha)
             self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetToAlpha(self.minalpha)
-            self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetDuration(0.3)
+            self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetDuration(0.2)
         end
-
-
         self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:Play()
     end
 end
