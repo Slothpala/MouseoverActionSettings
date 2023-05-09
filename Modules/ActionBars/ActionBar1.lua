@@ -59,6 +59,7 @@ function ActionBar1:OnDisable()
     self:UnregisterEvent("PLAYER_MOUNT_DISPLAY_CHANGED")
 end
 
+local wasDragonriding = nil
 --dragonriding 
 function ActionBar1:Dragonriding()
     local isDragonriding = false
@@ -75,10 +76,12 @@ function ActionBar1:Dragonriding()
         AB1:RestoreShow()
         MouseoverActionBars:UnregisterOnEnter(AB1)
         MouseoverActionBars:UnregisterOnLeave(AB1)
-    else
+        wasDragonriding = true
+    elseif wasDragonriding then
         if AB1.Combat and InCombatLockdown() then return end
         AB1:RestoreHide()
         MouseoverActionBars:RegisterOnEnter(AB1)
         MouseoverActionBars:RegisterOnLeave(AB1)
+        wasDragonriding = false
     end
 end
