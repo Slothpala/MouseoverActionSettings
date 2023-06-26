@@ -107,10 +107,10 @@ function MouseoverUnit:RestoreHide()
             self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP = self.Components[i]:CreateAnimationGroup()
             self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:SetToFinalAlpha(true)
             self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION = self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:CreateAnimation("Alpha")
-            self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetFromAlpha(self.maxalpha)
-            self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetToAlpha(self.minalpha)
             self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetDuration(0.2)
         end
+        self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetFromAlpha(self.maxalpha)
+        self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetToAlpha(self.minalpha)
         self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:Play()
     end
 end
