@@ -317,3 +317,43 @@ function MouseoverActionBars:Show(hideunit)
         hookstate[hideunit.Name] = false
     end
 end
+
+--[[
+    Spellfylout
+--]]
+
+local actionbars = {
+    ["MainMenuBar"]         =  "ActionBar1",
+    ["MultiBarBottomLeft"]  =  "ActionBar2",
+    ["MultiBarBottomRight"] =  "ActionBar3",
+    ["MultiBarRight"]       =  "ActionBar4",
+    ["MultiBarLeft"]        =  "ActionBar5",
+    ["MultiBar5"]           =  "ActionBar6",
+    ["MultiBar6"]           =  "ActionBar7",
+    ["MultiBar7"]           =  "ActionBar8",
+}
+
+local spellfyloutParent
+local registeredParent 
+local shouldHandleFlyoutHide = false
+
+SpellFlyout:HookScript("OnShow",function(self) 
+    spellfyloutParent = self:GetParent():GetParent():GetParent():GetDebugName()
+    registeredParent  = registered_units[actionbars[spellfyloutParent]]
+    if registeredParent then
+        registeredParent:RestoreShow()
+        MouseoverActionBars:UnregisterOnEnter(registeredParent)
+        MouseoverActionBars:UnregisterOnLeave(registeredParent)
+        shouldHandleFlyoutHide = true
+    end
+end)
+
+SpellFlyout:HookScript("OnHide",function(self) 
+    if shouldHandleFlyoutHide then
+        registeredParent:RestoreHide()
+        MouseoverActionBars:RegisterOnEnter(registeredParent)
+        MouseoverActionBars:RegisterOnLeave(registeredParent)
+        shouldHandleFlyoutHide = false
+    end
+end)
+
