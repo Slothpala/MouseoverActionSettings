@@ -26,20 +26,11 @@ function MouseoverActionBars:OnEnable()
     LDS:EnhanceDatabase(self.db, "MouseoverActionBars") 
     LDS:EnhanceOptions(options.args.profile, self.db) 
     self:RegisterChatCommand("mbars", "SlashCommand")
-    self:HideGcdFlash()
     self:LoadConfig()
 end
 
 function MouseoverActionBars:SlashCommand()
     ACD:Open("MouseoverActionBars_options")
-end
-
-function MouseoverActionBars:HideGcdFlash() 
-    for _,v in pairs(_G) do
-        if type(v) == "table" and type(v.SetDrawBling) == "function" then
-            v:SetDrawBling(false)
-        end
-    end
 end
 
 local enableAlways = {}
