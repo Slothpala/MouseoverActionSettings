@@ -1,4 +1,4 @@
-## Interface: 100100
+## Interface: 100105
 ## Title: MouseoverActionBars
 ## Author: Slothpala
 ## Version: @project-version@
