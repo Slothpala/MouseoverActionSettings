@@ -3,6 +3,7 @@
 ## Author: Slothpala
 ## Version: @project-version@
 ## SavedVariables: MouseoverActionBarsDB
+## OptionalDeps: Ace3, LibDualSpec-1.0
 ## X-Curse-Project-ID: 686646
 
 #Libs
