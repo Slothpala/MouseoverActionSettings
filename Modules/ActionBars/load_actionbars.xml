@@ -10,4 +10,5 @@
 	<Script file="PetBar.lua"/>
 	<Script file="StanceBar.lua"/>
 	<Script file="MicroMenu.lua"/>
+	<Script file="BagsBar.lua"/>
 </Ui>
