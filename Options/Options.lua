@@ -12,6 +12,7 @@ local AB8 = function() return not MouseoverActionBars.db.profile.Module.ActionBa
 local AB9 = function() return not MouseoverActionBars.db.profile.Module.ActionBar9 end
 local AB10 = function() return not MouseoverActionBars.db.profile.Module.ActionBar10 end
 local AB11 = function() return not MouseoverActionBars.db.profile.Module.ActionBar11 end
+local AB12 = function() return not MouseoverActionBars.db.profile.Module.ActionBar12 end
 
 local options = {
     name = "MouseoverActionBars",
@@ -123,7 +124,16 @@ local options = {
                         ActionBar11 = {
                             order = 11,
                             name = "Micro Menu",
-                            desc = "Stance Bar",
+                            desc = "Micro Menu",
+                            type = "toggle",
+                            get = "GetModuleStatus",
+                            set = "SetModuleStatus",
+                            width = 0.7,
+                        },
+                        ActionBar12 = {
+                            order = 12,
+                            name = "Bags Bar",
+                            desc = "Bags Bar",
                             type = "toggle",
                             get = "GetModuleStatus",
                             set = "SetModuleStatus",
@@ -648,6 +658,53 @@ local options = {
                         },
                     },
                 },
+                AB12 = {
+                    order = 13,
+                    name = "Bags Bar",
+                    type = "group",
+                    inline = true,
+                    hidden = AB12,
+                    args = {
+                        fadeouttimer = {
+                            order = 1,
+                            name = "time to fade out",
+                            desc = "timer after which the Bags Bar fades out",
+                            type = "range",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            min = 0,
+                            softMax = 10,   
+                            step = 1,
+                            width = 1.1,
+                        },
+                        minalpha = {
+                            order = 2,
+                            name = "min alpha",
+                            desc = "the alpha value when your cursor leaves the region and the fadeouttimer passed",
+                            type = "range",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            min = 0,
+                            max = 1,   
+                            isPercent = true,
+                            step = 0.05,
+                            width = 1.1,
+                        },
+                        maxalpha = {
+                            order = 3,
+                            name = "max alpha",
+                            desc = "the alpha value when your cursor enters the region",
+                            type = "range",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            min = 0,
+                            max = 1,   
+                            isPercent = true,
+                            step = 0.05,
+                            width = 1.1,
+                        },
+                    },
+                },
             },
         },      
         Config = {
@@ -817,6 +874,7 @@ local options = {
                     hidden = AB1,
                     args = {
                         ActionBar2 = {
+                            order = 2,
                             type = "toggle",
                             desc = "",
                             name = "AB2",
@@ -826,6 +884,7 @@ local options = {
                             hidden = AB2,
                         },
                         ActionBar3 = {
+                            order = 3,
                             type = "toggle",
                             desc = "",
                             name = "AB3",
@@ -835,6 +894,7 @@ local options = {
                             hidden = AB3,
                         },
                         ActionBar4 = {
+                            order = 4,
                             type = "toggle",
                             desc = "",
                             name = "AB4",
@@ -844,6 +904,7 @@ local options = {
                             hidden = AB4,
                         },
                         ActionBar5 = {
+                            order = 5,
                             type = "toggle",
                             desc = "",
                             name = "AB5",
@@ -853,6 +914,7 @@ local options = {
                             hidden = AB5,
                         },
                         ActionBar6 = {
+                            order = 6,
                             type = "toggle",
                             desc = "",
                             name = "AB6",
@@ -862,6 +924,7 @@ local options = {
                             hidden = AB6,
                         },
                         ActionBar7 = {
+                            order = 7,
                             type = "toggle",
                             desc = "",
                             name = "AB7",
@@ -871,6 +934,7 @@ local options = {
                             hidden = AB7,
                         },
                         ActionBar8 = {
+                            order = 8,
                             type = "toggle",
                             desc = "",
                             name = "AB8",
@@ -880,6 +944,7 @@ local options = {
                             hidden = AB8,
                         },
                         ActionBar9 = {
+                            order = 9,
                             type = "toggle",
                             desc = "",
                             name = "Pet Bar",
@@ -889,6 +954,7 @@ local options = {
                             hidden = AB9,
                         },
                         ActionBar10 = {
+                            order = 10,
                             type = "toggle",
                             desc = "",
                             name = "Stance Bar",
@@ -896,6 +962,26 @@ local options = {
                             set = "SetStatus",
                             width = 0.55,
                             hidden = AB10,
+                        },
+                        ActionBar11 = {
+                            order = 11,
+                            type = "toggle",
+                            desc = "",
+                            name = "Micro Menu",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.65,
+                            hidden = AB11,
+                        },
+                        ActionBar12 = {
+                            order = 12,
+                            type = "toggle",
+                            desc = "",
+                            name = "Bags Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.5,
+                            hidden = AB12,
                         },
                     },    
                 },
@@ -907,6 +993,7 @@ local options = {
                     hidden = AB2,
                     args = {
                         ActionBar1 = {
+                            order = 1,
                             type = "toggle",
                             desc = "",
                             name = "AB1",
@@ -916,6 +1003,7 @@ local options = {
                             hidden = AB1,
                         },
                         ActionBar3 = {
+                            order = 3,
                             type = "toggle",
                             desc = "",
                             name = "AB3",
@@ -925,6 +1013,7 @@ local options = {
                             hidden = AB3,
                         },
                         ActionBar4 = {
+                            order = 4,
                             type = "toggle",
                             desc = "",
                             name = "AB4",
@@ -934,6 +1023,7 @@ local options = {
                             hidden = AB4,
                         },
                         ActionBar5 = {
+                            order = 5,
                             type = "toggle",
                             desc = "",
                             name = "AB5",
@@ -943,6 +1033,7 @@ local options = {
                             hidden = AB5,
                         },
                         ActionBar6 = {
+                            order = 6,
                             type = "toggle",
                             desc = "",
                             name = "AB6",
@@ -952,6 +1043,7 @@ local options = {
                             hidden = AB6,
                         },
                         ActionBar7 = {
+                            order = 7,
                             type = "toggle",
                             desc = "",
                             name = "AB7",
@@ -961,6 +1053,7 @@ local options = {
                             hidden = AB7,
                         },
                         ActionBar8 = {
+                            order = 8,
                             type = "toggle",
                             desc = "",
                             name = "AB8",
@@ -970,6 +1063,7 @@ local options = {
                             hidden = AB8,
                         },
                         ActionBar9 = {
+                            order = 9,
                             type = "toggle",
                             desc = "",
                             name = "Pet Bar",
@@ -979,6 +1073,7 @@ local options = {
                             hidden = AB9,
                         },
                         ActionBar10 = {
+                            order = 10,
                             type = "toggle",
                             desc = "",
                             name = "Stance Bar",
@@ -986,6 +1081,26 @@ local options = {
                             set = "SetStatus",
                             width = 0.55,
                             hidden = AB10,
+                        },
+                        ActionBar11 = {
+                            order = 11,
+                            type = "toggle",
+                            desc = "",
+                            name = "Micro Menu",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.65,
+                            hidden = AB11,
+                        },
+                        ActionBar12 = {
+                            order = 12,
+                            type = "toggle",
+                            desc = "",
+                            name = "Bags Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.5,
+                            hidden = AB12,
                         },
                     },    
                 },
@@ -997,6 +1112,7 @@ local options = {
                     hidden = AB3,
                     args = {
                         ActionBar1 = {
+                            order = 1,
                             type = "toggle",
                             desc = "",
                             name = "AB1",
@@ -1006,6 +1122,7 @@ local options = {
                             hidden = AB1,
                         },
                         ActionBar2 = {
+                            order = 2,
                             type = "toggle",
                             desc = "",
                             name = "AB2",
@@ -1015,6 +1132,7 @@ local options = {
                             hidden = AB2,
                         },
                         ActionBar4 = {
+                            order = 4,
                             type = "toggle",
                             desc = "",
                             name = "AB4",
@@ -1024,6 +1142,7 @@ local options = {
                             hidden = AB4,
                         },
                         ActionBar5 = {
+                            order = 5,
                             type = "toggle",
                             desc = "",
                             name = "AB5",
@@ -1033,6 +1152,7 @@ local options = {
                             hidden = AB5,
                         },
                         ActionBar6 = {
+                            order = 6,
                             type = "toggle",
                             desc = "",
                             name = "AB6",
@@ -1042,6 +1162,7 @@ local options = {
                             hidden = AB6,
                         },
                         ActionBar7 = {
+                            order = 7,
                             type = "toggle",
                             desc = "",
                             name = "AB7",
@@ -1051,6 +1172,7 @@ local options = {
                             hidden = AB7,
                         },
                         ActionBar8 = {
+                            order = 8,
                             type = "toggle",
                             desc = "",
                             name = "AB8",
@@ -1060,6 +1182,7 @@ local options = {
                             hidden = AB8,
                         },
                         ActionBar9 = {
+                            order = 9,
                             type = "toggle",
                             desc = "",
                             name = "Pet Bar",
@@ -1069,6 +1192,7 @@ local options = {
                             hidden = AB9,
                         },
                         ActionBar10 = {
+                            order = 10,
                             type = "toggle",
                             desc = "",
                             name = "Stance Bar",
@@ -1076,6 +1200,26 @@ local options = {
                             set = "SetStatus",
                             width = 0.55,
                             hidden = AB10,
+                        },
+                        ActionBar11 = {
+                            order = 11,
+                            type = "toggle",
+                            desc = "",
+                            name = "Micro Menu",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.65,
+                            hidden = AB11,
+                        },
+                        ActionBar12 = {
+                            order = 12,
+                            type = "toggle",
+                            desc = "",
+                            name = "Bags Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.5,
+                            hidden = AB12,
                         },
                     },    
                 },
@@ -1087,6 +1231,7 @@ local options = {
                     hidden = AB4,
                     args = {
                         ActionBar1 = {
+                            order = 1,
                             type = "toggle",
                             desc = "",
                             name = "AB1",
@@ -1096,6 +1241,7 @@ local options = {
                             hidden = AB1,
                         },
                         ActionBar2 = {
+                            order = 2,
                             type = "toggle",
                             desc = "",
                             name = "AB2",
@@ -1105,6 +1251,7 @@ local options = {
                             hidden = AB2,
                         },
                         ActionBar3 = {
+                            order = 3,
                             type = "toggle",
                             desc = "",
                             name = "AB3",
@@ -1114,6 +1261,7 @@ local options = {
                             hidden = AB3,
                         },
                         ActionBar5 = {
+                            order = 5,
                             type = "toggle",
                             desc = "",
                             name = "AB5",
@@ -1123,6 +1271,7 @@ local options = {
                             hidden = AB5,
                         },
                         ActionBar6 = {
+                            order = 6,
                             type = "toggle",
                             desc = "",
                             name = "AB6",
@@ -1132,6 +1281,7 @@ local options = {
                             hidden = AB6,
                         },
                         ActionBar7 = {
+                            order = 7,
                             type = "toggle",
                             desc = "",
                             name = "AB7",
@@ -1141,6 +1291,7 @@ local options = {
                             hidden = AB7,
                         },
                         ActionBar8 = {
+                            order = 8,
                             type = "toggle",
                             desc = "",
                             name = "AB8",
@@ -1150,6 +1301,7 @@ local options = {
                             hidden = AB8,
                         },
                         ActionBar9 = {
+                            order = 9,
                             type = "toggle",
                             desc = "",
                             name = "Pet Bar",
@@ -1159,6 +1311,7 @@ local options = {
                             hidden = AB9,
                         },
                         ActionBar10 = {
+                            order = 10,
                             type = "toggle",
                             desc = "",
                             name = "Stance Bar",
@@ -1166,6 +1319,26 @@ local options = {
                             set = "SetStatus",
                             width = 0.55,
                             hidden = AB10,
+                        },
+                        ActionBar11 = {
+                            order = 11,
+                            type = "toggle",
+                            desc = "",
+                            name = "Micro Menu",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.65,
+                            hidden = AB11,
+                        },
+                        ActionBar12 = {
+                            order = 12,
+                            type = "toggle",
+                            desc = "",
+                            name = "Bags Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.5,
+                            hidden = AB12,
                         },
                     },    
                 },
@@ -1177,6 +1350,7 @@ local options = {
                     hidden = AB5,
                     args = {
                         ActionBar1 = {
+                            order = 1,
                             type = "toggle",
                             desc = "",
                             name = "AB1",
@@ -1186,6 +1360,7 @@ local options = {
                             hidden = AB1,
                         },
                         ActionBar2 = {
+                            order = 2,
                             type = "toggle",
                             desc = "",
                             name = "AB2",
@@ -1195,6 +1370,7 @@ local options = {
                             hidden = AB2,
                         },
                         ActionBar3 = {
+                            order = 3,
                             type = "toggle",
                             desc = "",
                             name = "AB3",
@@ -1204,6 +1380,7 @@ local options = {
                             hidden = AB3,
                         },
                         ActionBar4 = {
+                            order = 4,
                             type = "toggle",
                             desc = "",
                             name = "AB4",
@@ -1213,6 +1390,7 @@ local options = {
                             hidden = AB4,
                         },
                         ActionBar6 = {
+                            order = 6,
                             type = "toggle",
                             desc = "",
                             name = "AB6",
@@ -1222,6 +1400,7 @@ local options = {
                             hidden = AB6,
                         },
                         ActionBar7 = {
+                            order = 7,
                             type = "toggle",
                             desc = "",
                             name = "AB7",
@@ -1231,6 +1410,7 @@ local options = {
                             hidden = AB7,
                         },
                         ActionBar8 = {
+                            order = 8,
                             type = "toggle",
                             desc = "",
                             name = "AB8",
@@ -1240,6 +1420,7 @@ local options = {
                             hidden = AB8,
                         },
                         ActionBar9 = {
+                            order = 9,
                             type = "toggle",
                             desc = "",
                             name = "Pet Bar",
@@ -1249,6 +1430,7 @@ local options = {
                             hidden = AB9,
                         },
                         ActionBar10 = {
+                            order = 10,
                             type = "toggle",
                             desc = "",
                             name = "Stance Bar",
@@ -1256,6 +1438,26 @@ local options = {
                             set = "SetStatus",
                             width = 0.55,
                             hidden = AB10,
+                        },
+                        ActionBar11 = {
+                            order = 11,
+                            type = "toggle",
+                            desc = "",
+                            name = "Micro Menu",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.65,
+                            hidden = AB11,
+                        },
+                        ActionBar12 = {
+                            order = 12,
+                            type = "toggle",
+                            desc = "",
+                            name = "Bags Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.5,
+                            hidden = AB12,
                         },
                     },    
                 },
@@ -1267,6 +1469,7 @@ local options = {
                     hidden = AB6,
                     args = {
                         ActionBar1 = {
+                            order = 1,
                             type = "toggle",
                             desc = "",
                             name = "AB1",
@@ -1276,6 +1479,7 @@ local options = {
                             hidden = AB1,
                         },
                         ActionBar2 = {
+                            order = 2,
                             type = "toggle",
                             desc = "",
                             name = "AB2",
@@ -1285,6 +1489,7 @@ local options = {
                             hidden = AB2,
                         },
                         ActionBar3 = {
+                            order = 3,
                             type = "toggle",
                             desc = "",
                             name = "AB3",
@@ -1294,6 +1499,7 @@ local options = {
                             hidden = AB3,
                         },
                         ActionBar4 = {
+                            order = 4,
                             type = "toggle",
                             desc = "",
                             name = "AB4",
@@ -1303,6 +1509,7 @@ local options = {
                             hidden = AB4,
                         },
                         ActionBar5 = {
+                            order = 5,
                             type = "toggle",
                             desc = "",
                             name = "AB5",
@@ -1312,6 +1519,7 @@ local options = {
                             hidden = AB5,
                         },
                         ActionBar7 = {
+                            order = 7,
                             type = "toggle",
                             desc = "",
                             name = "AB7",
@@ -1321,6 +1529,7 @@ local options = {
                             hidden = AB7,
                         },
                         ActionBar8 = {
+                            order = 8,
                             type = "toggle",
                             desc = "",
                             name = "AB8",
@@ -1330,6 +1539,7 @@ local options = {
                             hidden = AB8,
                         },
                         ActionBar9 = {
+                            order = 9,
                             type = "toggle",
                             desc = "",
                             name = "Pet Bar",
@@ -1339,6 +1549,7 @@ local options = {
                             hidden = AB9,
                         },
                         ActionBar10 = {
+                            order = 10,
                             type = "toggle",
                             desc = "",
                             name = "Stance Bar",
@@ -1346,6 +1557,26 @@ local options = {
                             set = "SetStatus",
                             width = 0.55,
                             hidden = AB10,
+                        },
+                        ActionBar11 = {
+                            order = 11,
+                            type = "toggle",
+                            desc = "",
+                            name = "Micro Menu",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.65,
+                            hidden = AB11,
+                        },
+                        ActionBar12 = {
+                            order = 12,
+                            type = "toggle",
+                            desc = "",
+                            name = "Bags Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.5,
+                            hidden = AB12,
                         },
                     },    
                 },
@@ -1357,6 +1588,7 @@ local options = {
                     hidden = AB7,
                     args = {
                         ActionBar1 = {
+                            order = 1,
                             type = "toggle",
                             desc = "",
                             name = "AB1",
@@ -1366,6 +1598,7 @@ local options = {
                             hidden = AB1,
                         },
                         ActionBar2 = {
+                            order = 2,
                             type = "toggle",
                             desc = "",
                             name = "AB2",
@@ -1375,6 +1608,7 @@ local options = {
                             hidden = AB2,
                         },
                         ActionBar3 = {
+                            order = 3,
                             type = "toggle",
                             desc = "",
                             name = "AB3",
@@ -1384,6 +1618,7 @@ local options = {
                             hidden = AB3,
                         },
                         ActionBar4 = {
+                            order = 4,
                             type = "toggle",
                             desc = "",
                             name = "AB4",
@@ -1393,6 +1628,7 @@ local options = {
                             hidden = AB4,
                         },
                         ActionBar5 = {
+                            order = 5,
                             type = "toggle",
                             desc = "",
                             name = "AB5",
@@ -1402,6 +1638,7 @@ local options = {
                             hidden = AB5,
                         },
                         ActionBar6 = {
+                            order = 6,
                             type = "toggle",
                             desc = "",
                             name = "AB6",
@@ -1411,6 +1648,7 @@ local options = {
                             hidden = AB6,
                         },
                         ActionBar8 = {
+                            order = 8,
                             type = "toggle",
                             desc = "",
                             name = "AB8",
@@ -1420,6 +1658,7 @@ local options = {
                             hidden = AB8,
                         },
                         ActionBar9 = {
+                            order = 9,
                             type = "toggle",
                             desc = "",
                             name = "Pet Bar",
@@ -1429,6 +1668,7 @@ local options = {
                             hidden = AB9,
                         },
                         ActionBar10 = {
+                            order = 10,
                             type = "toggle",
                             desc = "",
                             name = "Stance Bar",
@@ -1436,6 +1676,26 @@ local options = {
                             set = "SetStatus",
                             width = 0.55,
                             hidden = AB10,
+                        },
+                        ActionBar11 = {
+                            order = 11,
+                            type = "toggle",
+                            desc = "",
+                            name = "Micro Menu",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.65,
+                            hidden = AB11,
+                        },
+                        ActionBar12 = {
+                            order = 12,
+                            type = "toggle",
+                            desc = "",
+                            name = "Bags Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.5,
+                            hidden = AB12,
                         },
                     },    
                 },
@@ -1447,6 +1707,7 @@ local options = {
                     hidden = AB8,
                     args = {
                         ActionBar1 = {
+                            order = 1,
                             type = "toggle",
                             desc = "",
                             name = "AB1",
@@ -1456,6 +1717,7 @@ local options = {
                             hidden = AB1,
                         },
                         ActionBar2 = {
+                            order = 2,
                             type = "toggle",
                             desc = "",
                             name = "AB2",
@@ -1465,6 +1727,7 @@ local options = {
                             hidden = AB2,
                         },
                         ActionBar3 = {
+                            order = 3,
                             type = "toggle",
                             desc = "",
                             name = "AB3",
@@ -1474,6 +1737,7 @@ local options = {
                             hidden = AB3,
                         },
                         ActionBar4 = {
+                            order = 4,
                             type = "toggle",
                             desc = "",
                             name = "AB4",
@@ -1483,6 +1747,7 @@ local options = {
                             hidden = AB4,
                         },
                         ActionBar5 = {
+                            order = 5,
                             type = "toggle",
                             desc = "",
                             name = "AB5",
@@ -1492,6 +1757,7 @@ local options = {
                             hidden = AB5,
                         },
                         ActionBar6 = {
+                            order = 6,
                             type = "toggle",
                             desc = "",
                             name = "AB6",
@@ -1501,6 +1767,7 @@ local options = {
                             hidden = AB6,
                         },
                         ActionBar7 = {
+                            order = 7,
                             type = "toggle",
                             desc = "",
                             name = "AB7",
@@ -1510,6 +1777,7 @@ local options = {
                             hidden = AB7,
                         },
                         ActionBar9 = {
+                            order = 9,
                             type = "toggle",
                             desc = "",
                             name = "Pet Bar",
@@ -1519,6 +1787,7 @@ local options = {
                             hidden = AB9,
                         },
                         ActionBar10 = {
+                            order = 10,
                             type = "toggle",
                             desc = "",
                             name = "Stance Bar",
@@ -1526,6 +1795,26 @@ local options = {
                             set = "SetStatus",
                             width = 0.55,
                             hidden = AB10,
+                        },
+                        ActionBar11 = {
+                            order = 11,
+                            type = "toggle",
+                            desc = "",
+                            name = "Micro Menu",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.65,
+                            hidden = AB11,
+                        },
+                        ActionBar12 = {
+                            order = 12,
+                            type = "toggle",
+                            desc = "",
+                            name = "Bags Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.5,
+                            hidden = AB12,
                         },
                     },    
                 },
@@ -1537,6 +1826,7 @@ local options = {
                     hidden = AB9,
                     args = {
                         ActionBar1 = {
+                            order = 1,
                             type = "toggle",
                             desc = "",
                             name = "AB1",
@@ -1546,6 +1836,7 @@ local options = {
                             hidden = AB1,
                         },
                         ActionBar2 = {
+                            order = 2,
                             type = "toggle",
                             desc = "",
                             name = "AB2",
@@ -1555,6 +1846,7 @@ local options = {
                             hidden = AB2,
                         },
                         ActionBar3 = {
+                            order = 3,
                             type = "toggle",
                             desc = "",
                             name = "AB3",
@@ -1564,6 +1856,7 @@ local options = {
                             hidden = AB3,
                         },
                         ActionBar4 = {
+                            order = 4,
                             type = "toggle",
                             desc = "",
                             name = "AB4",
@@ -1573,6 +1866,7 @@ local options = {
                             hidden = AB4,
                         },
                         ActionBar5 = {
+                            order = 5,
                             type = "toggle",
                             desc = "",
                             name = "AB5",
@@ -1582,6 +1876,7 @@ local options = {
                             hidden = AB5,
                         },
                         ActionBar6 = {
+                            order = 6,
                             type = "toggle",
                             desc = "",
                             name = "AB6",
@@ -1591,6 +1886,7 @@ local options = {
                             hidden = AB6,
                         },
                         ActionBar7 = {
+                            order = 7,
                             type = "toggle",
                             desc = "",
                             name = "AB7",
@@ -1600,14 +1896,17 @@ local options = {
                             hidden = AB7,
                         },
                         ActionBar8 = {
+                            order = 8,
                             type = "toggle",
                             desc = "",
                             name = "AB8",
                             get = "GetStatus",
                             set = "SetStatus",
-                            width = 0.45,
+                            width = 0.33,
+                            hidden = AB8,
                         },
                         ActionBar10 = {
+                            order = 10,
                             type = "toggle",
                             desc = "",
                             name = "Stance Bar",
@@ -1615,6 +1914,26 @@ local options = {
                             set = "SetStatus",
                             width = 0.55,
                             hidden = AB10,
+                        },
+                        ActionBar11 = {
+                            order = 11,
+                            type = "toggle",
+                            desc = "",
+                            name = "Micro Menu",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.65,
+                            hidden = AB11,
+                        },
+                        ActionBar12 = {
+                            order = 12,
+                            type = "toggle",
+                            desc = "",
+                            name = "Bags Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.5,
+                            hidden = AB12,
                         },
                     },    
                 },
@@ -1626,6 +1945,7 @@ local options = {
                     hidden = AB10,
                     args = {
                         ActionBar1 = {
+                            order = 1,
                             type = "toggle",
                             desc = "",
                             name = "AB1",
@@ -1635,6 +1955,7 @@ local options = {
                             hidden = AB1,
                         },
                         ActionBar2 = {
+                            order = 2,
                             type = "toggle",
                             desc = "",
                             name = "AB2",
@@ -1644,6 +1965,7 @@ local options = {
                             hidden = AB2,
                         },
                         ActionBar3 = {
+                            order = 3,
                             type = "toggle",
                             desc = "",
                             name = "AB3",
@@ -1653,6 +1975,7 @@ local options = {
                             hidden = AB3,
                         },
                         ActionBar4 = {
+                            order = 4,
                             type = "toggle",
                             desc = "",
                             name = "AB4",
@@ -1662,6 +1985,7 @@ local options = {
                             hidden = AB4,
                         },
                         ActionBar5 = {
+                            order = 5,
                             type = "toggle",
                             desc = "",
                             name = "AB5",
@@ -1671,6 +1995,7 @@ local options = {
                             hidden = AB5,
                         },
                         ActionBar6 = {
+                            order = 6,
                             type = "toggle",
                             desc = "",
                             name = "AB6",
@@ -1680,6 +2005,7 @@ local options = {
                             hidden = AB6,
                         },
                         ActionBar7 = {
+                            order = 7,
                             type = "toggle",
                             desc = "",
                             name = "AB7",
@@ -1689,6 +2015,7 @@ local options = {
                             hidden = AB7,
                         },
                         ActionBar8 = {
+                            order = 8,
                             type = "toggle",
                             desc = "",
                             name = "AB8",
@@ -1698,6 +2025,7 @@ local options = {
                             hidden = AB8,
                         },
                         ActionBar9 = {
+                            order = 9,
                             type = "toggle",
                             desc = "",
                             name = "Pet Bar",
@@ -1705,6 +2033,264 @@ local options = {
                             set = "SetStatus",
                             width = 0.45,
                             hidden = AB9,
+                        },
+                        ActionBar11 = {
+                            order = 11,
+                            type = "toggle",
+                            desc = "",
+                            name = "Micro Menu",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.65,
+                            hidden = AB11,
+                        },
+                        ActionBar12 = {
+                            order = 12,
+                            type = "toggle",
+                            desc = "",
+                            name = "Bags Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.5,
+                            hidden = AB12,
+                        },
+                    },    
+                },
+                LinkedGroup11 = {
+                    order = 11,
+                    name = "Micro Menu",
+                    type = "group",
+                    inline = true,
+                    hidden = AB11,
+                    args = {
+                        ActionBar1 = {
+                            order = 1,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB1",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB1,
+                        },
+                        ActionBar2 = {
+                            order = 2,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB2",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB2,
+                        },
+                        ActionBar3 = {
+                            order = 3,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB3",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB3,
+                        },
+                        ActionBar4 = {
+                            order = 4,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB4",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB4,
+                        },
+                        ActionBar5 = {
+                            order = 5,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB5",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB5,
+                        },
+                        ActionBar6 = {
+                            order = 6,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB6",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB6,
+                        },
+                        ActionBar7 = {
+                            order = 7,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB7",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB7,
+                        },
+                        ActionBar8 = {
+                            order = 8,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB8",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB8,
+                        },
+                        ActionBar9 = {
+                            order = 9,
+                            type = "toggle",
+                            desc = "",
+                            name = "Pet Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.45,
+                            hidden = AB9,
+                        },
+                        ActionBar10 = {
+                            order = 10,
+                            type = "toggle",
+                            desc = "",
+                            name = "Stance Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.55,
+                            hidden = AB10,
+                        },
+                        ActionBar12 = {
+                            order = 12,
+                            type = "toggle",
+                            desc = "",
+                            name = "Bags Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.5,
+                            hidden = AB12,
+                        },
+                    },    
+                },
+                LinkedGroup12 = {
+                    order = 12,
+                    name = "Bags Bar",
+                    type = "group",
+                    inline = true,
+                    hidden = AB11,
+                    args = {
+                        ActionBar1 = {
+                            order = 1,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB1",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB1,
+                        },
+                        ActionBar2 = {
+                            order = 2,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB2",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB2,
+                        },
+                        ActionBar3 = {
+                            order = 3,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB3",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB3,
+                        },
+                        ActionBar4 = {
+                            order = 4,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB4",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB4,
+                        },
+                        ActionBar5 = {
+                            order = 5,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB5",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB5,
+                        },
+                        ActionBar6 = {
+                            order = 6,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB6",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB6,
+                        },
+                        ActionBar7 = {
+                            order = 7,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB7",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB7,
+                        },
+                        ActionBar8 = {
+                            order = 8,
+                            type = "toggle",
+                            desc = "",
+                            name = "AB8",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.33,
+                            hidden = AB8,
+                        },
+                        ActionBar9 = {
+                            order = 9,
+                            type = "toggle",
+                            desc = "",
+                            name = "Pet Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.45,
+                            hidden = AB9,
+                        },
+                        ActionBar10 = {
+                            order = 10,
+                            type = "toggle",
+                            desc = "",
+                            name = "Stance Bar",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.55,
+                            hidden = AB10,
+                        },
+                        ActionBar11 = {
+                            order = 11,
+                            type = "toggle",
+                            desc = "",
+                            name = "Micro Menu",
+                            get = "GetStatus",
+                            set = "SetStatus",
+                            width = 0.65,
+                            hidden = AB11,
                         },
                     },    
                 },
