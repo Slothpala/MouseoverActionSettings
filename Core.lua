@@ -46,13 +46,20 @@ function MouseoverActionBars:LoadConfig()
     self:Combat(InCombatLockdown())
 end
 
+local updateQueued = false
 function MouseoverActionBars:ReloadConfig()
-    self:CancelAllTimers()
-    for _, module in self:IterateModules() do
-        module:Disable()
+    if not updateQueued then
+        updateQueued = true
+        C_Timer.After(0.25, function()
+            MouseoverActionBars:CancelAllTimers()
+            for _, module in MouseoverActionBars:IterateModules() do
+                module:Disable()
+            end
+            MouseoverActionBars:ClearCache()
+            MouseoverActionBars:LoadConfig()
+            updateQueued = false
+        end)
     end
-    self:ClearCache()
-    self:LoadConfig()
 end
 --getter/setter functions that will save and call settings into/from the db
 --status
@@ -109,7 +116,8 @@ MouseoverUnit.Hide = MouseoverUnit.RestoreHide
 function MouseoverUnit:RestoreShow()
     for i=1, #self.Components do
         self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:Stop()
-        self.Components[i]:SetAlpha(self.maxalpha)
+        self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetToAlpha(self.maxalpha)
+        self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:Play()
     end
 end
 MouseoverUnit.Show = MouseoverUnit.RestoreShow
@@ -193,7 +201,7 @@ function MouseoverActionBars:Link(mouseoverunit,link_with_mouseoverunit)
     mouseoverunit.Links[#mouseoverunit.Links + 1] = link_with_mouseoverunit
 end
 --
-local numlinkgrouops = 10
+local numlinkgrouops = 12
 function MouseoverActionBars:ApplyLinks()
     for i=1, #registered_modules do
         for n=1,numlinkgrouops do 
