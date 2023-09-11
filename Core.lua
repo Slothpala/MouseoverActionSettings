@@ -116,8 +116,7 @@ MouseoverUnit.Hide = MouseoverUnit.RestoreHide
 function MouseoverUnit:RestoreShow()
     for i=1, #self.Components do
         self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:Stop()
-        self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetToAlpha(self.maxalpha)
-        self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:Play()
+        self.Components[i]:SetAlpha(self.maxalpha)
     end
 end
 MouseoverUnit.Show = MouseoverUnit.RestoreShow
