@@ -20,6 +20,8 @@ function ActionBar11:OnEnable()
         StoreMicroButton,
         MainMenuMicroButton 
     }
+    AB11.Parent = MicroMenu
+    AB11.Links = {} 
     AB11.Name = "AB11"
     AB11.Timer = timer
     AB11.maxalpha     = MouseoverActionBars.db.profile.ActionBars.AB11.maxalpha

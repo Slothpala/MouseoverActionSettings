@@ -8,10 +8,11 @@ local timer
 function ActionBar2:OnEnable()
     AB2 = MouseoverActionBars:NewMouseoverUnit(AB2)
     AB2.Components = {}
-    AB2.Links = {} 
     for i=1,12 do
         AB2.Components[i] = _G["MultiBarBottomLeftButton" ..i]
     end
+    AB2.Parent = MultiBarBottomLeft
+    AB2.Links = {} 
     AB2.Name = "AB2"
     AB2.Timer = timer
     AB2.maxalpha     = MouseoverActionBars.db.profile.ActionBars.AB2.maxalpha

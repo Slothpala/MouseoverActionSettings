@@ -8,10 +8,11 @@ local timer
 function ActionBar9:OnEnable()
     AB9 = MouseoverActionBars:NewMouseoverUnit(AB9)
     AB9.Components = {}
-    AB9.Links = {} 
     for i=1,10 do
         AB9.Components[i] = _G["PetActionButton" ..i]
     end
+    AB9.Parent = PetActionBar
+    AB9.Links = {} 
     AB9.Name = "AB9"
     AB9.Timer = timer
     AB9.maxalpha     = MouseoverActionBars.db.profile.ActionBars.AB9.maxalpha

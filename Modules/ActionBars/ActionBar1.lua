@@ -11,16 +11,7 @@ function ActionBar1:OnEnable()
     for i=1,12 do
         AB1.Components[i] = _G["ActionButton" ..i]
     end
-    for _,v in pairs ({
-        MainMenuBar.EndCaps.LeftEndCap,
-        MainMenuBar.EndCaps.RightEndCap,
-        MainMenuBar.BorderArt,
-        MainMenuBar.Background,
-        MainMenuBar.ActionBarPageNumber
-    })
-    do
-        AB1.Components[#AB1.Components+1] = v
-    end
+    AB1.Parent = MainMenuBar
     AB1.Links = {} 
     AB1.Name = "AB1"
     AB1.Timer = timer

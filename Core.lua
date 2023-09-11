@@ -92,6 +92,7 @@ local MouseoverUnit = {}
 MouseoverUnit.Name = "meta"
 MouseoverUnit.Timer = ABTimer1
 MouseoverUnit.Components = {} --references to globals e.g. _G["MultiBarRightButton" ..1], PlayerFrame 
+MouseoverUnit.Parent = nil --where possible hide only the parent
 MouseoverUnit.Combat = nil
 MouseoverUnit.Links = {} --links to other MouseoverUnit units
 MouseoverUnit.LinksPresent = false
@@ -100,24 +101,20 @@ MouseoverUnit.minalpha = 0
 MouseoverUnit.fadeouttimer = 2
 
 function MouseoverUnit:RestoreHide()
-    for i=1, #self.Components do
-        if not self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP then
-            self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP = self.Components[i]:CreateAnimationGroup()
-            self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:SetToFinalAlpha(true)
-            self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION = self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:CreateAnimation("Alpha")
-            self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetDuration(0.2)
-        end
-        self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetFromAlpha(self.maxalpha)
-        self.Components[i].MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetToAlpha(self.minalpha)
-        self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:Play()
+    if not self.Parent.MOUSEOVERACTIONBARS_ANIMATION_GROUP then
+        self.Parent.MOUSEOVERACTIONBARS_ANIMATION_GROUP = self.Parent:CreateAnimationGroup()
+        self.Parent.MOUSEOVERACTIONBARS_ANIMATION_GROUP:SetToFinalAlpha(true)
+        self.Parent.MOUSEOVERACTIONBARS_ALPHA_ANIMATION = self.Parent.MOUSEOVERACTIONBARS_ANIMATION_GROUP:CreateAnimation("Alpha")
+        self.Parent.MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetDuration(0.2)
     end
+    self.Parent.MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetFromAlpha(self.maxalpha)
+    self.Parent.MOUSEOVERACTIONBARS_ALPHA_ANIMATION:SetToAlpha(self.minalpha)
+    self.Parent.MOUSEOVERACTIONBARS_ANIMATION_GROUP:Play()
 end
 MouseoverUnit.Hide = MouseoverUnit.RestoreHide
 function MouseoverUnit:RestoreShow()
-    for i=1, #self.Components do
-        self.Components[i].MOUSEOVERACTIONBARS_ANIMATION_GROUP:Stop()
-        self.Components[i]:SetAlpha(self.maxalpha)
-    end
+    self.Parent.MOUSEOVERACTIONBARS_ANIMATION_GROUP:Stop()
+    self.Parent:SetAlpha(self.maxalpha)
 end
 MouseoverUnit.Show = MouseoverUnit.RestoreShow
 MouseoverUnit.metatable = {__index = MouseoverUnit}

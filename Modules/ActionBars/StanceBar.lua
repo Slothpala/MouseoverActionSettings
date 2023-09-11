@@ -8,10 +8,11 @@ local timer
 function ActionBar10:OnEnable()
     AB10 = MouseoverActionBars:NewMouseoverUnit(AB10)
     AB10.Components = {}
-    AB10.Links = {} 
     for i=1,10 do
         AB10.Components[i] = _G["StanceButton" ..i]
     end
+    AB10.Parent = StanceBar
+    AB10.Links = {} 
     AB10.Name = "AB10"
     AB10.Timer = timer
     AB10.maxalpha     = MouseoverActionBars.db.profile.ActionBars.AB10.maxalpha
