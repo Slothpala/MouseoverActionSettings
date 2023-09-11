@@ -91,8 +91,8 @@ local ABTimer1
 local MouseoverUnit = {}
 MouseoverUnit.Name = "meta"
 MouseoverUnit.Timer = ABTimer1
-MouseoverUnit.Components = {} --references to globals e.g. _G["MultiBarRightButton" ..1], PlayerFrame 
-MouseoverUnit.Parent = nil --where possible hide only the parent
+MouseoverUnit.Components = {} --all regions that need to be hooked for mouse events e.g the action buttons on an action bar
+MouseoverUnit.Parent = nil --the parent frame to be hidden e.g. the action bar itself
 MouseoverUnit.Combat = nil
 MouseoverUnit.Links = {} --links to other MouseoverUnit units
 MouseoverUnit.LinksPresent = false
