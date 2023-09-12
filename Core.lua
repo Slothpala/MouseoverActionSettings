@@ -84,7 +84,7 @@ end
 --tables containing the information about active hooks
 local hooked = {}
 local hookstate = {}
-local function donothing()end
+local function donothing() end
 --fade out timers for the respective action bars
 local ABTimer1
 --creating meta mousover unit
@@ -93,7 +93,7 @@ MouseoverUnit.Name = "meta"
 MouseoverUnit.Timer = ABTimer1
 MouseoverUnit.Components = {} --all regions that need to be hooked for mouse events e.g the action buttons on an action bar
 MouseoverUnit.Parent = nil --the parent frame to be hidden e.g. the action bar itself
-MouseoverUnit.Combat = nil
+MouseoverUnit.Combat = nil --information on whether the unit should be shown in combat
 MouseoverUnit.Links = {} --links to other MouseoverUnit units
 MouseoverUnit.LinksPresent = false
 MouseoverUnit.maxalpha = 1
