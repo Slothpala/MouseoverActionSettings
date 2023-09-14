@@ -251,6 +251,7 @@ function MouseoverActionBars:HideGrid()
         MouseoverActionBars:RegisterOnEnter(mouseoverunit)
         MouseoverActionBars:RegisterOnLeave(mouseoverunit)
         mouseoverunit:RestoreHide() 
+        MouseoverActionBars:Combat(InCombatLockdown())
     end
 end
 --define conditions to show the actionbars anayways 
