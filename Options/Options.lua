@@ -762,6 +762,7 @@ local options = {
                         Combat1 = {
                             type = "toggle",
                             name = "AB1",
+                            desc = "Action Bar 1",
                             get = "GetStatus",
                             set = "SetStatus",
                             hidden = AB1,
