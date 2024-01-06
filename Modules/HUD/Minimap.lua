@@ -15,7 +15,8 @@ local mo_unit = {
         AddonCompartmentFrame,
         MinimapZoneText,
         ExpansionLandingPageMinimapButton,
-        --MinimapBackdrop --hooking this will prevent the minimap content from showing tooltips and pinging
+        --MinimapBackdrop, --hooking this will prevent the minimap content from showing tooltips and pinging
+        --MinimapCompassTexture,
     },
     statusEvents = {},
 }
