@@ -3,21 +3,24 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = StanceBar,
-    visibilityEvent = "STANCE_BAR_UPDATE",   
-    scriptRegions = {},
+    Parent = DebuffFrame,
+    visibilityEvent = "DEBUFF_FRAME_UPDATE",   
+    scriptRegions = {
+        DebuffFrame,
+    },
     statusEvents = {},
 }
-for i=1,10 do
-    mo_unit.scriptRegions[i] = _G["StanceButton" .. i]
+for index,frame in pairs({_G.DebuffFrame.AuraContainer:GetChildren()}) do
+    local scriptRegions = mo_unit.scriptRegions
+    scriptRegions[#scriptRegions+1] = frame
 end
 
 mo_unit = addon:NewMouseoverUnit(mo_unit)
 
-local module = addon:NewModule("StanceBar")
+local module = addon:NewModule("DebuffFrame")
 
 function module:OnEnable()
-    local dbObj = addon.db.profile["StanceBar"]
+    local dbObj = addon.db.profile["DebuffFrame"]
     if dbObj.useCustomDelay then
         mo_unit.delay = dbObj.delay
     end
@@ -39,6 +42,7 @@ function module:OnEnable()
         end
     end
     mo_unit:Enable()
+    DebuffFrame:SetMouseClickEnabled(false) --if this is enabled turning the camera on click does not work while in the debuff frame area which is quite large
 end
 
 function module:OnDisable()

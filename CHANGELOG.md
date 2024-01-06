@@ -1,11 +1,4 @@
 # **Changelog**
-### Version [2.3.9] - 2023-12-04
-* desc field added for Show during combat section
-
-### Version [2.3.8] - 2023-11-07
-#### Changed 
-* interface version updated to 100200
-* back to manual changelog
-
+### Version [1.0.0] - 2024-01-06
 #### Added 
-* CHANGELOG.md
+* Initial release of MouseoverActionSettings as a replacement for MouseoverActionBars. MouseoverActionSettings has been written from scratch and covers all the functionality of MouseoverActionBars and more.

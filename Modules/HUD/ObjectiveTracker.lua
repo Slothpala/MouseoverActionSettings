@@ -3,21 +3,20 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = StanceBar,
-    visibilityEvent = "STANCE_BAR_UPDATE",   
-    scriptRegions = {},
-    statusEvents = {},
+    Parent = ObjectiveTrackerFrame,
+    visibilityEvent = "OBJECTIVE_TRACKER_UPDATE",   
+    scriptRegions = {
+        ObjectiveTrackerFrame,
+        ObjectiveTrackerBlocksFrame
+    },
 }
-for i=1,10 do
-    mo_unit.scriptRegions[i] = _G["StanceButton" .. i]
-end
 
 mo_unit = addon:NewMouseoverUnit(mo_unit)
 
-local module = addon:NewModule("StanceBar")
+local module = addon:NewModule("ObjectiveTracker")
 
 function module:OnEnable()
-    local dbObj = addon.db.profile["StanceBar"]
+    local dbObj = addon.db.profile["ObjectiveTracker"]
     if dbObj.useCustomDelay then
         mo_unit.delay = dbObj.delay
     end

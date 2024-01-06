@@ -1,4 +1,0 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/">
-  <Include file="Modules\ActionBars\load_actionbars.xml"/>
-  <Include file="Modules\Hide\load_hide.xml"/>
-</Ui>

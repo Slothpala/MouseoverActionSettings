@@ -3,21 +3,25 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = StanceBar,
-    visibilityEvent = "STANCE_BAR_UPDATE",   
-    scriptRegions = {},
+    Parent = BuffFrame,
+    visibilityEvent = "BUFF_FRAME_UPDATE",   
+    scriptRegions = {
+        BuffFrame, 
+        BuffFrame.CollapseAndExpandButton,
+    },
     statusEvents = {},
 }
-for i=1,10 do
-    mo_unit.scriptRegions[i] = _G["StanceButton" .. i]
+for index,frame in pairs({_G.BuffFrame.AuraContainer:GetChildren()}) do
+    local scriptRegions = mo_unit.scriptRegions
+    scriptRegions[#scriptRegions+1] = frame
 end
 
 mo_unit = addon:NewMouseoverUnit(mo_unit)
 
-local module = addon:NewModule("StanceBar")
+local module = addon:NewModule("BuffFrame")
 
 function module:OnEnable()
-    local dbObj = addon.db.profile["StanceBar"]
+    local dbObj = addon.db.profile["BuffFrame"]
     if dbObj.useCustomDelay then
         mo_unit.delay = dbObj.delay
     end
@@ -39,6 +43,7 @@ function module:OnEnable()
         end
     end
     mo_unit:Enable()
+    BuffFrame:SetMouseClickEnabled(false) --if this is enabled turning the camera on click does not work while in the buff frame area which is quite large
 end
 
 function module:OnDisable()

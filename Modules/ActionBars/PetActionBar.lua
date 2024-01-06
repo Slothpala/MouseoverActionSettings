@@ -3,21 +3,21 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = StanceBar,
-    visibilityEvent = "STANCE_BAR_UPDATE",   
+    Parent = PetActionBar,
+    visibilityEvent = "PET_BAR_UPDATE",   
     scriptRegions = {},
     statusEvents = {},
 }
 for i=1,10 do
-    mo_unit.scriptRegions[i] = _G["StanceButton" .. i]
+    mo_unit.scriptRegions[i] = _G["PetActionButton" .. i]
 end
 
 mo_unit = addon:NewMouseoverUnit(mo_unit)
 
-local module = addon:NewModule("StanceBar")
+local module = addon:NewModule("PetActionBar")
 
 function module:OnEnable()
-    local dbObj = addon.db.profile["StanceBar"]
+    local dbObj = addon.db.profile["PetActionBar"]
     if dbObj.useCustomDelay then
         mo_unit.delay = dbObj.delay
     end

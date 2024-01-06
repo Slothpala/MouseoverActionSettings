@@ -1,23 +1,24 @@
+--[[Action Bar 3]]--
 local _, addonTable = ...
 local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = StanceBar,
-    visibilityEvent = "STANCE_BAR_UPDATE",   
+    Parent = MultiBarBottomRight,
+    visibilityEvent = "MULTI_BAR_BOTTOM_RIGHT_UPDATE",   
     scriptRegions = {},
     statusEvents = {},
 }
-for i=1,10 do
-    mo_unit.scriptRegions[i] = _G["StanceButton" .. i]
+for i=1,12 do
+    mo_unit.scriptRegions[i] = _G["MultiBarBottomRightButton" .. i]
 end
 
 mo_unit = addon:NewMouseoverUnit(mo_unit)
 
-local module = addon:NewModule("StanceBar")
+local module = addon:NewModule("MultiBarBottomRight")
 
 function module:OnEnable()
-    local dbObj = addon.db.profile["StanceBar"]
+    local dbObj = addon.db.profile["MultiBarBottomRight"]
     if dbObj.useCustomDelay then
         mo_unit.delay = dbObj.delay
     end

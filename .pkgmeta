@@ -1,5 +1,5 @@
  
-package-as: MouseoverActionBars
+package-as: MouseoverActionSettings
 
 externals:
     Libs/AceAddon-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceAddon-3.0
@@ -9,11 +9,15 @@ externals:
     Libs/AceDBOptions-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceDBOptions-3.0
     Libs/AceEvent-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceEvent-3.0
     Libs/AceGUI-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceGUI-3.0
-    Libs/AceTimer-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceTimer-3.0
     Libs/CallbackHandler-1.0: https://repos.curseforge.com/wow/ace3/trunk/CallbackHandler-1.0
     Libs/LibDualSpec-1.0: https://repos.wowace.com/wow/libdualspec-1-0
     Libs/LibStub: https://repos.wowace.com/wow/libstub/trunk
-    
+    Libs/LibDataBroker-1.1: https://github.com/tekkub/libdatabroker-1-1
+    Libs/LibDBIcon-1.0: https://repos.curseforge.com/wow/libdbicon-1-0/trunk/LibDBIcon-1.0
+    Libs/LibDeflate: https://github.com/SafeteeWoW/LibDeflate
+    Libs/AceSerializer-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceSerializer-3.0
+    Libs/AceLocale-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceLocale-3.0
+
 manual-changelog:
     filename: CHANGELOG.md
     markup-type: markdown
