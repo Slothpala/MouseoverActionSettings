@@ -32,8 +32,8 @@ function module:OnEnable()
             end,
             OnTooltipShow = function(tooltip)
                 tooltip:AddLine(addonName)
-                tooltip:AddLine("\124cFF7FFFD4 " .. L["left_click"] .. " \124r" .. L["text_after_left_click"]) 
-                tooltip:AddLine("\124cFF7FFFD4 " .. L["right_click"] .. " \124r" .. L["text_after_right_click"])
+                tooltip:AddLine("\124cFF7FFFD4" .. L["left_click"] .. " \124r" .. L["text_after_left_click"]) 
+                tooltip:AddLine("\124cFF7FFFD4" .. L["right_click"] .. " \124r" .. L["text_after_right_click"])
             end,
         })
         Icon:Register(addonName, IconObj, addon.db.profile.MiniMapButton)
