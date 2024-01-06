@@ -22,12 +22,15 @@ local defaults = {
         MainMenuBar = {
             GRID_UPDATE = true,
             DRAGONRIDING_UPDATE = true,
+            COMBAT_UPDATE = true,
         },
         MultiBarBottomLeft = {
             GRID_UPDATE = true,
+            COMBAT_UPDATE = true,
         },
         MultiBarBottomRight = {
             GRID_UPDATE = true,
+            COMBAT_UPDATE = true,
         },
         MultiBarRight = {
             GRID_UPDATE = true,
