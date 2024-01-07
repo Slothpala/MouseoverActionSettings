@@ -100,7 +100,7 @@ function addon:GetOptionsFrame(AceContainer)
     tinsert(UISpecialFrames, frame:GetName())
     frame:SetFrameStrata("DIALOG")
     frame.title = _G["MouseoverActionSettingsOptionsTitleText"]
-    frame.title:SetText("MouseoverActionSettings")
+    frame.title:SetText("Mouseover Action Settings")
     MouseoverActionSettingsOptionsPortrait:SetTexture(addonTable.texturePaths.PortraitIcon)
     frame:SetSize(950,550)
     frame:SetPoint("CENTER", UIparent, "CENTER")
