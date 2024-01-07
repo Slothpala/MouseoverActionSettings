@@ -164,24 +164,8 @@ local options = {
                 },
             },
         },
-        modules = {
-            order = 3,
-            name = L["Miscellaneous"],
-            type = "group",
-            inline = true,
-            args = {
-                MiniMapButton = {
-                    order = 1,
-                    name = L["minimap_button_name"],
-                    desc = L["minimap_button_desc"],
-                    type = "toggle",
-                    get = "GetModuleStatus",
-                    set = "SetModuleStatus",
-                },
-            },
-        },
         Hide = {
-            order = 4,
+            order = 3,
             name = L["Hide"],
             type = "group",
             inline = true,
@@ -206,6 +190,22 @@ local options = {
                     order = 3,
                     name = L["hide_micro_menu_name"],
                     desc = L["hide_micro_menu_desc"],
+                    type = "toggle",
+                    get = "GetModuleStatus",
+                    set = "SetModuleStatus",
+                },
+            },
+        },
+        Miscellaneous = {
+            order = 4,
+            name = L["Miscellaneous"],
+            type = "group",
+            inline = true,
+            args = {
+                MiniMapButton = {
+                    order = 1,
+                    name = L["minimap_button_name"],
+                    desc = L["minimap_button_desc"],
                     type = "toggle",
                     get = "GetModuleStatus",
                     set = "SetModuleStatus",
