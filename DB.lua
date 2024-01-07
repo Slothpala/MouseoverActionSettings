@@ -17,6 +17,18 @@ local defaults = {
             links = {
                 ["*"] = false,
             },
+            DRAGONRIDING_UPDATE = false,
+            COMBAT_UPDATE = false,
+            DUNGEON_UPDATE = false,
+            PARTY_GROUP_UPDATE = false,
+            RAID_GROUP_UPDATE = false,
+            MOUNT_UPDATE = false,
+            NPC_UPDATE = false,
+            RAID_UPDATE = false,
+            BATTLEGROUND_UPDATE = false,
+            ARENA_UPDATE = false,
+            SCENARIO_UPDATE = false,
+            OPEN_WORLD_UPDATE = false,
         },
         --ActionBars
         MainMenuBar = {
