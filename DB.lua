@@ -13,7 +13,7 @@ local defaults = {
             useCustomDelay = false,
             delay = 2,
             EDIT_MODE_UPDATE = true,
-            ["*"] = false,
+            ["**"] = false,
             links = {
                 ["*"] = false,
             },
@@ -66,14 +66,12 @@ local defaults = {
             COMBAT_UPDATE = true,
         },
         ChatFrame = {
+            minAlpha = 0.3,
             PARTY_GROUP_UPDATE = true,
             RAID_GROUP_UPDATE = true,
         },
         ObjectiveTracker = {
             DUNGEON_UPDATE = true,
-        },
-        ChatFrame = {
-            minAlpha = 0.3,
         },
         --/HUD
         --Hide
