@@ -130,7 +130,7 @@ local options = {
         },
         ObjectiveTracker = {
             hidden = function()
-                return not addon:IsModuleEnabled("BuffFrame")
+                return not addon:IsModuleEnabled("ObjectiveTracker")
             end,
             order = 5,
             name = L["ObjectiveTracker"],
