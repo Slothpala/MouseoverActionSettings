@@ -38,6 +38,14 @@ local options = {
                     get = "GetModuleStatus",
                     set = "SetModuleStatus",
                 },
+                TargetFrame = {
+                    order = 3.1,
+                    name = L["TargetFrame"],
+                    desc = "",
+                    type = "toggle",
+                    get = "GetModuleStatus",
+                    set = "SetModuleStatus",
+                },
                 Minimap = {
                     order = 4,
                     name = L["Minimap"],
@@ -114,6 +122,16 @@ local options = {
             end,
             order = 3,
             name = L["PlayerFrame"],
+            type = "group",
+            inline = true,
+            args = mouseover_unit_options,
+        },
+        TargetFrame = {
+            hidden = function()
+                return not addon:IsModuleEnabled("TargetFrame")
+            end,
+            order = 3.1,
+            name = L["TargetFrame"],
             type = "group",
             inline = true,
             args = mouseover_unit_options,

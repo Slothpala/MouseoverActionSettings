@@ -1,5 +1,9 @@
 # **Changelog**
 
+### Version [1.1.0] - 2024-01-08
+#### Added 
+* TargetFrame module added.
+
 ### Version [1.0.2] - 2024-01-08
 #### Fixed 
 * Unselecting pre-defined triggers now persists throughout a game session.
