@@ -92,6 +92,8 @@ L["party_group_update_name"] = "In Party Group"
 L["party_group_update_desc"] = ""
 L["raid_group_update_name"] = "In Raid Group"
 L["raid_group_update_desc"] = ""
+L["target_update_name"] = "Target exists"
+L["target_update_desc"] = ""
 --Tweaks:
 L["custom_animation_toggle_name"] = "Customize Animation"
 L["custom_animation_toggle_desc"] = "Override global settings and use unit-specific settings."

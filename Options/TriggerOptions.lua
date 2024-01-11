@@ -77,6 +77,14 @@ options = {
             get = "GetTrigger",
             set = "SetTrigger",
         },
+        TARGET_UPDATE = {
+            order = 1.7,
+            name = L["target_update_name"],
+            desc = L["target_update_desc"],
+            type = "toggle",
+            get = "GetTrigger",
+            set = "SetTrigger",
+        },
         --[[Zone]]--
         zone_header = {
             order = 2,

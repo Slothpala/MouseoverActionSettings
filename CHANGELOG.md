@@ -1,4 +1,7 @@
 # **Changelog**
+### Version [1.2.0] - 2024-01-11
+#### Added
+* UnitExists.lua -> New status with one event for now "TARGET_UPDATE" can be extended to other units as needed.                                                                     
 
 ### Version [1.1.0] - 2024-01-08
 #### Added 
