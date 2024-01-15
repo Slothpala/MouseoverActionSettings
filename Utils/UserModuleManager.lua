@@ -16,11 +16,17 @@ function addon:LoadUserModules()
     for _, userModule in pairs(self.db.global.UserModules) do
         local info = {
             name = userModule.name,
-            Parent = userModule.parentName,
+            Parents = userModule.parentNames,
             scriptRegions = userModule.scriptRegionNames, 
         }
-        local module = self:NewUserModule(info)
-        user_modules[userModule.name] = module
+        local module = self:GetModule("UserModule_" .. info.name, true)
+        if not module then
+            module = self:NewUserModule(info)
+        end
+        if module then
+            module:Enable()
+            user_modules[userModule.name] = module
+        end
     end
 end
 
@@ -28,12 +34,14 @@ function addon:CreateUserModule(name)
     local userModule = self.db.global.UserModules[name]
     local info = {
         name = userModule.name,
-        Parent = userModule.parentName,
+        Parents = userModule.parentNames,
         scriptRegions = userModule.scriptRegionNames, 
     }
     local module, moduleName = self:NewUserModule(info)
-    module:Enable()
-    user_modules[userModule.name] = module
+    if module then
+        module:Enable()
+        user_modules[userModule.name] = module
+    end
     reloadOptionsFrame()
 end
 

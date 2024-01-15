@@ -74,7 +74,9 @@ function MouseoverUnit:Disable()
     self:StopAnimation()
     CR:Fire(self.visibilityEvent, false)
     self.preventHiding = {}
-    self.Parent:SetAlpha(1)
+    for _, parent in pairs(self.Parents) do
+        parent:SetAlpha(1)
+    end
     self.isShown = true
     self:RestoreMetaValues()
 end

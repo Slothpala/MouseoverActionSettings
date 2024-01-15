@@ -3,7 +3,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = MicroMenu,
+    Parents = {MicroMenu},
     visibilityEvent = "MICRO_MENU_UPDATE",   
     scriptRegions = {
         CharacterMicroButton,

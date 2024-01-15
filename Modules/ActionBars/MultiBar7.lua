@@ -4,7 +4,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = MultiBar7,
+    Parents = {MultiBar7},
     visibilityEvent = "MULTI_BAR_7_UPDATE",   
     scriptRegions = {},
     statusEvents = {},

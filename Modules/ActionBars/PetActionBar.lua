@@ -3,7 +3,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = PetActionBar,
+    Parents = {PetActionBar},
     visibilityEvent = "PET_BAR_UPDATE",   
     scriptRegions = {},
     statusEvents = {},

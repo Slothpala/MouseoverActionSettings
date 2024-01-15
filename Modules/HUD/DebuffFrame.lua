@@ -3,7 +3,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = DebuffFrame,
+    Parents = {DebuffFrame},
     visibilityEvent = "DEBUFF_FRAME_UPDATE",   
     scriptRegions = {
         DebuffFrame,

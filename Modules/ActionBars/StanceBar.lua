@@ -3,7 +3,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = StanceBar,
+    Parents = {StanceBar},
     visibilityEvent = "STANCE_BAR_UPDATE",   
     scriptRegions = {},
     statusEvents = {},

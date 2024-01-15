@@ -3,7 +3,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = TargetFrame,
+    Parents = {TargetFrame},
     visibilityEvent = "TARGET_FRAME_UPDATE",   
     scriptRegions = {
         TargetFrame,

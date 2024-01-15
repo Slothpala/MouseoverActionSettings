@@ -76,7 +76,7 @@ local create_module_options = {
             func = function(info)
                 addon.db.global.UserModules[tmp.name_input_txt] = {}
                 addon.db.global.UserModules[tmp.name_input_txt].name = tmp.name_input_txt
-                addon.db.global.UserModules[tmp.name_input_txt].parentName = tmp.parent_input_txt
+                addon.db.global.UserModules[tmp.name_input_txt].parentNames = stringToTable(tmp.parent_input_txt)
                 addon.db.global.UserModules[tmp.name_input_txt].scriptRegionNames = stringToTable(tmp.scriptRegions_input_txt)
                 addon:CreateUserModule(tmp.name_input_txt)
                 tmp.name_input_txt = ""

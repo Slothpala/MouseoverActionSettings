@@ -39,7 +39,7 @@ function addon:CreateLinkGroupEntrys()
     options.args = {} --this will hide since disabled modules
     local enabled_mouseover_modules = {}
     for name, module in self:IterateModules() do
-        if module.GetMouseoverUnit and module:IsEnabled() then
+        if module.GetMouseoverUnit and self:IsModuleEnabled(name) then
             enabled_mouseover_modules[name] = module
         end
     end

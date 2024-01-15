@@ -5,7 +5,7 @@ local Timer = addonTable.timerRegistry
 local LDBI = LibStub("LibDBIcon-1.0")
 
 local mo_unit = {
-    Parent = MinimapCluster,
+    Parents = {MinimapCluster},
     visibilityEvent = "MINIMAP_UPDATE",   
     scriptRegions = {
         Minimap,
@@ -80,7 +80,7 @@ function mo_unit:FadeIn()
         startAlpha = self.minAlpha,
         endAlpha = self.maxAlpha,
     }
-    addon:Fade(self.Parent, info)
+    addon:Fade(self.Parents[1], info)
 end
 
 function mo_unit:FadeOut()
@@ -94,7 +94,7 @@ function mo_unit:FadeOut()
             Minimap:Hide()
         end
     end
-    addon:Fade(self.Parent, info)
+    addon:Fade(self.Parents[1], info)
 end
 
 function mo_unit:Disable()
@@ -107,7 +107,9 @@ function mo_unit:Disable()
     self:StopAnimation()
     CR:Fire(self.visibilityEvent, false)
     self.preventHiding = {}
-    self.Parent:SetAlpha(1)
+    for _, parent in pairs(self.Parents) do
+        parent:SetAlpha(1)
+    end
     if not Minimap:IsShown() then
         Minimap:Show()
     end

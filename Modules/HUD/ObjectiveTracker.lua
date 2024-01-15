@@ -3,7 +3,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = ObjectiveTrackerFrame,
+    Parents = {ObjectiveTrackerFrame},
     visibilityEvent = "OBJECTIVE_TRACKER_UPDATE",   
     scriptRegions = {
         ObjectiveTrackerFrame,

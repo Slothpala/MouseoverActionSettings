@@ -3,7 +3,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = BuffFrame,
+    Parents = {BuffFrame},
     visibilityEvent = "BUFF_FRAME_UPDATE",   
     scriptRegions = {
         BuffFrame, 
