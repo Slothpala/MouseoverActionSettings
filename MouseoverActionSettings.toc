@@ -21,6 +21,7 @@ Utils/CallbackRegistry.lua
 Utils/LinkMouseoverUnits.lua
 Utils/Animation.lua
 Utils/ProfileSharing.lua
+Utils/UserModuleManager.lua
 
 #Options
 Options/MouseoverUnitOptions.lua
@@ -31,6 +32,9 @@ Options/ActionBarsTab.lua
 Options/ConfigTabOptions.lua
 Options/ProfileTabOptions.lua
 Options/HUDTab.lua
+Options/UserModulesTab.lua
+Options/CreateUserModuleOptions.lua
+Options/RemoveUserModuleOptions.lua
 Options/OptionsFrame.lua
 Options/PopUpFrame.lua
 
@@ -48,5 +52,6 @@ Statuses/UnitExists.lua
 
 #Classes
 Classes/MouseoverUnit.lua
+Classes/UserModule.lua
 
 modules.xml

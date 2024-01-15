@@ -105,6 +105,24 @@ local defaults = {
 
         },
     },
+    global = {
+        UserModules = {
+            --[[
+                module = {
+                    name = "",
+                    parentName = ..., --string with the _G name from the parent frame that will be hidden
+                    scriptRegionNames = {...} --list of strings with the _G name of the script regions
+                },
+
+            ["Bartender"] = {
+                name = "Bartender Bar 6",
+                parentName = "BT4Bar6",
+                scriptRegionNames = {"BT4Button71","BT4Button72"},
+                --/script print(BT4Button71:GetParent():GetDebugName())
+            },
+                        ]]
+        },
+    },
 }
 
 function addon:LoadDataBase()

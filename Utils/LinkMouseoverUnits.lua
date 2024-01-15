@@ -7,7 +7,14 @@ local CR = addonTable.callbackRegistry
 local Timer = addonTable.timerRegistry
 
 function addon:LinkMouseoverUnit(target_mo_unit, link_with_module_name)
-    local link_mo_unit = addon:GetModule(link_with_module_name):GetMouseoverUnit()
+    local link_module = addon:GetModule(link_with_module_name, true)
+    if not link_module then
+        return
+    end
+    if not link_module.GetMouseoverUnit then
+        return
+    end
+    local link_mo_unit = link_module:GetMouseoverUnit()
     local event = link_mo_unit.visibilityEvent
     local id = CR:RegisterCallback(event, function(status)
         target_mo_unit.preventHiding[event] = status

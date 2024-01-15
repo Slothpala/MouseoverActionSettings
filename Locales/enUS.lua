@@ -1,10 +1,12 @@
 local addonName = ...
 
 local L = LibStub("AceLocale-3.0"):NewLocale(addonName, "enUS", true)
-
+--Vocabulary
+L["select"] = true
 --Tabs
 L["Action Bars"] = "Action Bars"
 L["HUD"] = "HUD"
+L["Tinker Zone"] = "Tinker Zone"
 L["Link"] = "Links"
 L["Config"] = "Config"
 L["Profiles"] = "Profiles"
@@ -32,6 +34,22 @@ L["BuffFrame"] = "Buff Frame"
 L["DebuffFrame"] = "Debuff Frame"
 L["TrackingBarContainer"] = "Tracking Bars"
 L["ChatFrame"] = "Chat Frame"
+--User Modules:
+L["user_module_creation_name"] = "Custom Modules"
+L["create_module_name"] = "Create Module"
+L["create_module_desc"] = ""
+L["import_module_name"] = "Import Module"
+L["import_module_desc"] = ""
+L["edit_module_name"] = "Edit Module"
+L["edit_module_desc"] = ""
+L["remove_module_name"] = "Remove Module"
+L["remove_module_desc"] = ""
+L["name_input_name"] = "Module Name:"
+L["parent_input_name"] = "Parent Frame:"
+L["scriptRegions_input_name"] = "Script Regions:"
+L["create_module_button_txt"] = "Create Module"
+L["create_module_confirm_msg"] = "You will create a module with the below data. If you already have a module with the same name, it will get overwritten on next reload."
+L["create_module_info_field"] = "Show info text here"
 --Links:
 L["Show"] = "Show"
 L["alongside"] = "alongside"
