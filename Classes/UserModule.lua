@@ -79,7 +79,7 @@ function addon:NewUserModule(info)
         module = addon:NewModule(moduleName)
     end
 
-    module.OnEnable = function()
+    module.Enable = function()
         local dbObj = addon.db.profile[moduleName]
         if dbObj.useCustomDelay then
             mo_unit.delay = dbObj.delay
@@ -104,7 +104,7 @@ function addon:NewUserModule(info)
         mo_unit:Enable()
     end
 
-    module.OnDisable = function()
+    module.Disable = function()
         mo_unit:Disable()
     end
 
@@ -114,5 +114,5 @@ function addon:NewUserModule(info)
 
     self:CreateUserModuleEntry(moduleName)
     
-    return module
+    return module, moduleName
 end
