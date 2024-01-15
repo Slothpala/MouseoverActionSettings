@@ -43,17 +43,15 @@ function addon:OnInitialize()
 
 end
   
-local first = true
 function addon:OnEnable()
-    if first then
-        self:LoadUserModules()
-        first = false
-    end
     for name, module in self:IterateModules() do
         if self.db.profile[name].enabled then
             module:Enable()
         end
     end
+    C_Timer.After(3, function() --wait for other addons to load their stuff
+        addon:LoadUserModules()
+    end)
     local minimap_button = LDBI:GetMinimapButton(addonName)
     if not minimap_button then 
         return
