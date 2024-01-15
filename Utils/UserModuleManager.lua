@@ -1,8 +1,16 @@
 local addonName, addonTable = ...
 local addon = addonTable.addon
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
+local ACD = LibStub("AceConfigDialog-3.0")
 
 local user_modules = {}
+
+--to fetch newly created/removed modules
+local function reloadOptionsFrame()
+    local frame = addon:GetOptionsFrame()
+    frame.container:ReleaseChildren()
+    ACD:Open("MouseOverActionSettings_Options_Tab_3", frame.container)
+end
 
 function addon:LoadUserModules()
     for _, userModule in pairs(self.db.global.UserModules) do
@@ -23,11 +31,10 @@ function addon:CreateUserModule(name)
         Parent = userModule.parentName,
         scriptRegions = userModule.scriptRegionNames, 
     }
-    local module = self:NewUserModule(info)
-    local test = addon:GetModule("UserModule_" .. info.name)
-    print(module)
-    print(test)
+    local module, moduleName = self:NewUserModule(info)
+    module:Enable()
     user_modules[userModule.name] = module
+    reloadOptionsFrame()
 end
 
 function addon:RemoveUserModule(name)
@@ -38,6 +45,7 @@ function addon:RemoveUserModule(name)
     self.db.profile[moduleName] = nil    
     self.db.global.UserModules[name] = nil
     self:RemoveUserModuleEntry(moduleName)
+    reloadOptionsFrame()
 end
 
 function addon:IterateUserModules(callback)
