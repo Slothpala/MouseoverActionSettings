@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.3.1] - 2024-01-16
+#### Updated
+* interface version to 100205
+
 ### Version [1.3.0] - 2024-01-16
 #### Added
 * New feature "Tinker Zone" added as an option for advanced users. This feature allows the user to create custom mouse-over modules.
