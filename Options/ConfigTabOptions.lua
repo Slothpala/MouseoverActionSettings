@@ -210,6 +210,25 @@ local options = {
                     get = "GetModuleStatus",
                     set = "SetModuleStatus",
                 },
+                TinkerZone = {
+                    order = 2,
+                    name = L["tinker_zone_name"],
+                    desc = L["tinker_zone_desc"],
+                    type = "toggle",
+                    confirm = function(info, value)
+                        if value == true then
+                            return true
+                        end
+                        return false
+                    end,
+                    get = function()
+                        return addon.db.global.TinkerZone
+                    end,
+                    set = function(info, value)
+                        addon.db.global.TinkerZone = value
+                        ReloadUI()
+                    end,
+                },
             },
         },
     },

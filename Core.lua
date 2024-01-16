@@ -16,23 +16,35 @@ function addon:OnInitialize()
 
     local action_bars_tab = self:GetActionBarTabSettings()
     local hud_tab = self:GetHUDTabOptions()
+    local user_modules_tab = self:GetUserModuleTabOptions()
     local links_tab = self:GetLinksTabOptions()
     local config_tab = self:GetConfigOptions()
     local profile_options = self:GetProfileTabOptions()
     local trigger_options = self:GetTriggerOptionsTable()
     local event_delay_timer_options = self:GetEventDelayTimerOptions()
+    local create_module_options = self:GetCreateModuleOptions()
+    local remove_module_options = self:GetRemoveModuleOptions()
 
     AC:RegisterOptionsTable("MouseOverActionSettings_Options_Tab_1", action_bars_tab)
     AC:RegisterOptionsTable("MouseOverActionSettings_Options_Tab_2", hud_tab)
-    AC:RegisterOptionsTable("MouseOverActionSettings_Options_Tab_3", links_tab)
-    AC:RegisterOptionsTable("MouseOverActionSettings_Options_Tab_4", config_tab)
-    AC:RegisterOptionsTable("MouseOverActionSettings_Options_Tab_5", profile_options)
+    AC:RegisterOptionsTable("MouseOverActionSettings_Options_Tab_3", user_modules_tab)
+    AC:RegisterOptionsTable("MouseOverActionSettings_Options_Tab_4", links_tab)
+    AC:RegisterOptionsTable("MouseOverActionSettings_Options_Tab_5", config_tab)
+    AC:RegisterOptionsTable("MouseOverActionSettings_Options_Tab_6", profile_options)
     AC:RegisterOptionsTable("MouseOverActionSettings_Options_Trigger", trigger_options)
     AC:RegisterOptionsTable("MouseOverActionSettings_Options_EventTimer", event_delay_timer_options)
+    AC:RegisterOptionsTable("MouseOverActionSettings_Options_CreateModule", create_module_options)
+    AC:RegisterOptionsTable("MouseOverActionSettings_Options_RemoveModule", remove_module_options)
     --Slash command
     self:RegisterChatCommand(addonName, "SlashCommand")
     self:RegisterChatCommand("mbars", "SlashCommand") --keeping this for a while for users that previously used mouseover action abrs
     self:RegisterChatCommand("mas", "SlashCommand")
+    
+    if self.db.global.TinkerZone then
+        C_Timer.After(3, function() --wait for other addons to load their stuff
+            addon:LoadUserModules()
+        end)
+    end
 end
   
 function addon:OnEnable()

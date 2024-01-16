@@ -85,7 +85,13 @@ function addon:ShowTriggerFrame(info)
     local frame = self:GetPopUpFrame()
     local options = self:GetTriggerOptionsTable()
     local module_name = info[#info-1]
-    frame.title:SetText("\124cFF7DF9FF" .. L["trigger_frame_title_before_module_name"] .. L[module_name] .. L["trigger_frame_title_after_module_name"] .. "\124r")
+    local displayedMoudleName 
+    if string.match(module_name, "UserModule_") then
+        displayedMoudleName = string.gsub(module_name, "UserModule_", "")
+    else
+        displayedMoudleName = L[module_name]
+    end
+    frame.title:SetText("\124cFF7DF9FF" .. L["trigger_frame_title_before_module_name"] .. displayedMoudleName .. L["trigger_frame_title_after_module_name"] .. "\124r")
     --this field is guiHidden and only carries the module name to save the value into the db
     options.args.module.name = module_name
     frame:Show()

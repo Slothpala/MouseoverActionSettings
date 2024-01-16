@@ -4,7 +4,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = MainMenuBar,
+    Parents = {MainMenuBar},
     visibilityEvent = "MAIN_MENU_BAR_UPDATE",   
     scriptRegions = {},
     statusEvents = {},

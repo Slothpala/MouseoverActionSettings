@@ -3,7 +3,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = BagsBar,
+    Parents = {BagsBar},
     visibilityEvent = "BAGS_BAR_UPDATE",   
     scriptRegions = {
         MainMenuBarBackpackButton,

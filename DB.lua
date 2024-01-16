@@ -105,6 +105,18 @@ local defaults = {
 
         },
     },
+    global = {
+        TinkerZone = false,
+        UserModules = {
+            --[[
+                module = {
+                    name = "",
+                    parentNames = ..., --string with the _G name from the parent frame that will be hidden
+                    scriptRegionNames = {...} --list of strings with the _G name of the script regions
+                },
+            ]]
+        },
+    },
 }
 
 function addon:LoadDataBase()

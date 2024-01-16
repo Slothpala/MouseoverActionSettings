@@ -18,7 +18,7 @@ local AnimationQueue = {}
 local AnimationUpdateFrame = CreateFrame("Frame")
 
 local function Animation_OnUpdate(_, elapsed)
-    for frame, info in next, AnimationQueue do
+    for id, info in next, AnimationQueue do
         if not info.playing then
             info.playing = true
             info.elapsed = 0
@@ -28,14 +28,18 @@ local function Animation_OnUpdate(_, elapsed)
         if info.elapsed < info.duration then
             local alpha = info.startAlpha + ( ( info.endAlpha - info.startAlpha ) * ( info.elapsed / info.duration) )
             info.currentAlpha = alpha
-            frame:SetAlpha(alpha)
+            for _, frame in next, info.frames do
+                frame:SetAlpha(alpha)
+            end
         else
             info.currentAlpha = info.endAlpha
             if info.onAnimationFinished then
                 info.onAnimationFinished(info)
             end
-            frame:SetAlpha(info.endAlpha)
-            AnimationQueue[frame] = nil
+            for _, frame in next, info.frames do
+                frame:SetAlpha(info.endAlpha)
+            end
+            AnimationQueue[id] = nil
         end
     end
     if next(AnimationQueue) == nil then
@@ -50,11 +54,12 @@ end
 
 function MouseoverUnitAnimationMixin:FadeIn()
     local info = {
+        frames = self.Parents,
         duration = self.animationSpeed_In,
         startAlpha = self.minAlpha,
         endAlpha = self.maxAlpha,
     }
-    AnimationQueue[self.Parent] = info
+    AnimationQueue[self.Parents] = info
     if next(AnimationQueue) ~= nil then
         AnimationUpdateFrame:SetScript("OnUpdate", Animation_OnUpdate)
     end
@@ -62,18 +67,19 @@ end
 
 function MouseoverUnitAnimationMixin:FadeOut()
     local info = {
+        frames = self.Parents,
         duration = self.animationSpeed_Out,
         startAlpha = self.maxAlpha,
         endAlpha = self.minAlpha,
     }
-    AnimationQueue[self.Parent] = info
+    AnimationQueue[self.Parents] = info
     if next(AnimationQueue) ~= nil then
         AnimationUpdateFrame:SetScript("OnUpdate", Animation_OnUpdate)
     end
 end
 
 function MouseoverUnitAnimationMixin:StopAnimation()
-    AnimationQueue[self.Parent] = nil
+    AnimationQueue[self.Parents] = nil
     self.animationInfo.playing = nil
     if next(AnimationQueue) == nil then
         AnimationUpdateFrame:SetScript("OnUpdate", nil)
@@ -96,6 +102,8 @@ end
 ]]
 
 function addon:Fade(frame, info)
+    local info = info
+    info.frames = {frame}
     AnimationQueue[frame] = info
     if next(AnimationQueue) ~= nil then
         AnimationUpdateFrame:SetScript("OnUpdate", Animation_OnUpdate)

@@ -15,9 +15,19 @@ function addon:GetLinksTabOptions()
     return options
 end
 
-function createLinkGroup(module_name, enabled_mouseover_modules)
+local function getDisplayedModuleName(module_name)
+    local displayedName 
+    if string.match(module_name, "UserModule_") then
+        displayedName = "\124cFF40E0D0" .. string.gsub(module_name, "UserModule_", "") .. "\124r"
+    else
+        displayedName = L[module_name]
+    end
+    return displayedName
+end
+
+local function createLinkGroup(module_name, enabled_mouseover_modules)
     local linkGroup = {
-        name = L["Show"] .. " " .. L[module_name] .. " " .. L["alongside"] .. "...",
+        name = L["Show"] .. " " .. getDisplayedModuleName(module_name) .. " " .. L["alongside"] .. "...",
         type = "group",
         inline = true,
         args = {},
@@ -25,7 +35,7 @@ function createLinkGroup(module_name, enabled_mouseover_modules)
     for name, module in pairs(enabled_mouseover_modules) do
         if name ~= module_name then
             linkGroup.args[name] = {
-                name = "..." .. L[name], --locale
+                name = "..." .. getDisplayedModuleName(name), --locale
                 type = "toggle",
                 get = "GetLinkStatus",
                 set = "SetLinkStatus",
@@ -39,7 +49,7 @@ function addon:CreateLinkGroupEntrys()
     options.args = {} --this will hide since disabled modules
     local enabled_mouseover_modules = {}
     for name, module in self:IterateModules() do
-        if module.GetMouseoverUnit and module:IsEnabled() then
+        if module.GetMouseoverUnit and self:IsModuleEnabled(name) then
             enabled_mouseover_modules[name] = module
         end
     end

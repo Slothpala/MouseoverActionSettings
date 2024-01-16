@@ -3,7 +3,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = StatusTrackingBarManager,
+    Parents = {StatusTrackingBarManager},
     visibilityEvent = "TRACKING_BAR_UPDATE",   
     scriptRegions = {
         MainStatusTrackingBarContainer,

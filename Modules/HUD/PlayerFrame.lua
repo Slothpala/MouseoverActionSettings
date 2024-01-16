@@ -3,7 +3,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parent = PlayerFrame,
+    Parents = {PlayerFrame},
     visibilityEvent = "PLAYER_FRAME_UPDATE",   
     scriptRegions = {
         PlayerFrame,
