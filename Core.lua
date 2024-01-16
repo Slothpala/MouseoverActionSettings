@@ -39,8 +39,12 @@ function addon:OnInitialize()
     self:RegisterChatCommand(addonName, "SlashCommand")
     self:RegisterChatCommand("mbars", "SlashCommand") --keeping this for a while for users that previously used mouseover action abrs
     self:RegisterChatCommand("mas", "SlashCommand")
-
-
+    
+    if self.db.global.TinkerZone then
+        C_Timer.After(3, function() --wait for other addons to load their stuff
+            addon:LoadUserModules()
+        end)
+    end
 end
   
 function addon:OnEnable()
@@ -48,11 +52,6 @@ function addon:OnEnable()
         if self.db.profile[name].enabled then
             module:Enable()
         end
-    end
-    if self.db.global.TinkerZone then
-        C_Timer.After(3, function() --wait for other addons to load their stuff
-            addon:LoadUserModules()
-        end)
     end
     local minimap_button = LDBI:GetMinimapButton(addonName)
     if not minimap_button then 
