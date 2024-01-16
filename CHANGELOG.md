@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.3.0] - 2024-01-16
+#### Added
+* New feature "Tinker Zone" added as an option for advanced users. This feature allows the user to create custom mouse-over modules.
+
 ### Version [1.2.0] - 2024-01-11
 #### Added
 * UnitExists.lua -> New status with one event for now "TARGET_UPDATE" can be extended to other units as needed.                                                                     
