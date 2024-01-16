@@ -133,6 +133,9 @@ function addon:GetOptionsFrame(AceContainer)
         clearFrame(frame)
         ACD:Open("MouseOverActionSettings_Options_Tab_3",container)
     end)
+    if not self.db.global.TinkerZone then
+        frame.tabs[L["Tinker Zone"]]:Hide()
+    end
     frame.tabs[L["Link"]]:HookScript("OnClick", function()
         clearFrame(frame)
         addon:CreateLinkGroupEntrys()

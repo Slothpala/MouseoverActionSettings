@@ -19,13 +19,15 @@ function addon:LoadUserModules()
             Parents = userModule.parentNames,
             scriptRegions = userModule.scriptRegionNames, 
         }
-        local module = self:GetModule("UserModule_" .. info.name, true)
+        local module, moduleName = self:GetModule("UserModule_" .. info.name, true)
         if not module then
-            module = self:NewUserModule(info)
+            module, moduleName = self:NewUserModule(info)
         end
         if module then
-            module:Enable()
             user_modules[userModule.name] = module
+            if self.db.profile[moduleName].enabled then
+                module:Enable()
+            end
         end
     end
 end

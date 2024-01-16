@@ -106,6 +106,7 @@ local defaults = {
         },
     },
     global = {
+        TinkerZone = false,
         UserModules = {
             --[[
                 module = {

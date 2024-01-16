@@ -49,9 +49,11 @@ function addon:OnEnable()
             module:Enable()
         end
     end
-    C_Timer.After(3, function() --wait for other addons to load their stuff
-        addon:LoadUserModules()
-    end)
+    if self.db.global.TinkerZone then
+        C_Timer.After(3, function() --wait for other addons to load their stuff
+            addon:LoadUserModules()
+        end)
+    end
     local minimap_button = LDBI:GetMinimapButton(addonName)
     if not minimap_button then 
         return

@@ -33,7 +33,7 @@ local function validateInfo(info)
     for _, name in pairs(info.Parents) do
         local parent = findFrame(name)
         if not parent then
-            addon:Print("Could not create user module: (" .. info.name .. ") because (" .. name .. ") could not be found in the global environment")
+            addon:Print("Could not create user module: (" .. info.name .. ") because parent: (" .. name .. ") could not be found in the global environment")
             return false
         end
         if parent == UIParent then

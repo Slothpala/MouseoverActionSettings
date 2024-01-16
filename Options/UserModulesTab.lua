@@ -27,6 +27,7 @@ local options = {
                     end,
                 },
                 import_module = {
+                    hidden = true,
                     order = 2,
                     name = L["import_module_name"],
                     desc = L["import_module_desc"],

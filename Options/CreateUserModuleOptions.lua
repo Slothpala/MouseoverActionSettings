@@ -10,7 +10,7 @@ local tmp = {
 
 local function stringToTable(string)
     local table = {}
-    for word in string.gmatch(string, '([^;,%s]+)') do
+    for word in string.gmatch(string, "([^;,%s]+)") do
         table[#table + 1] = word
     end
     return table
@@ -100,7 +100,7 @@ local create_module_options = {
         },
         info_field = {
             order = 8,
-            fontSize = "medium",
+            fontSize = "large",
             name = L["create_module_info_field"],
             type = "description",
         },
