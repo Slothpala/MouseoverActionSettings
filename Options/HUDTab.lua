@@ -46,6 +46,14 @@ local options = {
                     get = "GetModuleStatus",
                     set = "SetModuleStatus",
                 },
+                FocusFrame = {
+                    order = 3.2,
+                    name = L["FocusFrame"],
+                    desc = "",
+                    type = "toggle",
+                    get = "GetModuleStatus",
+                    set = "SetModuleStatus",
+                },
                 Minimap = {
                     order = 4,
                     name = L["Minimap"],
@@ -132,6 +140,16 @@ local options = {
             end,
             order = 3.1,
             name = L["TargetFrame"],
+            type = "group",
+            inline = true,
+            args = mouseover_unit_options,
+        },
+        FocusFrame = {
+            hidden = function()
+                return not addon:IsModuleEnabled("FocusFrame")
+            end,
+            order = 3.2,
+            name = L["FocusFrame"],
             type = "group",
             inline = true,
             args = mouseover_unit_options,

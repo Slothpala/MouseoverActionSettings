@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.4.0] - 2024-01-19
+#### Added
+* FocusFrame module
+
 ### Version [1.3.1] - 2024-01-16
 #### Updated
 * interface version to 100205

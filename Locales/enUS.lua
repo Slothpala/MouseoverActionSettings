@@ -28,12 +28,15 @@ L["BagsBar"] = "Bags Bar"
 L["MicroMenu"] = "Micro Menu"
 L["PlayerFrame"] = "Player Frame"
 L["TargetFrame"] = "Target Frame"
+L["FocusFrame"] = "Focus Frame"
 L["Minimap"] = "Minimap"
 L["ObjectiveTracker"] = "Objective Tracker"
 L["BuffFrame"] = "Buff Frame"
 L["DebuffFrame"] = "Debuff Frame"
 L["TrackingBarContainer"] = "Tracking Bars"
 L["ChatFrame"] = "Chat Frame"
+
+
 --User Modules:
 L["user_module_creation_name"] = "Custom Modules"
 L["create_module_name"] = "Create Module"

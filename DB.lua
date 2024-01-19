@@ -63,6 +63,10 @@ local defaults = {
             minAlpha = 0.3,
             COMBAT_UPDATE = true,
         },
+        FocusFrame = {
+            minAlpha = 0.3,
+            COMBAT_UPDATE = true,
+        },
         BuffFrame = {
             COMBAT_UPDATE = true,
         },

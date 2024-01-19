@@ -13,6 +13,7 @@
 <!--HUD-->
     <Script file="Modules/HUD/PlayerFrame.lua"/>
     <Script file="Modules/HUD/TargetFrame.lua"/>
+    <Script file="Modules/HUD/FocusFrame.lua"/>
     <Script file="Modules/HUD/BagsBar.lua"/>
     <Script file="Modules/HUD/MicroMenu.lua"/>
     <Script file="Modules/HUD/Minimap.lua"/>
