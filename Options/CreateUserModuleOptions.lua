@@ -88,6 +88,16 @@ local create_module_options = {
                 return confirm_msg
             end,
         },
+        fstack_button = {
+            order = 4.1,
+            name = "/fstack",
+            desc = L["framestack_desc"],
+            type = "execute",
+            width = 0.7,
+            func = function()
+                SlashCmdList["FRAMESTACK"]()
+            end,
+        },
         newline1 = {
             order = 5,
             name = "",

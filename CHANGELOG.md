@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.4.1] - 2024-01-29
+#### Added
+* /fstack button to the Tinker Zones Create Module popup.
+
 ### Version [1.4.0] - 2024-01-19
 #### Added
 * FocusFrame module
