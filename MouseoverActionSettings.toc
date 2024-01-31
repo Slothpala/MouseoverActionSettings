@@ -50,8 +50,8 @@ Statuses/SpellFlyout.lua
 Statuses/EditMode.lua
 Statuses/UnitExists.lua
 
-#Classes
-Classes/MouseoverUnit.lua
-Classes/UserModule.lua
+#Prototypes
+Prototypes/MouseoverUnit.lua
+Prototypes/UserModule.lua
 
 modules.xml
