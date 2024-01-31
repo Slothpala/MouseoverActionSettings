@@ -54,6 +54,14 @@ local options = {
                     get = "GetModuleStatus",
                     set = "SetModuleStatus",
                 },
+                PetFrame = {
+                    order = 3.3,
+                    name = L["PetFrame"],
+                    desc = "",
+                    type = "toggle",
+                    get = "GetModuleStatus",
+                    set = "SetModuleStatus",
+                },
                 Minimap = {
                     order = 4,
                     name = L["Minimap"],
@@ -150,6 +158,16 @@ local options = {
             end,
             order = 3.2,
             name = L["FocusFrame"],
+            type = "group",
+            inline = true,
+            args = mouseover_unit_options,
+        },
+        PetFrame = {
+            hidden = function()
+                return not addon:IsModuleEnabled("PetFrame")
+            end,
+            order = 3.3,
+            name = L["PetFrame"],
             type = "group",
             inline = true,
             args = mouseover_unit_options,

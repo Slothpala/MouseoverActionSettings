@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.5.0] - 2024-01-31
+#### Added
+* PetFrame module
+
 ### Version [1.4.1] - 2024-01-29
 #### Added
 * /fstack button to the Tinker Zones Create Module popup.
