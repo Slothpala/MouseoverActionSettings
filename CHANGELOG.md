@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.6.0] - 2024-02-22
+#### Added
+* FrameColorSkin.lua - The addon registers a skin in FrameColor if the addon is also loaded.
+
 ### Version [1.5.0] - 2024-01-31
 #### Added
 * PetFrame module
