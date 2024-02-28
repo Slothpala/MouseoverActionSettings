@@ -14,7 +14,8 @@ local next = next
 local function updateDragonriding()
     local isDragonriding = false
     local mountIDs = GetCollectedDragonridingMounts()
-    if IsMounted() then
+    local canFly = IsFlyableArea()
+    if IsMounted() and canFly then
         for _, mountID in next, mountIDs do
             local spellID = select(2, GetMountInfoByID(mountID))
             if GetPlayerAuraBySpellID(spellID) then
@@ -26,10 +27,10 @@ local function updateDragonriding()
     CR:Fire("DRAGONRIDING_UPDATE", isDragonriding, eventDelay)
 end
 
-local function OnEvent(self, event, arg1)
+local function OnEvent(self, event)
     updateDragonriding()
-    if event == "PLAYER_ENTERING_WORLD" and arg1 == true then
-        C_Timer.After(2, OnEvent)
+    if event == "PLAYER_ENTERING_WORLD" then
+        C_Timer.After(2, updateDragonriding)
     end
 end
 
