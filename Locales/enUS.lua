@@ -54,7 +54,7 @@ L["scriptRegions_input_name"] = "Script Regions:"
 L["create_module_button_txt"] = "Create Module"
 L["framestack_desc"] = "A built-in tool from Blizzard that allows you to see the global name of UI elements."
 L["create_module_confirm_msg"] = "You will create a module with the below data. If you already have a module with the same name, it will get overwritten on next reload."
-L["create_module_info_field"] = "Module Name: The name of the module that you will see in the menu.\n\nParent Frames: The names of the frames in the global environment _G on which the animation is to be played on (the frames that get hidden). Usually either the script regions or the parent frame of the script regions.\n\nScript Regions: List of script regions that will be hooked to do mouseover detection. Can be the same as the parent frame. Script regions are not required, but without them the module will have no mouse detection and will toggle based on set triggers."
+L["create_module_info_field"] = "\124cFF40E0D0Module Name:\124r The name of the module that you will see in the menu.\n\n\124cFFe663a6Parent Frames:\124r The names of the frames in the global environment _G on which the animation is to be played on (the frames that get hidden). Usually either the script regions or the parent frame of the script regions.\n\n\124cFFfce6b2Script Regions:\124r List of script regions that will be hooked to do mouseover detection. Can be the same as the parent frame. Script regions are not required, but without them the module will have no mouse detection and will toggle based on set triggers."
 --Links:
 L["Show"] = "Show"
 L["alongside"] = "alongside"

@@ -61,7 +61,7 @@ local options = {
 }
 
 function addon:CreateUserModuleEntry(moduleName)
-    mouseover_unit_options = self:GetMouseoverUnitOptions()
+    local mouseover_unit_options = self:GetMouseoverUnitOptions()
     local displayedName = string.gsub(moduleName, "UserModule_", "")
     local module_toggle = {
         name = displayedName,
