@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.6.4] - 2024-05-08
+#### Updated
+* interface version to 100207
+
 ### Version [1.6.3] - 2024-05-07
 * enUS.lua -> Added color codes to the "create_module_info_field" headlines for a nicer look and better readability.
 * UserModulesTab.lua -> added a missing local tag.
