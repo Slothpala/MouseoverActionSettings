@@ -85,6 +85,14 @@ options = {
             get = "GetTrigger",
             set = "SetTrigger",
         },
+        PLAYER_MOVING_UPDATE = {
+            order = 1.8,
+            name = L["player_moving_update_name"],
+            desc = L["player_moving_update_desc"],
+            type = "toggle",
+            get = "GetTrigger",
+            set = "SetTrigger",
+        },
         --[[Zone]]--
         zone_header = {
             order = 2,

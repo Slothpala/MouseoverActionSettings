@@ -50,6 +50,7 @@ Statuses/TalkingToNPC.lua
 Statuses/SpellFlyout.lua
 Statuses/EditMode.lua
 Statuses/UnitExists.lua
+Statuses/Moving.lua
 
 #Prototypes
 Prototypes/MouseoverUnit.lua
