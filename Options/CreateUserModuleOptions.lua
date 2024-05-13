@@ -82,6 +82,8 @@ local create_module_options = {
                 tmp.name_input_txt = ""
                 tmp.parent_input_txt = ""
                 tmp.scriptRegions_input_txt = ""
+                local popUpFrame = addon:GetPopUpFrame()
+                popUpFrame:Hide()
             end,
             confirm = function()
                 local confirm_msg = L["create_module_confirm_msg"] .. "\n" .. L["name_input_name"] .. " " .. tmp.name_input_txt .. "\n" .. L["parent_input_name"] .. " " .. tmp.parent_input_txt .. "\n" .. L["scriptRegions_input_name"] .. " " .. tmp.scriptRegions_input_txt
