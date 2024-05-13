@@ -15,6 +15,7 @@ Core.lua
 DB.lua
 
 #Utils
+Utils/AddonColors.lua
 Utils/HookRegistry.lua
 Utils/TimerRegistry.lua
 Utils/CallbackRegistry.lua

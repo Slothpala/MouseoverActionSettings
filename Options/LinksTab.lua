@@ -18,7 +18,7 @@ end
 local function getDisplayedModuleName(module_name)
     local displayedName 
     if string.match(module_name, "UserModule_") then
-        displayedName = "\124cFF40E0D0" .. string.gsub(module_name, "UserModule_", "") .. "\124r"
+        displayedName = addonTable.colors.user_module_color:WrapTextInColorCode(string.gsub(module_name, "UserModule_", ""))
     else
         displayedName = L[module_name]
     end
