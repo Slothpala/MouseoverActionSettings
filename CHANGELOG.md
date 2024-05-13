@@ -1,4 +1,13 @@
 # **Changelog**
+### Version [1.7.0] - 2024-05-08
+#### Added
+* Utils/AddonColors.lua
+* Statuses/Moving.lua -> New status that fires when a player starts/stops moving.
+
+#### Updated
+* CreteUserModuleOptions.lua -> The pop up frame will now hide after creating a module in Tinker Zone.
+* LinksTab.lua -> Making use of the new AddonColors util.
+
 ### Version [1.6.4] - 2024-05-08
 #### Updated
 * interface version to 100207
