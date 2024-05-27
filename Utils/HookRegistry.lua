@@ -1,120 +1,158 @@
+--[[
+  This will be used as a mixin for the addons modules.
+]]
+
 local _, addonTable = ...
 addonTable.hooks = {}
-local HooksMixin = addonTable.hooks
+local HookRegistryMixin = addonTable.hooks
 
+------------------------
+--- Speed references ---
+------------------------
+
+-- Lua
 local _G = _G
-local HookScript = HookScript
+-- WoW Api
 local hooksecurefunc = hooksecurefunc
-local tostring = tostring
-local next = next
-local pairs = pairs
 
-local doNothing = function() 
-    return  --from personal testing return end was slightly faster than an empty function
-end
-
+-- local tables storing information about active hooks and their callbacks
 local hooked = {}
 local callbacks = {}
 local registry = {}
 
-function HooksMixin:HookScript(frame, handler, callback)
-    local func = type(callback) == "string" and self[callback] or callback
-    local id = tostring(self) .. tostring(frame) .. tostring(handler)
-    if not callbacks[frame] then
-        callbacks[frame] = {}
-    end
-    if not callbacks[frame][handler] then
-        callbacks[frame][handler] = {}
-    end
-    callbacks[frame][handler][self] = func
-    if not hooked[frame] or not hooked[frame][handler] then
-        frame:HookScript(handler, function(...)
-            for key, callback in next, callbacks[frame][handler] do
-                callback(...)
-            end
-        end)
-        if not hooked[frame] then
-            hooked[frame] = {}
-        end
-        hooked[frame][handler] = true
-    end
-    if not registry[self] then
-        registry[self] = {}
-    end
-    registry[self][id] = {
-        ["key1"] = frame,
-        ["key2"] = handler,
-    }
+local function get_hook_id(module, obj, func_name)
+  local id = tostring(module) .. tostring(obj) .. tostring(func_name)
+  return id
 end
 
-function HooksMixin:HookFunc(arg1, arg2, arg3)
-    local obj, functionName, hookfunc = nil, nil, nil
-    if type(arg1) == "table" then
-        obj = arg1
-        functionName = arg2
-        hookfunc = arg3
-    else
-        obj = _G
-        functionName = arg1
-        hookfunc = arg2
-    end
-    local id = tostring(self) .. tostring(obj) ..tostring(functionName)
-    hookfunc = type(hookfunc) == "string" and self[hookfunc] or hookfunc
-    if not callbacks[obj] then
-        callbacks[obj] = {}
-    end
-    if not callbacks[obj][functionName] then
-        callbacks[obj][functionName] = {}
-    end
-    callbacks[obj][functionName][self] = hookfunc
-    if not hooked[obj] or not hooked[obj][functionName] then
-        hooksecurefunc(obj, functionName, function(...)
-            for key, callback in next, callbacks[obj][functionName] do
-                callback(...)
-            end
-        end)
-        if not hooked[obj] then
-            hooked[obj] = {}
-        end
-        hooked[obj][functionName] = true
-    end
-    if not registry[self] then
-        registry[self] = {}
-    end
-    registry[self][id] = {
-        ["key1"] = obj,
-        ["key2"] = functionName,
-    }
+local function prepare_callback_table(obj, func_name)
+  if not callbacks[obj] then
+    callbacks[obj] = {}
+  end
+  if not callbacks[obj][func_name] then
+    callbacks[obj][func_name] = {}
+  end
 end
 
-function HooksMixin:Unhook(arg1, arg2)
-    if not registry[self] then
-        return
-    end
-    local obj, functionName = nil, nil
-    if type(arg1) == "table" then
-        obj = arg1
-        functionName = arg2
-    else
-        obj = _G
-        functionName = arg1
-    end
-    local id = tostring(self) .. tostring(obj) .. tostring(functionName)
-    id = registry[self][id]
-    if not id then
-        return
-    end
-    callbacks[id.key1][id.key2][self] = doNothing
+local function is_hooked(obj, func_name)
+  return hooked[obj] and hooked[obj][func_name]
 end
 
-function HooksMixin:DisableHooks()
-    if not registry[self] then
-        return
-    end
-    for _,id in pairs(registry[self]) do
-        callbacks[id.key1][id.key2][self] = doNothing
-    end
+local function register_hook(obj, func_name)
+  if not hooked[obj] then
+    hooked[obj] = {}
+  end
+  hooked[obj][func_name] = true
 end
 
+local function register_module_hook(module, id, obj, func_name)
+  if not registry[module] then
+    registry[module] = {}
+  end
+  registry[module][id] = {
+    ["key1"] = obj,
+    ["key2"] = func_name,
+  }
+end
 
+--------------------------
+--- HookScript Wrapper ---
+--------------------------
 
+--- Wrapper around the HookScript function https://warcraft.wiki.gg/wiki/API_ScriptObject_HookScript
+---@param ScriptObject table abstract widget
+---@param scriptTypeName string The name of the script type, e.g. "OnShow", "OnHide" etc.
+---@param callback_func function The function that will be called when the script is executed
+function HookRegistryMixin:HookScript(ScriptObject, scriptTypeName, callback_func)
+  -- Determine the callback func
+  local callback = type(callback_func) == "string" and self[callback_func] or callback_func
+  -- get a an id
+  local id = get_hook_id(self, ScriptObject, scriptTypeName)
+  -- Prepare the callback table if needed
+  prepare_callback_table(ScriptObject, scriptTypeName)
+  callbacks[ScriptObject][scriptTypeName][self] = callback
+  if not is_hooked(ScriptObject, scriptTypeName) then
+    ScriptObject:HookScript(scriptTypeName, function()
+      for _, callback in next, callbacks[ScriptObject][scriptTypeName] do
+        callback(ScriptObject)
+      end
+    end)
+    register_hook(ScriptObject, scriptTypeName)
+  end
+  -- Register the hook to  enable unhooking without id
+  register_module_hook(self, id, ScriptObject, scriptTypeName)
+end
+
+------------------------------
+--- hooksecurefunc Wrapper ---
+------------------------------
+
+--- Wrapper around hooksecurefunc https://warcraft.wiki.gg/wiki/API_hooksecurefunc
+---@param arg1 table The table where the function to be hooked into is stored. If omitted, it defaults to _G.
+---@param arg2 string Name of the function to be hooked.
+---@param arg3 function The function that will be called when the function to be hooked is executed.
+function HookRegistryMixin:HookFunc(arg1, arg2, arg3)
+  -- Determine the table where the to be hooked function is stored in.
+  local obj, func_name, callback_func
+  if type(arg1) == "table" then
+    obj = arg1
+    func_name = arg2
+    callback_func = arg3
+  else
+    obj = _G
+    func_name = arg1
+    callback_func = arg2
+  end
+  -- get a an id
+  local id = get_hook_id(self, obj, func_name)
+  -- Determine the callback func
+  local callback = type(callback_func) == "string" and self[callback_func] or callback_func
+  -- Prepare the callback table if needed
+  prepare_callback_table(obj, func_name)
+  callbacks[obj][func_name][self] = callback
+  -- Check if the function is already hooked
+  if not is_hooked(obj, func_name) then
+    hooksecurefunc(obj, func_name, function(...)
+      for _, callback in next, callbacks[obj][func_name] do
+        callback(...)
+      end
+    end)
+    register_hook(obj, func_name)
+  end
+  -- Register the hook to  enable unhooking without id
+  register_module_hook(self, id, obj, func_name)
+end
+
+--------------
+--- Unhhok ---
+--------------
+
+--- Unhook a hooked script or function
+---@param arg1 any Either the hooked ScriptObject (table) or the hooked function (string)
+---@param arg2 any If arg1 is the ScriptObject then arg2 is the function that is to be unhooked
+function HookRegistryMixin:Unhook(arg1, arg2)
+  if not registry[self] then
+    return
+  end
+  local obj, func_name
+  if type(arg1) == "table" then
+    obj = arg1
+    func_name = arg2
+  else
+    obj = _G
+    func_name = arg1
+  end
+  local id = get_hook_id(self, obj, func_name)
+  local entry = registry[self][id]
+  callbacks[entry.key1][entry.key2][self] = nil
+end
+
+--- Disable all hooks for the object
+function HookRegistryMixin:DisableHooks()
+  if not registry[self] then
+    return
+  end
+  for _, entry in next, registry[self] do
+    callbacks[entry.key1][entry.key2][self] = nil
+  end
+end
