@@ -10,8 +10,6 @@ addonTable.animations = {}
 local MouseoverUnitAnimationMixin = addonTable.animations
 
 local next = next
-local SetScript = SetScript
-local SetAlpha = SetAlpha
 
 local AnimationQueue = {}
 

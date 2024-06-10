@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.7.2] - 2024-06-11
+#### Removed
+* Removed unused locals
+
 ### Version [1.7.1] - 2024-05-27
 #### Updated
 * Utils/HookRegistry.lua -> Fixed a flaw in the logic that should slightly improve performance when a region got unhooked.
