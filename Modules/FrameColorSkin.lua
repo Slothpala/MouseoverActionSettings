@@ -1,7 +1,7 @@
 local _, addonTable = ...
 local addon = addonTable.addon
 
-if IsAddOnLoaded("FrameColor") then
+if C_AddOns.IsAddOnLoaded("FrameColor") then
   local info = 
   {
     moduleName = "MouseoverActionSettings",

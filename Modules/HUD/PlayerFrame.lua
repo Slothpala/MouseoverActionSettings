@@ -7,7 +7,7 @@ local mo_unit = {
     visibilityEvent = "PLAYER_FRAME_UPDATE",   
     scriptRegions = {
         PlayerFrame,
-        PlayerFrame.PlayerFrameContent.PlayerFrameContentMain.HealthBarArea.HealthBar
+        PlayerFrame.PlayerFrameContent.PlayerFrameContentMain.HealthBarsContainer.HealthBar
     },
     statusEvents = {},
 }

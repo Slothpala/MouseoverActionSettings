@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.7.3-alpha] - 2024-07-06
+#### Updated
+* Adapted to tww UI changes.
+
 ### Version [1.7.2] - 2024-06-11
 #### Removed
 * Removed unused locals

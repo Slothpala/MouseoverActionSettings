@@ -7,7 +7,7 @@ local mo_unit = {
     visibilityEvent = "TARGET_FRAME_UPDATE",   
     scriptRegions = {
         TargetFrame,
-        TargetFrame.TargetFrameContent.TargetFrameContentMain.HealthBar,
+        TargetFrame.TargetFrameContent.TargetFrameContentMain.HealthBarsContainer.HealthBar,
         TargetFrameToT,
         TargetFrameToT.HealthBar
     },

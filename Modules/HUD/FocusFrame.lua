@@ -7,7 +7,7 @@ local mo_unit = {
     visibilityEvent = "Focus_FRAME_UPDATE",   
     scriptRegions = {
         FocusFrame,
-        FocusFrame.TargetFrameContent.TargetFrameContentMain.HealthBar,
+        FocusFrame.TargetFrameContent.TargetFrameContentMain.HealthBarsContainer.HealthBar,
         FocusFrameToT,
         FocusFrameToT.HealthBar
     },
