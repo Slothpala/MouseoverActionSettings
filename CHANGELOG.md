@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.7.3] - 2024-07-23
+#### Updated
+* Adapted to tww UI changes.
+
 ### Version [1.7.3-alpha] - 2024-07-06
 #### Updated
 * Adapted to tww UI changes.
