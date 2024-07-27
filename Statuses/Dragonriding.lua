@@ -5,32 +5,19 @@ local CR = addonTable.callbackRegistry
 
 local eventDelay = 0
 
-local GetCollectedDragonridingMounts = C_MountJournal.GetCollectedDragonridingMounts
-local GetMountInfoByID = C_MountJournal.GetMountInfoByID
-local GetPlayerAuraBySpellID = C_UnitAuras.GetPlayerAuraBySpellID
-local IsMounted = IsMounted
-local next = next 
+local UnitPowerBarID = UnitPowerBarID
 
 local function updateDragonriding()
-    local isDragonriding = false
-    local mountIDs = GetCollectedDragonridingMounts()
-    local canFly = IsFlyableArea()
-    if IsMounted() and canFly then
-        for _, mountID in next, mountIDs do
-            local spellID = select(2, GetMountInfoByID(mountID))
-            if GetPlayerAuraBySpellID(spellID) then
-                isDragonriding = true
-            end
-        end
-    end
-    addonTable.events["DRAGONRIDING_UPDATE"] = isDragonriding
-    CR:Fire("DRAGONRIDING_UPDATE", isDragonriding, eventDelay)
+    local isDragonRiding = UnitPowerBarID("player") == 631
+    addonTable.events["DRAGONRIDING_UPDATE"] = isDragonRiding
+    CR:Fire("DRAGONRIDING_UPDATE", isDragonRiding, eventDelay)
 end
 
 local function OnEvent(self, event)
-    updateDragonriding()
     if event == "PLAYER_ENTERING_WORLD" then
         C_Timer.After(2, updateDragonriding)
+    else
+        updateDragonriding()
     end
 end
 
@@ -43,7 +30,8 @@ function dragonriding_status:Start()
         frame = CreateFrame("Frame")
         frame:SetScript("OnEvent", OnEvent) 
     end
-    frame:RegisterEvent("PLAYER_MOUNT_DISPLAY_CHANGED")
+    frame:RegisterUnitEvent("UNIT_POWER_BAR_SHOW", "player")
+    frame:RegisterUnitEvent("UNIT_POWER_BAR_HIDE", "player")
     frame:RegisterEvent("PLAYER_ENTERING_WORLD")
     updateDragonriding()
 end
