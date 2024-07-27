@@ -68,7 +68,7 @@ function CR:StopStatus(event, options)
     end
 end
 
---could need improvements to restore previous state but not a big deal
+--@TODO could need improvements to restore previous state but not a big deal
 function CR:RestartStatus(event)
     local status_module = status_events[event]
     if not status_module then 
