@@ -1,4 +1,9 @@
 # **Changelog**
+### Version [1.7.4] - 2024-07-27
+#### Updated
+* Renamed Dragonridign to Skyriding inside the UI
+* Reworked how the Dragonriding Status works, it now includes Soar and Travel Form.
+
 ### Version [1.7.3] - 2024-07-23
 #### Updated
 * Adapted to tww UI changes.
