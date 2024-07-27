@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.7.5] - 2024-07-28
+#### Updated
+* ChatFrame.lua -> TextToSpeechButton added to ScriptRegions.
+
 ### Version [1.7.4] - 2024-07-27
 #### Updated
 * Renamed Dragonridign to Skyriding inside the UI
