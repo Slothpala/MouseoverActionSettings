@@ -10,6 +10,7 @@ local mo_unit = {
         CombatLogQuickButtonFrame_Custom,
         CombatLogQuickButtonFrameButton1,
         CombatLogQuickButtonFrameButton2,
+        TextToSpeechButton,
     },
     statusEvents = {},
 }
