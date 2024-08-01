@@ -1,4 +1,11 @@
 # **Changelog**
+### Version [1.7.6] - 2024-08-01
+#### Fixed 
+* MicroMenu.lua:
+    * Changed SpellbookMicroButton & TalentMicroButton to ProfessionMicroButton & PlayerSpellsMicroButton.
+* HideMicroMenu.lua:
+    * Changed SpellbookMicroButton & TalentMicroButton to ProfessionMicroButton & PlayerSpellsMicroButton.
+
 ### Version [1.7.5] - 2024-07-28
 #### Updated
 * ChatFrame.lua -> TextToSpeechButton added to ScriptRegions.
