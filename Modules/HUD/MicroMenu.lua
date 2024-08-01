@@ -7,8 +7,8 @@ local mo_unit = {
     visibilityEvent = "MICRO_MENU_UPDATE",   
     scriptRegions = {
         CharacterMicroButton,
-        SpellbookMicroButton,
-        TalentMicroButton,
+        ProfessionMicroButton,
+        PlayerSpellsMicroButton,
         AchievementMicroButton,
         QuestLogMicroButton,
         GuildMicroButton,

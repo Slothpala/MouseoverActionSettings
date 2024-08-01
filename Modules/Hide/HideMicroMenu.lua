@@ -23,8 +23,8 @@ end
 function module:IterateRegions(callback)
     for _, region in pairs({
         CharacterMicroButton,
-        SpellbookMicroButton,
-        TalentMicroButton,
+        ProfessionMicroButton,
+        PlayerSpellsMicroButton,
         AchievementMicroButton,
         QuestLogMicroButton,
         GuildMicroButton,
