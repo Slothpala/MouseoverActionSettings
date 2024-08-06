@@ -1,7 +1,7 @@
 # **Changelog**
 ### Version [1.7.7] - 2024-08-06
 #### Added
-* SmallSmall UI QOL improvements.
+* Small UI QOL improvements.
     * Added a handle to resize the options frame vertically.
     * Added a SearchBox that is shown for Action Bars, HUD, and Links tab.
 
