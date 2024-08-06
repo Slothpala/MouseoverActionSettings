@@ -43,9 +43,27 @@ local function createSearchBox(parentFrame)
         parentFrame.container:ReleaseChildren()
         ACD:Open(searchBox.optionsTable, parentFrame.container)
     end)
-    searchBox:SetWidth(200)
-    searchBox:SetHeight(25)
-    searchBox:SetPoint("TOP", parentFrame, "TOP", 0, -30)
+    searchBox:HookScript("OnEnable", function(self)
+        for _, region in pairs({
+            "Left",
+            "Middle",
+            "Right"
+        }) do
+            self[region]:SetVertexColor(1, 1, 1, 1)
+        end
+    end)
+    searchBox:HookScript("OnDisable", function(self)
+        for _, region in pairs({
+            "Left",
+            "Middle",
+            "Right"
+        }) do
+            self[region]:SetVertexColor(0.5, 0.5, 0.5, 0.5)
+        end
+    end)
+    searchBox:SetWidth(300)
+    searchBox:SetHeight(30)
+    searchBox:SetPoint("TOP", parentFrame, "TOP", 0, -35)
     searchBox:SetAutoFocus(false)
     return searchBox
 end
