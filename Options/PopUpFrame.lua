@@ -72,9 +72,14 @@ function addon:GetPopUpFrame()
             endAlpha = 1,
         }
         addon:Fade(frame, info)
+        options_frame.searchBox:Disable()
+    end)
+    frame:HookScript("OnHide", function()
+        options_frame.searchBox:Enable()
     end)
     options_frame:HookScript("OnHide", function()
         frame:Hide()
+
     end)
     options_frame.triggerFrame = frame
     applySkin(frame)

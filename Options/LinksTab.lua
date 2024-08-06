@@ -2,6 +2,17 @@ local addonName, addonTable = ...
 local addon = addonTable.addon
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
+local function unitExcludedBySearch(name)
+    if string.len(addonTable.searchText) < 1 then
+        return false
+    end
+    local text1, text2 = string.lower(name), string.lower(addonTable.searchText)
+    if not text1:match(text2) then
+        return true
+    end
+    return false
+end
+
 local options = {
     name = "Links",
     handler = addon,
@@ -27,6 +38,9 @@ end
 
 local function createLinkGroup(module_name, enabled_mouseover_modules)
     local linkGroup = {
+        hidden = function()
+            return unitExcludedBySearch(getDisplayedModuleName(module_name))
+        end,
         name = L["Show"] .. " " .. getDisplayedModuleName(module_name) .. " " .. L["alongside"] .. "...",
         type = "group",
         inline = true,

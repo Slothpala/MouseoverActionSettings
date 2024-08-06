@@ -2,6 +2,17 @@ local addonName, addonTable = ...
 local addon = addonTable.addon
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
+local function unitExcludedBySearch(name)
+    if string.len(addonTable.searchText) < 1 then
+        return false
+    end
+    local text1, text2 = string.lower(name), string.lower(addonTable.searchText)
+    if not text1:match(text2) then
+        return true
+    end
+    return false
+end
+
 local mouseover_unit_options = addon:GetMouseoverUnitOptions()
 local options = {
     name = "HUD",
@@ -114,7 +125,7 @@ local options = {
         },
         BagsBar = {
             hidden = function()
-                return not addon:IsModuleEnabled("BagsBar")
+                return not addon:IsModuleEnabled("BagsBar") or unitExcludedBySearch(L["BagsBar"])
             end,
             order = 1,
             name = L["BagsBar"],
@@ -124,7 +135,7 @@ local options = {
         },
         MicroMenu = {
             hidden = function()
-                return not addon:IsModuleEnabled("MicroMenu")
+                return not addon:IsModuleEnabled("MicroMenu") or unitExcludedBySearch(L["MicroMenu"])
             end,
             order = 2,
             name = L["MicroMenu"],
@@ -134,7 +145,7 @@ local options = {
         },
         PlayerFrame = {
             hidden = function()
-                return not addon:IsModuleEnabled("PlayerFrame")
+                return not addon:IsModuleEnabled("PlayerFrame") or unitExcludedBySearch(L["PlayerFrame"])
             end,
             order = 3,
             name = L["PlayerFrame"],
@@ -144,7 +155,7 @@ local options = {
         },
         TargetFrame = {
             hidden = function()
-                return not addon:IsModuleEnabled("TargetFrame")
+                return not addon:IsModuleEnabled("TargetFrame") or unitExcludedBySearch(L["TargetFrame"])
             end,
             order = 3.1,
             name = L["TargetFrame"],
@@ -154,7 +165,7 @@ local options = {
         },
         FocusFrame = {
             hidden = function()
-                return not addon:IsModuleEnabled("FocusFrame")
+                return not addon:IsModuleEnabled("FocusFrame") or unitExcludedBySearch(L["FocusFrame"])
             end,
             order = 3.2,
             name = L["FocusFrame"],
@@ -164,7 +175,7 @@ local options = {
         },
         PetFrame = {
             hidden = function()
-                return not addon:IsModuleEnabled("PetFrame")
+                return not addon:IsModuleEnabled("PetFrame") or unitExcludedBySearch(L["PetFrame"])
             end,
             order = 3.3,
             name = L["PetFrame"],
@@ -174,7 +185,7 @@ local options = {
         },
         Minimap = {
             hidden = function()
-                return not addon:IsModuleEnabled("Minimap")
+                return not addon:IsModuleEnabled("Minimap") or unitExcludedBySearch(L["Minimap"])
             end,
             order = 4,
             name = L["Minimap"],
@@ -184,7 +195,7 @@ local options = {
         },
         ObjectiveTracker = {
             hidden = function()
-                return not addon:IsModuleEnabled("ObjectiveTracker")
+                return not addon:IsModuleEnabled("ObjectiveTracker") or unitExcludedBySearch(L["ObjectiveTracker"])
             end,
             order = 5,
             name = L["ObjectiveTracker"],
@@ -194,7 +205,7 @@ local options = {
         },
         BuffFrame = {
             hidden = function()
-                return not addon:IsModuleEnabled("BuffFrame")
+                return not addon:IsModuleEnabled("BuffFrame") or unitExcludedBySearch(L["BuffFrame"])
             end,
             order = 6,
             name = L["BuffFrame"],
@@ -204,7 +215,7 @@ local options = {
         },
         DebuffFrame = {
             hidden = function()
-                return not addon:IsModuleEnabled("DebuffFrame")
+                return not addon:IsModuleEnabled("DebuffFrame") or unitExcludedBySearch(L["DebuffFrame"])
             end,
             order = 7,
             name = L["DebuffFrame"],
@@ -214,7 +225,7 @@ local options = {
         },
         TrackingBarContainer = {
             hidden = function()
-                return not addon:IsModuleEnabled("TrackingBarContainer")
+                return not addon:IsModuleEnabled("TrackingBarContainer") or unitExcludedBySearch(L["TrackingBarContainer"])
             end,
             order = 8,
             name = L["TrackingBarContainer"],
@@ -224,9 +235,9 @@ local options = {
         },
         ChatFrame = {
             hidden = function()
-                return not addon:IsModuleEnabled("ChatFrame")
+                return not addon:IsModuleEnabled("ChatFrame") or unitExcludedBySearch(L["ChatFrame"])
             end,
-            order = 8,
+            order = 9,
             name = L["ChatFrame"],
             type = "group",
             inline = true,
