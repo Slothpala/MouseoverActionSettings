@@ -1,4 +1,10 @@
 # **Changelog**
+### Version [1.8.0] - 2024-08-06
+#### Updated
+* Small UI improvements.
+#### Added
+* TargetAttackable Status.
+
 ### Version [1.7.8] - 2024-08-06
 #### Fixed 
 * Fixed some minor issues that prevented the newly added SearchBox from being displayed or loading the wrong content under certain circumstances after closing the Options frame.
