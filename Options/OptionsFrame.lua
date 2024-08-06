@@ -9,9 +9,9 @@ local function createAceContainer(AceContainer, parentFrame)
     local scrollContainer = AceGUI:Create("ScrollFrame")
     scrollContainer:SetLayout("Fill")
     scrollContainer.frame:SetParent(parentFrame)
-    scrollContainer.frame:SetPoint("TOPLEFT", parentFrame, "TOPLEFT", 25, -55)
+    scrollContainer.frame:SetPoint("TOPLEFT", parentFrame, "TOPLEFT", 25, -65)
     scrollContainer.frame:SetPoint("BOTTOMRIGHT", parentFrame, "BOTTOMRIGHT", -25, 25)
-    scrollContainer.content:SetPoint("TOPLEFT", parentFrame, "TOPLEFT", 25, -55)
+    scrollContainer.content:SetPoint("TOPLEFT", parentFrame, "TOPLEFT", 25, -65)
     scrollContainer.content:SetPoint("BOTTOMRIGHT", parentFrame, "BOTTOMRIGHT", -25, 25)
     scrollContainer.frame:SetClipsChildren(true)
     scrollContainer.frame:Show()
@@ -34,6 +34,23 @@ local function creatResizeButton(parentFrame)
     return resizeButton
 end
 
+local function createSearchBox(parentFrame)
+    local searchBox = CreateFrame("EditBox", nil, parentFrame, "SearchBoxTemplate")
+    searchBox.optionsTable = "MouseOverActionSettings_Options_Tab_1"
+    searchBox:HookScript("OnTextChanged", function()
+        parentFrame.container:ResumeLayout()
+        addonTable.searchText = searchBox:GetText()
+        parentFrame.container:ReleaseChildren()
+        ACD:Open(searchBox.optionsTable, parentFrame.container)
+    end)
+    searchBox:SetWidth(200)
+    searchBox:SetHeight(25)
+    searchBox:SetPoint("TOP", parentFrame, "TOP", 0, -30)
+    searchBox:SetAutoFocus(false)
+    return searchBox
+end
+
+
 local function createTabs(parentFrame, ...)
     local TabSystem = CreateFrame("Frame", nil, parentFrame, "TabSystemTemplate")
     local tabs = {}
@@ -47,12 +64,16 @@ local function createTabs(parentFrame, ...)
     return TabSystem, tabs
 end
 
+
 local function clearFrame(frame)
     if frame.triggerFrame then
         frame.triggerFrame:Hide()
     end
+    frame.searchBox:SetText("")
+    addonTable.searchText = ""
     frame.container:ReleaseChildren()
 end
+
 
 local function applySkin(frame)
     --[[   
@@ -102,12 +123,12 @@ function addon:GetOptionsFrame(AceContainer)
     frame.title = _G["MouseoverActionSettingsOptionsTitleText"]
     frame.title:SetText("Mouseover Action Settings")
     MouseoverActionSettingsOptionsPortrait:SetTexture(addonTable.texturePaths.PortraitIcon)
-    frame:SetSize(950,550)
+    frame:SetSize(950,560)
     frame:SetPoint("CENTER", UIparent, "CENTER")
     frame:SetMovable(true)
-    --frame:SetResizable(true)
+    frame:SetResizable(true)
     frame:SetUserPlaced(true)
-    --frame:SetResizeBounds(950,550)
+    frame:SetResizeBounds(950, 560, 950)
     frame:SetClampedToScreen(true)
     frame:SetClampRectInsets(400, -400, 0, 180)
     frame:RegisterForDrag("LeftButton")
@@ -117,20 +138,26 @@ function addon:GetOptionsFrame(AceContainer)
     frame.TitleContainer:SetScript("OnMouseUp", function()
         frame:StopMovingOrSizing()
     end)
-    --frame.resizeButton = creatResizeButton(frame)
+    frame.resizeButton = creatResizeButton(frame)
     local container = createAceContainer(AceContainer, frame)
+    frame.searchBox = createSearchBox(frame)
     frame.container = container
     frame.TabSystem, frame.tabs = createTabs(frame, L["Action Bars"], L["HUD"], L["Tinker Zone"], L["Link"], L["Config"], L["Profiles"])
     frame.tabs[L["Action Bars"]]:HookScript("OnClick", function()
         clearFrame(frame)
+        frame.searchBox:Show()
+        frame.searchBox.optionsTable = "MouseOverActionSettings_Options_Tab_1"
         ACD:Open("MouseOverActionSettings_Options_Tab_1",container)
     end)
     frame.tabs[L["HUD"]]:HookScript("OnClick", function()
         clearFrame(frame)
+        frame.searchBox:Show()
+        frame.searchBox.optionsTable = "MouseOverActionSettings_Options_Tab_2"
         ACD:Open("MouseOverActionSettings_Options_Tab_2",container)
     end)
     frame.tabs[L["Tinker Zone"]]:HookScript("OnClick", function()
         clearFrame(frame)
+        frame.searchBox:Hide()
         ACD:Open("MouseOverActionSettings_Options_Tab_3",container)
     end)
     if not self.db.global.TinkerZone then
@@ -138,15 +165,19 @@ function addon:GetOptionsFrame(AceContainer)
     end
     frame.tabs[L["Link"]]:HookScript("OnClick", function()
         clearFrame(frame)
+        frame.searchBox:Show()
+        frame.searchBox.optionsTable = "MouseOverActionSettings_Options_Tab_4"
         addon:CreateLinkGroupEntrys()
         ACD:Open("MouseOverActionSettings_Options_Tab_4",container)
     end)
     frame.tabs[L["Config"]]:HookScript("OnClick", function()
         clearFrame(frame)
+        frame.searchBox:Hide()
         ACD:Open("MouseOverActionSettings_Options_Tab_5",container)
     end)
     frame.tabs[L["Profiles"]]:HookScript("OnClick", function()
         clearFrame(frame)
+        frame.searchBox:Hide()
         ACD:Open("MouseOverActionSettings_Options_Tab_6",container)
     end)
     frame:SetScript("OnEvent", frame.Hide)
