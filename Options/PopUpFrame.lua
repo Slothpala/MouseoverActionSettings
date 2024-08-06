@@ -79,7 +79,6 @@ function addon:GetPopUpFrame()
     end)
     options_frame:HookScript("OnHide", function()
         frame:Hide()
-
     end)
     options_frame.triggerFrame = frame
     applySkin(frame)
