@@ -188,6 +188,7 @@ function addon:GetOptionsFrame(AceContainer)
     end)
     frame:HookScript("OnHide",function()
         clearFrame(frame)
+        frame.searchBox.optionsTable = "MouseOverActionSettings_Options_Tab_1"
         frame:UnregisterEvent("PLAYER_REGEN_ENABLED")
     end)
     applySkin(frame)
