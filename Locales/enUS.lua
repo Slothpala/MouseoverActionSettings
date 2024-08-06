@@ -123,6 +123,8 @@ L["target_update_name"] = "Target exists"
 L["target_update_desc"] = ""
 L["player_moving_update_name"] = "Moving"
 L["player_moving_update_desc"] = ""
+L["target_attackable_update_name"] = "Target attackable"
+L["target_attackable_update_desc"] = ""
 --Tweaks:
 L["custom_animation_toggle_name"] = "Customize Animation"
 L["custom_animation_toggle_desc"] = "Override global settings and use unit-specific settings."

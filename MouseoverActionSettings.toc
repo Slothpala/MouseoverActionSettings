@@ -51,6 +51,7 @@ Statuses/SpellFlyout.lua
 Statuses/EditMode.lua
 Statuses/UnitExists.lua
 Statuses/Moving.lua
+Statuses/Substatuses/TargetAttackable.lua
 
 #Prototypes
 Prototypes/MouseoverUnit.lua

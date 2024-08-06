@@ -85,6 +85,14 @@ options = {
             get = "GetTrigger",
             set = "SetTrigger",
         },
+        TARGET_ATTACKABLE_UPDATE = {
+            order = 1.71,
+            name = L["target_attackable_update_name"],
+            desc = L["target_attackable_update_desc"],
+            type = "toggle",
+            get = "GetTrigger",
+            set = "SetTrigger",
+        },
         PLAYER_MOVING_UPDATE = {
             order = 1.8,
             name = L["player_moving_update_name"],
