@@ -3,7 +3,10 @@ addonTable.events["TARGET_ATTACKABLE_UPDATE"] = false
 local CR = addonTable.callbackRegistry
 
 local function OnEvent()
-    local targetAttackable = UnitCanAttack("player", "target")
+    local targetExists = UnitExists("target")
+    local isAlive = not UnitIsDead("target") 
+    local canAttack = UnitCanAttack("player", "target") 
+    local targetAttackable = targetExists and isAlive and canAttack
     CR:Fire("TARGET_ATTACKABLE_UPDATE", targetAttackable)
     addonTable.events["TARGET_ATTACKABLE_UPDATE"] = targetAttackable
 end
