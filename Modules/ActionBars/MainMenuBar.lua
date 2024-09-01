@@ -49,3 +49,9 @@ end
 function module:GetMouseoverUnit()
     return mo_unit
 end
+
+--[[
+    To prevent the vehicle Button from hiding.
+]]
+
+MainMenuBarVehicleLeaveButton:SetParent(UIParent)
