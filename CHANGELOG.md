@@ -1,4 +1,11 @@
 # **Changelog**
+### Version [1.8.1] - 2024-09-02
+#### Updated
+* MainMenuBarVehicleLeaveButton parent is set to UIParent to detach it from the MainMenuBar (Action Bar 1) module.
+
+#### Fixed 
+* Fixed a problem where the TargetAttackable status did not work as it should.
+
 ### Version [1.8.0] - 2024-08-06
 #### Updated
 * Small UI improvements.
