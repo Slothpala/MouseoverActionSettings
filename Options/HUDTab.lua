@@ -73,6 +73,14 @@ local options = {
                     get = "GetModuleStatus",
                     set = "SetModuleStatus",
                 },
+                PartyFrame = {
+                    order = 3.4,
+                    name = L["PartyFrame"],
+                    desc = "",
+                    type = "toggle",
+                    get = "GetModuleStatus",
+                    set = "SetModuleStatus",
+                },
                 Minimap = {
                     order = 4,
                     name = L["Minimap"],
@@ -179,6 +187,16 @@ local options = {
             end,
             order = 3.3,
             name = L["PetFrame"],
+            type = "group",
+            inline = true,
+            args = mouseover_unit_options,
+        },
+		PartyFrame = {
+            hidden = function()
+                return not addon:IsModuleEnabled("PartyFrame") or unitExcludedBySearch(L["PartyFrame"])
+            end,
+            order = 3.4,
+            name = L["PartyFrame"],
             type = "group",
             inline = true,
             args = mouseover_unit_options,
