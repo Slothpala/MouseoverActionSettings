@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.9.0] - 2024-09-15
+#### Added
+* Health Status.
+
 ### Version [1.8.1] - 2024-09-02
 #### Updated
 * MainMenuBarVehicleLeaveButton parent is set to UIParent to detach it from the MainMenuBar (Action Bar 1) module.

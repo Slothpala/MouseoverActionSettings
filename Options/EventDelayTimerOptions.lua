@@ -76,6 +76,18 @@ local options = {
             step = 1,   
             width = sliderWidth,                    
         },
+        PLAYER_HEALTH_UPDATE = {
+            order = 6,
+            name = L["player_health_update_delay_timer_name"],
+            desc = L["event_delay_timer_desc"],
+            type = "range",
+            get = "GetEventDelayTimerStaus",
+            set = "SetEventDelayTimerStaus",
+            min = 0,
+            softMax = 10,   
+            step = 1,   
+            width = sliderWidth,                    
+        },
     },
 }
 

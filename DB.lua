@@ -10,6 +10,7 @@ local defaults = {
             useCustomAnimationSpeed = false,
             animationSpeed_In = 0.2,
             animationSpeed_Out = 0.25,
+            healthThreshold = 0.9,
             useCustomDelay = false,
             delay = 2,
             EDIT_MODE_UPDATE = true,
@@ -103,6 +104,7 @@ local defaults = {
             COMBAT_UPDATE = 2,
             DRAGONRIDING_UPDATE = 0,
             NPC_UPDATE = 0,
+            PLAYER_HEALTH_UPDATE = 2,
         },
         ActionBarConfig = {
             hideHotkey = false,

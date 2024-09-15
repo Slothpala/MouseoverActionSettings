@@ -52,6 +52,7 @@ Statuses/EditMode.lua
 Statuses/UnitExists.lua
 Statuses/Moving.lua
 Statuses/TargetAttackable.lua
+Statuses/Health.lua
 
 #Prototypes
 Prototypes/MouseoverUnit.lua
