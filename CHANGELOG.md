@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.9.1] - 2024-10-17
+#### Updated
+* Health.lua - > Performance improvements by caching the last state.
+
 ### Version [1.9.0] - 2024-09-15
 #### Added
 * Health Status.
