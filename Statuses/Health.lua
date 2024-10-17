@@ -5,13 +5,17 @@ local CR = addonTable.callbackRegistry
 
 local eventDelay = 0
 
+local last_isBelowThreshold = false
 local function OnEvent()
     local currentHealth = UnitHealth("player")
     local maxHealth = UnitHealthMax("player")
     local healthPerc = currentHealth / maxHealth
     local isBelowThreshold = healthPerc < addon.db.profile.GlobalSettings.healthThreshold
-    CR:Fire("PLAYER_HEALTH_UPDATE", isBelowThreshold, eventDelay)
-    addonTable.events["PLAYER_HEALTH_UPDATE"] = isBelowThreshold
+    if isBelowThreshold ~= last_isBelowThreshold then
+        CR:Fire("PLAYER_HEALTH_UPDATE", isBelowThreshold, eventDelay)
+        addonTable.events["PLAYER_HEALTH_UPDATE"] = isBelowThreshold
+        last_isBelowThreshold = isBelowThreshold
+    end
 end
 
 local frame = nil
