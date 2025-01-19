@@ -1,4 +1,4 @@
-## Interface: 110002
+## Interface: 110007
 ## Title: MouseoverActionSettings
 ## Author: Slothpala
 ## SavedVariables: MouseoverActionSettingsDB
