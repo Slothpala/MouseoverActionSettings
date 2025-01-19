@@ -19,7 +19,7 @@ function targetAttackable:Start()
         frame:SetScript("OnEvent", OnEvent ) 
     end
     frame:RegisterEvent("PLAYER_TARGET_CHANGED")
-    frame:RegisterUnitEvent("UNIT_FACTION", "target")
+    frame:RegisterUnitEvent("UNIT_FACTION", "target") -- For when the target becomes attackable while targeting it.
     OnEvent()
 end
 
