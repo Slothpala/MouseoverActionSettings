@@ -70,7 +70,9 @@ function MouseoverUnit:Disable()
         self.callbacks[id] = nil
     end
     Timer:Stop(self.timer)
-    Timer:Stop(self.eventTimer)
+    for _, timer in pairs(self.eventTimers) do
+        Timer:Stop(timer)
+    end
     self:StopAnimation()
     CR:Fire(self.visibilityEvent, false)
     self.preventHiding = {}
@@ -86,18 +88,18 @@ function MouseoverUnit:Enable()
         local event = self.statusEvents[i]
         local id = CR:RegisterCallback(event, function(...)
             local status, delay = ...
-            Timer:Stop(self.eventTimer)
-            if status then       
+            Timer:Stop(self.eventTimers[event])
+            if status == true then       
                 self.preventHiding[event] = true
                 self:Show()
             else
                 if delay and delay > 0 then
-                    self.eventTimer = Timer:Start(delay, function()
+                    self.eventTimers[event] = Timer:Start(delay, function()
                         self.preventHiding[event] = nil
                         self:Hide()
                     end)
                 else
-                    self.preventHiding[event] = false
+                    self.preventHiding[event] = nil
                     self:Hide()
                 end
             end
@@ -116,7 +118,7 @@ function addon:NewMouseoverUnit(unit)
     unit.callbacks = {}
     unit.preventHiding = {}
     unit.timer = {}
-    unit.eventTimer = {}
+    unit.eventTimers = {}
     unit.animationInfo = {}
     return unit 
 end
