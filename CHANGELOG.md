@@ -1,4 +1,10 @@
 # **Changelog**
+### Version [1.9.2] - 2024-01-2
+#### Updated
+* Interface version to 110007.
+#### Fixed 
+* Fixed a problem where delayed event timers would be prematurely canceled by another event.
+
 ### Version [1.9.1] - 2024-10-17
 #### Updated
 * Health.lua - > Performance improvements by caching the last state.
