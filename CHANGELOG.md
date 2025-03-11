@@ -1,4 +1,10 @@
 # **Changelog**
+### Version [1.9.4] - 2025-03-11
+#### Fixed
+* SpellFlyout.lua -> Fixed an nil indexing error.
+#### Removed
+* FrameColor skin got removed in preparation to an upcoming FrameColor rework.
+
 ### Version [1.9.3] - 2025-02-25
 #### Updated
 * Interface version to 110100.

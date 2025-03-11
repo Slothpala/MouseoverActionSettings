@@ -4,13 +4,21 @@ local addon = addonTable.addon
 local hide_blocked_flyout_parents = {}
 
 local function handleShown(SpellFlyout)
-    local actionBar = SpellFlyout:GetParent():GetParent():GetParent():GetDebugName()
+    local parent = SpellFlyout:GetParent()
+
+    if not parent then
+        return
+    end
+
+    local actionBar = parent:GetParent():GetParent():GetDebugName()
+
     if actionBar:match("SpellBookFrame") then
         return
     end
     if not addon:IsModuleEnabled(actionBar) then
         return
     end
+
     local mo_unit = addon:GetModule(actionBar):GetMouseoverUnit()
     mo_unit.preventHiding["SPELL_FLYOUT"] = true
     table.insert(hide_blocked_flyout_parents, mo_unit)
