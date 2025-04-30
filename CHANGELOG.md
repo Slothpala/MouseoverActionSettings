@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.9.5] - 2025-04-30
+#### Updated
+* Interface version to 110105.
+
 ### Version [1.9.4] - 2025-03-11
 #### Fixed
 * SpellFlyout.lua -> Fixed an nil indexing error.
