@@ -94,34 +94,12 @@ end
 
 
 local function applySkin(frame)
-    --[[   
-    local frameColor = {r=0.23921568627450981,g=0.2235294117647059,b=0.41568627450980394}
-    for _, texture in pairs({
-        frame.NineSlice.TopEdge,
-        frame.NineSlice.BottomEdge,
-        frame.NineSlice.TopRightCorner,
-        frame.NineSlice.TopLeftCorner,
-        frame.NineSlice.RightEdge,
-        frame.NineSlice.LeftEdge,
-        frame.NineSlice.BottomRightCorner,
-        frame.NineSlice.BottomLeftCorner,  
-    }) do
-        texture:SetDesaturation(1)
-        texture:SetVertexColor(frameColor.r,frameColor.g,frameColor.b) 
-    end
-    local tabColor = {r=0.22,g=0.22,b=0.22}
-    for _, tab in pairs({ frame.TabSystem:GetChildren() }) do 
-        for _, texture in pairs({
-            tab.Left,
-            tab.Middle,
-            tab.Right,
-        }) do 
-            texture:SetVertexColor(tabColor.r,tabColor.g,tabColor.b) 
-        end
-    end
-     ]]
     local r,g,b = PANEL_BACKGROUND_COLOR:GetRGB()
     frame.Bg:SetColorTexture(r,g,b,0.9)
+
+    if C_AddOns.IsAddOnLoaded("FrameColor") then
+        FrameColor.API:ReloadSkin("_MouseoverActionSettings")
+    end
 end
 
 local frame = nil

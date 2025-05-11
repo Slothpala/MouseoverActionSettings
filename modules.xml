@@ -27,6 +27,7 @@
     <Script file="Modules/GlobalSettings.lua"/>
     <Script file="Modules/ActionBarConfig.lua"/>
     <Script file="Modules/MiniMapButton.lua"/>
+    <Script file="Modules/FrameColorSkin.lua"/>
 <!--Hide-->
     <Script file="Modules/Hide/HideBagsBar.lua"/>
     <Script file="Modules/Hide/HideTrackingBars.lua"/>

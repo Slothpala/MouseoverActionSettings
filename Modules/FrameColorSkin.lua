@@ -1,74 +1,70 @@
-local _, addonTable = ...
-local addon = addonTable.addon
+if not C_AddOns.IsAddOnLoaded("FrameColor") then
+  return
+end
 
-if C_AddOns.IsAddOnLoaded("FrameColor") then
-  local info = 
-  {
-    moduleName = "MouseoverActionSettings",
-    color1 = 
-    {
-      name = "Main",
-      desc = "",
+local options = {
+  name = "_MouseoverActionSettings",
+  displayedName = "Mouseover Action Settings",
+  order = 1,
+  category = "AddonSkins",
+  colors = {
+    ["main"] = {
+      name = "",
+      order = 1,
+      rgbaValues = {0.28, 0.28, 0.28, 1},
     },
-    color2 = 
-    {
-      name = "Background",
-      desc = "",
-      hasAlpha = true,
+    ["background"] = {
+      name = "",
+      order = 2,
+      rgbaValues = {0.55, 0.55, 0.55, 1},
     },
-    color3 = 
-    {
-      name = "Tabs",
-      desc = "",
+    ["controls"] = {
+      order = 4,
+      name = "",
+      rgbaValues = {0.5, 0.5, 0.5, 1},
+    },
+    ["tabs"] = {
+      order = 5,
+      name = "",
+      rgbaValues = {0.18, 0.18, 0.18, 1},
     },
   }
+}
 
-  local module = FrameColor_CreateSkinModule(info)
+local skin = {}
 
-  function module:OnEnable()
-    local main_color = self:GetColor1()
-    local bg_color = self:GetColor2()
-    local tab_color = self:GetColor3()
-    self:Recolor(main_color, bg_color, tab_color, 1)
-  end
-
-  function module:OnDisable()
-    local color = {r=1,g=1,b=1,a=1}
-    self:Recolor(color, color, color, 0)
-  end
-
-  function module:Recolor(main_color, bg_color, tab_color, desaturation)
-    local MouseoverActionSettingsOptionsFrame = addon:GetOptionsFrame()
-    for _, texture in pairs(
-      {
-        MouseoverActionSettingsOptionsFrame.NineSlice.TopEdge,
-        MouseoverActionSettingsOptionsFrame.NineSlice.BottomEdge,
-        MouseoverActionSettingsOptionsFrame.NineSlice.TopRightCorner,
-        MouseoverActionSettingsOptionsFrame.NineSlice.TopLeftCorner,
-        MouseoverActionSettingsOptionsFrame.NineSlice.RightEdge,
-        MouseoverActionSettingsOptionsFrame.NineSlice.LeftEdge,
-        MouseoverActionSettingsOptionsFrame.NineSlice.BottomRightCorner,
-        MouseoverActionSettingsOptionsFrame.NineSlice.BottomLeftCorner,  
-      }
-    ) do
-      texture:SetDesaturation(desaturation)
-      texture:SetVertexColor(main_color.r,main_color.g,main_color.b) 
-    end
-    local backgroundTexture = MouseoverActionSettingsOptionsFrame.Bg
-    if backgroundTexture then
-      backgroundTexture:SetDesaturation(desaturation)
-      backgroundTexture:SetVertexColor(bg_color.r, bg_color.g, bg_color.b, bg_color.a)
-    end
-    for _, tab in pairs({ MouseoverActionSettingsOptionsFrame.TabSystem:GetChildren() }) do 
-      for _, texture in pairs(
-        {
-          tab.Left,
-          tab.Middle,
-          tab.Right,
-        }
-      ) do 
-        texture:SetVertexColor(tab_color.r,tab_color.g,tab_color.b,tab_color.a) 
-      end
-    end
-  end
+function skin:OnEnable()
+  self:Apply(self:GetColor("main"), self:GetColor("background"), self:GetColor("controls"), self:GetColor("tabs"), 1)
 end
+
+function skin:OnDisable()
+  local color = {1, 1, 1, 1}
+  self:Apply(color, color, color, color, 0)
+end
+
+function skin:Apply(mainColor, backgroundColor, controlsColor, tabsColor, desaturation)
+  if not MouseoverActionSettingsOptions then
+    return
+  end
+
+  -- Main frame.
+  self:SkinNineSliced(MouseoverActionSettingsOptions, mainColor, desaturation)
+
+  -- Background.  
+  for _, texture in pairs({
+    MouseoverActionSettingsOptions.Bg,
+  }) do
+    texture:SetDesaturation(desaturation)
+    texture:SetVertexColor(backgroundColor[1], backgroundColor[2], backgroundColor[3], backgroundColor[4])
+  end
+
+  -- Controls.
+  self:SkinBox(MouseoverActionSettingsOptions.searchBox, controlsColor, desaturation)
+
+  -- Tabs.
+  self:SkinTabs(MouseoverActionSettingsOptions, tabsColor, desaturation)
+end
+
+-- Register the Skin
+FrameColor.API:RegisterSkin(skin, options)
+FrameColor.API:UpdateDefaults()

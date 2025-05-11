@@ -4,7 +4,7 @@
 ## SavedVariables: MouseoverActionSettingsDB
 ## AddonCompartmentFunc: MouseoverActionSettings_OnAddonCompartmentClick
 ## IconTexture: Interface\AddOns\MouseoverActionSettings\Media\MinimapButtonIcon.tga
-## OptionalDeps: Ace3, LibDeflate, LibDBIcon-1.0, LibDualSpec-1.0
+## OptionalDeps: Ace3, LibDeflate, LibDBIcon-1.0, LibDualSpec-1.0, FrameColor
 ## X-Curse-Project-ID: 686646
 
 Init.lua
