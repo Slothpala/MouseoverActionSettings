@@ -106,6 +106,21 @@ local defaults = {
             NPC_UPDATE = 0,
             PLAYER_HEALTH_UPDATE = 2,
         },
+        HotKeyFontSettings = {
+            font = "Arial Narrow",
+            flags = "THICKOUTLINE",
+            height = 14,
+        },
+        CountFontSettings = {
+            font = "Arial Narrow",
+            flags = "THICKOUTLINE",
+            height = 16,
+        },
+        NameFontSettings = {
+            font = "Arial Narrow",
+            flags = "THICKOUTLINE",
+            height = 12,
+        },
         ActionBarConfig = {
             hideHotkey = false,
             hideCount = false,

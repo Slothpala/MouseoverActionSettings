@@ -15,5 +15,7 @@
   <Script file="Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua"/>
   <Include file="Libs\LibDBIcon-1.0\lib.xml"/>
   <Script file="Libs\LibDualSpec-1.0\LibDualSpec-1.0.lua"/>
+  <Script file="Libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua"/>
+  <Script file="Libs\LibDDI-1.0\lib.lua"/>
 @end-non-debug@-->
 </Ui>

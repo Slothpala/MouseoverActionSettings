@@ -17,6 +17,8 @@ externals:
     Libs/LibDeflate: https://github.com/SafeteeWoW/LibDeflate
     Libs/AceSerializer-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceSerializer-3.0
     Libs/AceLocale-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceLocale-3.0
+    Libs/LibSharedMedia-3.0: https://repos.curseforge.com/wow/libsharedmedia-3-0/trunk/LibSharedMedia-3.0
+    Libs/LibDDI-1.0: https://repos.wowace.com/wow/libddi-1-0/trunk
 
 manual-changelog:
     filename: CHANGELOG.md

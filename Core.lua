@@ -84,7 +84,14 @@ function addon:ReloadConfig()
     self:UpdateTrigger()
 end
 
+local moduleAssociations = {
+    ["HotKeyFontSettings"] = "ActionBarConfig",
+    ["CountFontSettings"] = "ActionBarConfig",
+    ["NameFontSettings"] = "ActionBarConfig",
+}
+
 function addon:ReloadModule(name)
+    local name = moduleAssociations[name] or name
     self:DisableModule(name)
     self:EnableModule(name)
     self:UpdateTrigger()

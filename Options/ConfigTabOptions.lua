@@ -1,6 +1,17 @@
 local addonName, addonTable = ...
 local addon = addonTable.addon
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
+local Media = LibStub("LibSharedMedia-3.0")
+local Fonts = Media:List("font")
+
+local fontFlags = {
+    [""] = L["none"],
+    ["OUTLINE"] = L["outline"],
+    ["THICKOUTLINE"] = L["thick_outline"],
+    ["MONOCHROME"] = L["monochrome"],
+    ["MONOCHROME,OUTLINE"] = L["monochrome_outline"],
+    ["MONOCHROME,THICKOUTLINE"] = L["monochrome_thick_outline"],
+}
 
 local options = {
     name = "Config",
@@ -84,8 +95,179 @@ local options = {
             type = "group",
             inline = true,
             args = {
-                ActionBarConfig = {
+                HotKeyFontSettings = {
                     order = 1,
+                    name = L["hot_key_font_settings"],
+                    type = "group",
+                    inline = true,
+                    args = {
+                        font = {
+                            order = 1,
+                            name = L["font_name"],
+                            desc = "",
+                            type = "select",
+                            itemControl = "DDI-Font",
+                            values = Fonts,
+                            get = function()
+                                for i, v in next, Fonts do
+                                    if v == addon.db.profile.HotKeyFontSettings.font then
+                                        return i
+                                    end
+                                end
+                            end,
+                            set = function(_, value)
+                                addon.db.profile.HotKeyFontSettings.font = Fonts[value]
+                                addon:ReloadModule("ActionBarConfig")
+                            end,
+                        },
+                        flags = {
+                            order = 2,
+                            name = L["font_flags"],
+                            desc = "",
+                            type = "select",
+                            values = fontFlags,
+                            sorting = { "", "OUTLINE", "THICKOUTLINE", "MONOCHROME", "MONOCHROME,OUTLINE", "MONOCHROME,THICKOUTLINE" },
+                            get = function()
+                                return addon.db.profile.HotKeyFontSettings.flags
+                            end,
+                            set = function(_, value)
+                                for k, _ in next, fontFlags do
+                                    if k == value then
+                                        addon.db.profile.HotKeyFontSettings.flags = k
+                                    end
+                                end
+                                addon:ReloadModule("ActionBarConfig")
+                            end,
+                        },
+                        height = {
+                            order = 3,
+                            name = L["font_height"],
+                            desc = "",
+                            type = "range",
+                            softMin = 8,
+                            softMax = 16,
+                            step = 1,
+                            get = "GetStatus",
+                            set = "SetStatus",
+                        },
+                    },
+                },
+                CountFontSettings = {
+                    order = 2,
+                    name = L["count_font_settings"],
+                    type = "group",
+                    inline = true,
+                    args = {
+                        font = {
+                            order = 1,
+                            name = L["font_name"],
+                            desc = "",
+                            type = "select",
+                            itemControl = "DDI-Font",
+                            values = Fonts,
+                            get = function()
+                                for i, v in next, Fonts do
+                                    if v == addon.db.profile.CountFontSettings.font then
+                                        return i
+                                    end
+                                end
+                            end,
+                            set = function(_, value)
+                                addon.db.profile.CountFontSettings.font = Fonts[value]
+                                addon:ReloadModule("ActionBarConfig")
+                            end,
+                        },
+                        flags = {
+                            order = 2,
+                            name = L["font_flags"],
+                            desc = "",
+                            type = "select",
+                            values = fontFlags,
+                            sorting = { "", "OUTLINE", "THICKOUTLINE", "MONOCHROME", "MONOCHROME,OUTLINE", "MONOCHROME,THICKOUTLINE" },
+                            get = function()
+                                return addon.db.profile.CountFontSettings.flags
+                            end,
+                            set = function(_, value)
+                                for k, _ in next, fontFlags do
+                                    if k == value then
+                                        addon.db.profile.CountFontSettings.flags = k
+                                    end
+                                end
+                                addon:ReloadModule("ActionBarConfig")
+                            end,
+                        },
+                        height = {
+                            order = 3,
+                            name = L["font_height"],
+                            desc = "",
+                            type = "range",
+                            softMin = 8,
+                            softMax = 18,
+                            step = 1,
+                            get = "GetStatus",
+                            set = "SetStatus",
+                        },
+                    },
+                },
+                NameFontSettings = {
+                    order = 3,
+                    name = L["name_font_settings"],
+                    type = "group",
+                    inline = true,
+                    args = {
+                        font = {
+                            order = 1,
+                            name = L["font_name"],
+                            desc = "",
+                            type = "select",
+                            itemControl = "DDI-Font",
+                            values = Fonts,
+                            get = function()
+                                for i, v in next, Fonts do
+                                    if v == addon.db.profile.NameFontSettings.font then
+                                        return i
+                                    end
+                                end
+                            end,
+                            set = function(_, value)
+                                addon.db.profile.NameFontSettings.font = Fonts[value]
+                                addon:ReloadModule("ActionBarConfig")
+                            end,
+                        },
+                        flags = {
+                            order = 2,
+                            name = L["font_flags"],
+                            desc = "",
+                            type = "select",
+                            values = fontFlags,
+                            sorting = { "", "OUTLINE", "THICKOUTLINE", "MONOCHROME", "MONOCHROME,OUTLINE", "MONOCHROME,THICKOUTLINE" },
+                            get = function()
+                                return addon.db.profile.NameFontSettings.flags
+                            end,
+                            set = function(_, value)
+                                for k, _ in next, fontFlags do
+                                    if k == value then
+                                        addon.db.profile.NameFontSettings.flags = k
+                                    end
+                                end
+                                addon:ReloadModule("ActionBarConfig")
+                            end,
+                        },
+                        height = {
+                            order = 3,
+                            name = L["font_height"],
+                            desc = "",
+                            type = "range",
+                            softMin = 8,
+                            softMax = 16,
+                            step = 1,
+                            get = "GetStatus",
+                            set = "SetStatus",
+                        },
+                    },
+                },
+                ActionBarConfig = {
+                    order = 4,
                     name = L["action_bar_config_name"],
                     type = "group",
                     inline = true,
@@ -157,7 +339,7 @@ local options = {
                     },
                 },
                 hideHotkey = {
-                    order = 2,
+                    order = 5,
                     name = L["hideHotkey"],
                     desc = "",
                     type = "toggle",
@@ -165,7 +347,7 @@ local options = {
                     set = "SetStatus",
                 },
                 hideCount = {
-                    order = 3,
+                    order = 6,
                     name = L["hideCount"],
                     desc = "",
                     type = "toggle",
@@ -173,7 +355,7 @@ local options = {
                     set = "SetStatus",
                 },
                 hideName = {
-                    order = 4,
+                    order = 7,
                     name = L["hideName"],
                     desc = "",
                     type = "toggle",

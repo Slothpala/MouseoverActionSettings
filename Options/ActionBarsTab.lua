@@ -1,6 +1,7 @@
 local addonName, addonTable = ...
 local addon = addonTable.addon
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
+local Media = LibStub("LibSharedMedia-3.0")
 
 local function unitExcludedBySearch(name)
     if string.len(addonTable.searchText) < 1 then

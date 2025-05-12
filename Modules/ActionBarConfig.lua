@@ -3,6 +3,7 @@ local addon = addonTable.addon
 
 local module = addon:NewModule("ActionBarConfig")
 Mixin(module, addonTable.hooks)
+local Media = LibStub("LibSharedMedia-3.0")
 
 local actionBars = {
     "Action", --MainMenuBar Buttons are not named after parent
@@ -21,6 +22,7 @@ function module:OnEnable()
         if dbObj[actionBar] then
             self:UpdateButtonTextVisibility(actionBar, dbObj.hideHotkey, dbObj.hideCount, dbObj.hideName)
         end
+        self:UpdateFonts(actionBar)
     end
 end
 
@@ -60,5 +62,22 @@ function module:UpdateButtonTextVisibility(actionBar, hideHotkey, hideCount, hid
         else
             nameTxt:SetAlpha(1)
         end
+    end
+end
+
+function module:UpdateFonts(actionbar)
+    local dbObjHotKey = addon.db.profile.HotKeyFontSettings
+    local dbObjCount = addon.db.profile.CountFontSettings
+    local dbObjName = addon.db.profile.NameFontSettings
+    
+    for actionButton = 1, 12 do 
+        local hotKeyTxt = _G[actionbar .. "Button" .. actionButton .. "HotKey"]
+        hotKeyTxt:SetFont(Media:Fetch("font", dbObjHotKey.font), dbObjHotKey.height, dbObjHotKey.flags)
+
+        local countTxt = _G[actionbar .. "Button" .. actionButton .. "Count"]
+        countTxt:SetFont(Media:Fetch("font", dbObjCount.font), dbObjCount.height, dbObjCount.flags)
+
+        local nameTxt = _G[actionbar .. "Button" .. actionButton .. "Name"]
+        nameTxt:SetFont(Media:Fetch("font", dbObjName.font), dbObjName.height, dbObjName.flags)
     end
 end
