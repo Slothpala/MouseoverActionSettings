@@ -1,4 +1,9 @@
 # **Changelog**
+### Version [1.10.0] - 2025-05-13
+#### Added
+* FrameColor skin.
+* Action bar font customization.
+
 ### Version [1.9.5] - 2025-04-30
 #### Updated
 * Interface version to 110105.
