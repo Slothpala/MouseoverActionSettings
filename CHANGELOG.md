@@ -3,6 +3,7 @@
 #### Added
 * FrameColor skin.
 * Action bar font customization.
+* New HUD Module: PartyFrames. Contributed by @Selfron
 
 ### Version [1.9.5] - 2025-04-30
 #### Updated
