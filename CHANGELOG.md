@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.10.1] - 2025-06-23
+#### Updated
+* Interface version to 110107.
+
 ### Version [1.10.0] - 2025-05-13
 #### Added
 * FrameColor skin.
