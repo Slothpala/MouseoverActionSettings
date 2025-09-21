@@ -104,7 +104,10 @@ L["dragonriding_update_delay_timer_name"] = "...Skyriding by:"
 L["npc_update_delay_timer_name"] = "...talking to an NPC by:"
 L["player_moving_update_delay_timer_name"] = "...moving by:"
 L["player_health_update_delay_timer_name"] = "..health above threshold:"
+L["player_casting_update_delay_timer_name"] = "..casting by:"
 L["event_delay_timer_desc"] = "The time after which the frame starts to fade out after the condition is no longer true."
+
+
 --Trigger:
 L["trigger_frame_title_before_module_name"] = "You are currently tweaking: "
 L["trigger_frame_title_after_module_name"] = ""
@@ -144,6 +147,9 @@ L["target_attackable_update_name"] = "Target attackable"
 L["target_attackable_update_desc"] = ""
 L["player_health_update_name"] = "Health"
 L["player_health_update_desc"] = "This event will fire when your health drops below a certain threshold. You can set the threshold in the Config tab."
+L["player_casting_update_name"] = "Casting"
+L["player_casting_update_desc"] = ""
+
 --Tweaks:
 L["custom_animation_toggle_name"] = "Customize Animation"
 L["custom_animation_toggle_desc"] = "Override global settings and use unit-specific settings."

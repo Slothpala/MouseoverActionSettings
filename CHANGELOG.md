@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.11.0] - 2025-09-21
+#### Added
+* New Status: Casting.
+
 ### Version [1.10.2] - 2025-08-07
 #### Updated
 * Interface version to 110200.

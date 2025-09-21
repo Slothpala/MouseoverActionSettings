@@ -109,6 +109,7 @@ local defaults = {
             DRAGONRIDING_UPDATE = 0,
             NPC_UPDATE = 0,
             PLAYER_HEALTH_UPDATE = 2,
+            PLAYER_CASTING_UPDATE = 0,
         },
         HotKeyFontSettings = {
             font = "Arial Narrow",

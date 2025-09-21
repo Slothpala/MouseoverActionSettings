@@ -109,6 +109,14 @@ options = {
             get = "GetTrigger",
             set = "SetTrigger",
         },
+        PLAYER_CASTING_UPDATE = {
+            order = 1.101,
+            name = L["player_casting_update_name"],
+            desc = L["player_casting_update_desc"],
+            type = "toggle",
+            get = "GetTrigger",
+            set = "SetTrigger",
+        },
         --[[Zone]]--
         zone_header = {
             order = 2,

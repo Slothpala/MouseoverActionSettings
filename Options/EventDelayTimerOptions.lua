@@ -88,6 +88,18 @@ local options = {
             step = 1,   
             width = sliderWidth,                    
         },
+        PLAYER_CASTING_UPDATE = {
+            order = 7,
+            name = L["player_casting_update_delay_timer_name"],
+            desc = L["event_delay_timer_desc"],
+            type = "range",
+            get = "GetEventDelayTimerStaus",
+            set = "SetEventDelayTimerStaus",
+            min = 0,
+            softMax = 10,   
+            step = 1,   
+            width = sliderWidth,                    
+        },
     },
 }
 
