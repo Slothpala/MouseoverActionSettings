@@ -1,4 +1,14 @@
 # **Changelog**
+### Version [1.12.0-Midnight-Beta] - 2025-11-14
+#### Updated
+* Interface version to 120000.
+
+#### Updated
+* Renamed the Module MainMenuBar to MainActionBar to adapt to UI changes.
+
+#### Removed
+* Health based trigger as it is no longer possible with the Midnight API changes.
+
 ### Version [1.11.0] - 2025-09-21
 #### Added
 * New Status: Casting.

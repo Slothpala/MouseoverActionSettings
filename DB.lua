@@ -20,7 +20,7 @@ local defaults = {
             },
         },
         --ActionBars
-        MainMenuBar = {
+        MainActionBar = {
             GRID_UPDATE = true,
             DRAGONRIDING_UPDATE = true,
             COMBAT_UPDATE = true,
