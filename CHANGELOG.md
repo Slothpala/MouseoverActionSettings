@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.12.0-Midnight-Beta2] - 2025-11-16
+#### Updated
+* Changed the addons default settings.
+
 ### Version [1.12.0-Midnight-Beta] - 2025-11-14
 #### Updated
 * Interface version to 120000.
