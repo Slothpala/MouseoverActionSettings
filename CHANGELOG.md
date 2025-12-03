@@ -6,6 +6,9 @@
 * Renamed the Module MainMenuBar to MainActionBar to adapt to UI changes.
 * Renamed ScriptRegions accordingly
 
+#### Added
+* Merged pull request from #Hubbotu. Update ruRU.lua.
+
 #### Removed
 * Health based trigger as it is no longer possible with the Midnight API changes.
 ### Version [1.11.1] - 2025-10-12
