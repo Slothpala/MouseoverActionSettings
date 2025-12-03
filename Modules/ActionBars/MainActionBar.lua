@@ -4,7 +4,7 @@ local addon = addonTable.addon
 local CR = addonTable.callbackRegistry
 
 local mo_unit = {
-    Parents = {MainMenuBar},
+    Parents = {MainActionBar},
     visibilityEvent = "MAIN_MENU_BAR_UPDATE",   
     scriptRegions = {},
     statusEvents = {},
@@ -15,10 +15,10 @@ end
 
 mo_unit = addon:NewMouseoverUnit(mo_unit)   
 
-local module = addon:NewModule("MainMenuBar")
+local module = addon:NewModule("MainActionBar")
 
 function module:OnEnable()
-    local dbObj = addon.db.profile["MainMenuBar"]
+    local dbObj = addon.db.profile["MainActionBar"]
     if dbObj.useCustomDelay then
         mo_unit.delay = dbObj.delay
     end

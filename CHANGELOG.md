@@ -1,4 +1,17 @@
 # **Changelog**
+### Version [1.12.0-Midnight-Beta2] - 2025-11-16
+#### Updated
+* Changed the addons default settings.
+
+### Version [1.12.0-Midnight-Beta] - 2025-11-14
+#### Updated
+* Interface version to 120000.
+
+#### Updated
+* Renamed the Module MainMenuBar to MainActionBar to adapt to UI changes.
+
+#### Removed
+* Health based trigger as it is no longer possible with the Midnight API changes.
 ### Version [1.11.1] - 2025-10-12
 #### Updated
 * Interface version to 110205.
