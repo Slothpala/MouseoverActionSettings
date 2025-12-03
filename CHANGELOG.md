@@ -12,6 +12,9 @@
 
 #### Removed
 * Health based trigger as it is no longer possible with the Midnight API changes.
+### Version [1.11.1] - 2025-10-12
+#### Updated
+* Interface version to 110205.
 
 ### Version [1.11.0] - 2025-09-21
 #### Added
