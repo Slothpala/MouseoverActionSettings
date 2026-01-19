@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.11.3] - 2025-12-03
+#### Updated
+* Interface version to 120000.
+
 ### Version [1.11.2] - 2025-12-03
 
 #### Updated
@@ -50,7 +54,7 @@
 ### Version [1.9.2] - 2024-01-2
 #### Updated
 * Interface version to 110007.
-#### Fixed 
+#### Fixed
 * Fixed a problem where delayed event timers would be prematurely canceled by another event.
 
 ### Version [1.9.1] - 2024-10-17
@@ -65,7 +69,7 @@
 #### Updated
 * MainMenuBarVehicleLeaveButton parent is set to UIParent to detach it from the MainMenuBar (Action Bar 1) module.
 
-#### Fixed 
+#### Fixed
 * Fixed a problem where the TargetAttackable status did not work as it should.
 
 ### Version [1.8.0] - 2024-08-06
@@ -75,7 +79,7 @@
 * TargetAttackable Status.
 
 ### Version [1.7.8] - 2024-08-06
-#### Fixed 
+#### Fixed
 * Fixed some minor issues that prevented the newly added SearchBox from being displayed or loading the wrong content under certain circumstances after closing the Options frame.
 
 ### Version [1.7.7] - 2024-08-06
@@ -85,7 +89,7 @@
     * Added a SearchBox that is shown for Action Bars, HUD, and Links tab.
 
 ### Version [1.7.6] - 2024-08-01
-#### Fixed 
+#### Fixed
 * MicroMenu.lua:
     * Changed SpellbookMicroButton & TalentMicroButton to ProfessionMicroButton & PlayerSpellsMicroButton.
 * HideMicroMenu.lua:
@@ -138,9 +142,9 @@
 * interface version to 100206
 
 ### Version [1.6.1] - 2024-02-28
-#### Fixed 
-* Dragonriding.lua 
-    * DRAGONRIDING_UPDATE now checks if the area is flyable. 
+#### Fixed
+* Dragonriding.lua
+    * DRAGONRIDING_UPDATE now checks if the area is flyable.
     * DRAGONRIDING_UPDATE now fires on every PLAYER_ENTERING_WORLD event not just the initial login.
 
 ### Version [1.6.0] - 2024-02-22
@@ -169,22 +173,22 @@
 
 ### Version [1.2.0] - 2024-01-11
 #### Added
-* UnitExists.lua -> New status with one event for now "TARGET_UPDATE" can be extended to other units as needed.                                                                     
+* UnitExists.lua -> New status with one event for now "TARGET_UPDATE" can be extended to other units as needed.
 
 ### Version [1.1.0] - 2024-01-08
-#### Added 
+#### Added
 * TargetFrame module added.
 
 ### Version [1.0.2] - 2024-01-08
-#### Fixed 
+#### Fixed
 * Unselecting pre-defined triggers now persists throughout a game session.
 * The Objective Tracker GUI entry is now independent of the Buff Frame entry.
 
 ### Version [1.0.1] - 2024-01-07
-#### Changed 
+#### Changed
 * Addon menu title and minimap button title now have spaces.
 * Miscellaneous and Hide changed places in the Config tab.
 
 ### Version [1.0.0] - 2024-01-06
-#### Added 
+#### Added
 * Initial release of MouseoverActionSettings as a replacement for MouseoverActionBars. MouseoverActionSettings has been written from scratch and covers all the functionality of MouseoverActionBars and more.
