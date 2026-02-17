@@ -27,13 +27,15 @@ local options = {
                     end,
                 },
                 import_module = {
-                    hidden = true,
                     order = 2,
                     name = L["import_module_name"],
                     desc = L["import_module_desc"],
                     type = "execute",
                     func = function(info)
-
+                        local frame = addon:GetPopUpFrame()
+                        frame:Show()
+                        frame.title:SetText(L["import_module_name"])
+                        ACD:Open("MouseOverActionSettings_Options_ImportModule", frame.container)
                     end,
                 },
                 remove_module = {
@@ -70,6 +72,26 @@ function addon:CreateUserModuleEntry(moduleName)
         get = "GetModuleStatus",
         set = "SetModuleStatus",
     }
+    -- Build per-module args that include shared options + export button
+    local module_args = {}
+    for k, v in pairs(mouseover_unit_options) do
+        module_args[k] = v
+    end
+    module_args.export = {
+        order = 4,
+        name = L["export_module_name"],
+        desc = L["export_module_desc"],
+        type = "execute",
+        width = 0.55,
+        func = function()
+            local exportString = addon:ExportUserModule(displayedName)
+            addon:SetExportText(exportString)
+            local frame = addon:GetPopUpFrame()
+            frame:Show()
+            frame.title:SetText(L["export_module_name"] .. ": " .. displayedName)
+            ACD:Open("MouseOverActionSettings_Options_ExportModule", frame.container)
+        end,
+    }
     local module_control = {
         hidden = function()
             return not addon:IsModuleEnabled(moduleName)
@@ -77,7 +99,7 @@ function addon:CreateUserModuleEntry(moduleName)
         name = displayedName,
         type = "group",
         inline = true,
-        args = mouseover_unit_options,
+        args = module_args,
     }
     options.args.modules.args[moduleName] = module_toggle
     options.args[moduleName] = module_control

@@ -36,6 +36,7 @@ Options/HUDTab.lua
 Options/UserModulesTab.lua
 Options/CreateUserModuleOptions.lua
 Options/RemoveUserModuleOptions.lua
+Options/ExportImportUserModuleOptions.lua
 Options/OptionsFrame.lua
 Options/PopUpFrame.lua
 

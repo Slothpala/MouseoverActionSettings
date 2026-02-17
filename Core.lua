@@ -24,6 +24,8 @@ function addon:OnInitialize()
     local event_delay_timer_options = self:GetEventDelayTimerOptions()
     local create_module_options = self:GetCreateModuleOptions()
     local remove_module_options = self:GetRemoveModuleOptions()
+    local export_module_options = self:GetExportModuleOptions()
+    local import_module_options = self:GetImportModuleOptions()
 
     AC:RegisterOptionsTable("MouseOverActionSettings_Options_Tab_1", action_bars_tab)
     AC:RegisterOptionsTable("MouseOverActionSettings_Options_Tab_2", hud_tab)
@@ -35,6 +37,8 @@ function addon:OnInitialize()
     AC:RegisterOptionsTable("MouseOverActionSettings_Options_EventTimer", event_delay_timer_options)
     AC:RegisterOptionsTable("MouseOverActionSettings_Options_CreateModule", create_module_options)
     AC:RegisterOptionsTable("MouseOverActionSettings_Options_RemoveModule", remove_module_options)
+    AC:RegisterOptionsTable("MouseOverActionSettings_Options_ExportModule", export_module_options)
+    AC:RegisterOptionsTable("MouseOverActionSettings_Options_ImportModule", import_module_options)
     --Slash command
     self:RegisterChatCommand(addonName, "SlashCommand")
     self:RegisterChatCommand("mbars", "SlashCommand") --keeping this for a while for users that previously used mouseover action abrs
