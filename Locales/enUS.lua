@@ -144,6 +144,8 @@ L["target_attackable_update_name"] = "Target attackable"
 L["target_attackable_update_desc"] = ""
 L["player_casting_update_name"] = "Casting"
 L["player_casting_update_desc"] = ""
+L["ready_check_update_name"] = "Ready Check"
+L["ready_check_update_desc"] = ""
 
 --Tweaks:
 L["custom_animation_toggle_name"] = "Customize Animation"

@@ -1,4 +1,11 @@
 # **Changelog**
+### Version [1.12.0] - 2026-02-17
+#### Added
+* New Status: Ready Check.
+
+#### Updated
+* Interface version to 120001.
+
 ### Version [1.11.3] - 2025-12-03
 #### Updated
 * Interface version to 120000.

@@ -109,6 +109,14 @@ options = {
             get = "GetTrigger",
             set = "SetTrigger",
         },
+        READY_CHECK_UPDATE = {
+            order = 1.102,
+            name = L["ready_check_update_name"],
+            desc = L["ready_check_update_desc"],
+            type = "toggle",
+            get = "GetTrigger",
+            set = "SetTrigger",
+        },
         --[[Zone]]--
         zone_header = {
             order = 2,
