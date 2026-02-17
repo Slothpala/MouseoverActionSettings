@@ -8,6 +8,21 @@ local tmp = {
     export_output_txt = "",
 }
 
+local function peekModuleName(input)
+    if not input or input == "" then
+        return nil
+    end
+    local decoded = LibDeflate:DecodeForPrint(input)
+    if not decoded then return nil end
+    local uncompressed = LibDeflate:DecompressZlib(decoded)
+    if not uncompressed then return nil end
+    local valid, moduleData = addon:Deserialize(uncompressed)
+    if valid and moduleData and moduleData.name then
+        return moduleData.name
+    end
+    return nil
+end
+
 function addon:ExportUserModule(name)
     local moduleData = self.db.global.UserModules[name]
     if not moduleData then
@@ -99,6 +114,10 @@ local import_module_options = {
                 popUpFrame:Hide()
             end,
             confirm = function()
+                local name = peekModuleName(tmp.import_input_txt)
+                if name then
+                    return L["import_module_confirm_msg"] .. "\n\n" .. L["name_input_name"] .. " " .. name
+                end
                 return L["import_module_confirm_msg"]
             end,
         },
