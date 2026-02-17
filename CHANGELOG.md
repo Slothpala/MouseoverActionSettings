@@ -2,6 +2,7 @@
 ### Version [1.12.0] - 2026-02-17
 #### Added
 * New Status: Ready Check.
+* Tinkeer Zone: Option to import and export modules.
 
 #### Updated
 * Interface version to 120001.
