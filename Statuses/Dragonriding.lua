@@ -5,19 +5,31 @@ local CR = addonTable.callbackRegistry
 
 local eventDelay = 0
 
-local UnitPowerBarID = UnitPowerBarID
+local GetCollectedDragonridingMounts = C_MountJournal.GetCollectedDragonridingMounts
+local GetMountInfoByID = C_MountJournal.GetMountInfoByID
+local GetPlayerAuraBySpellID = C_UnitAuras.GetPlayerAuraBySpellID
+local IsMounted = IsMounted
+local next = next
 
 local function updateDragonriding()
-    local isDragonRiding = UnitPowerBarID("player") == 631
-    addonTable.events["DRAGONRIDING_UPDATE"] = isDragonRiding
-    CR:Fire("DRAGONRIDING_UPDATE", isDragonRiding, eventDelay)
+    local isDragonriding = false
+    if IsMounted() then
+        local mountIDs = GetCollectedDragonridingMounts()
+        for _, mountID in next, mountIDs do
+            local spellID = select(2, GetMountInfoByID(mountID))
+            if GetPlayerAuraBySpellID(spellID) then
+                isDragonriding = true
+            end
+        end
+    end
+    addonTable.events["DRAGONRIDING_UPDATE"] = isDragonriding
+    CR:Fire("DRAGONRIDING_UPDATE", isDragonriding, eventDelay)
 end
 
-local function OnEvent(self, event)
-    if event == "PLAYER_ENTERING_WORLD" then
-        C_Timer.After(2, updateDragonriding)
-    else
-        updateDragonriding()
+local function OnEvent(self, event, arg1)
+    updateDragonriding()
+    if event == "PLAYER_ENTERING_WORLD" and arg1 == true then
+        C_Timer.After(2, OnEvent)
     end
 end
 
@@ -28,10 +40,9 @@ function dragonriding_status:Start()
     eventDelay = addon.db.profile.EventDelayTimers.DRAGONRIDING_UPDATE
     if not frame then
         frame = CreateFrame("Frame")
-        frame:SetScript("OnEvent", OnEvent) 
+        frame:SetScript("OnEvent", OnEvent)
     end
-    frame:RegisterUnitEvent("UNIT_POWER_BAR_SHOW", "player")
-    frame:RegisterUnitEvent("UNIT_POWER_BAR_HIDE", "player")
+    frame:RegisterEvent("PLAYER_MOUNT_DISPLAY_CHANGED")
     frame:RegisterEvent("PLAYER_ENTERING_WORLD")
     updateDragonriding()
 end
