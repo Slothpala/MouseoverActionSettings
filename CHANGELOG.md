@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.12.1] - 2026-03-23
+#### Fixed
+* Dragonriding.lua -> The trigger was reworked because the previous version relied on the UNIT_POWER_BAR_SHOW event, which no longer fires following the removal of the power bar in the Midnight update.
+
 ### Version [1.12.0] - 2026-02-17
 #### Added
 * New Status: Ready Check.
