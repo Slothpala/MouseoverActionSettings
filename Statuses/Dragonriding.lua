@@ -28,7 +28,10 @@ local function updateDragonriding()
             end
         end
         if isDruid then
-            isDragonriding = GetShapeshiftForm() == 3
+            local isTravelForm = GetShapeshiftForm() == 3
+            if isTravelForm then
+                isDragonriding = true
+            end
         end
         if isEvoker then
             local soarID = 430747
@@ -43,7 +46,6 @@ local function updateDragonriding()
 end
 
 local function OnEvent(self, event, arg1)
-    print(event)
     updateDragonriding()
     if event == "PLAYER_ENTERING_WORLD" and arg1 == true then
         C_Timer.After(2, OnEvent)
