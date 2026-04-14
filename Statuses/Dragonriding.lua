@@ -4,7 +4,9 @@ addonTable.events["DRAGONRIDING_UPDATE"] = false
 local CR = addonTable.callbackRegistry
 
 local eventDelay = 0
-
+local playerClass = select(2, UnitClass("player"))
+local isDruid = playerClass == "DRUID"
+local isEvoker = playerClass == "EVOKER"
 local GetCollectedDragonridingMounts = C_MountJournal.GetCollectedDragonridingMounts
 local GetMountInfoByID = C_MountJournal.GetMountInfoByID
 local GetPlayerAuraBySpellID = C_UnitAuras.GetPlayerAuraBySpellID
@@ -13,20 +15,35 @@ local next = next
 
 local function updateDragonriding()
     local isDragonriding = false
-    if IsMounted() then
-        local mountIDs = GetCollectedDragonridingMounts()
-        for _, mountID in next, mountIDs do
-            local spellID = select(2, GetMountInfoByID(mountID))
-            if GetPlayerAuraBySpellID(spellID) then
+    local isDragonridingArea = IsAdvancedFlyableArea() and IsFlyableArea() -- IsAdvancedFlyableArea always returns true indoors...
+
+    if isDragonridingArea then
+        if IsMounted() then
+            local mountIDs = GetCollectedDragonridingMounts()
+            for _, mountID in next, mountIDs do
+                local spellID = select(2, GetMountInfoByID(mountID))
+                if GetPlayerAuraBySpellID(spellID) then
+                    isDragonriding = true
+                end
+            end
+        end
+        if isDruid then
+            isDragonriding = GetShapeshiftForm() == 3
+        end
+        if isEvoker then
+            local soarID = 430747
+            if GetPlayerAuraBySpellID(soarID) then
                 isDragonriding = true
             end
         end
     end
+
     addonTable.events["DRAGONRIDING_UPDATE"] = isDragonriding
     CR:Fire("DRAGONRIDING_UPDATE", isDragonriding, eventDelay)
 end
 
 local function OnEvent(self, event, arg1)
+    print(event)
     updateDragonriding()
     if event == "PLAYER_ENTERING_WORLD" and arg1 == true then
         C_Timer.After(2, OnEvent)
@@ -44,6 +61,9 @@ function dragonriding_status:Start()
     end
     frame:RegisterEvent("PLAYER_MOUNT_DISPLAY_CHANGED")
     frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+    if isDruid then
+        frame:RegisterEvent("UPDATE_SHAPESHIFT_FORM")
+    end
     updateDragonriding()
 end
 

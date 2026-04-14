@@ -1,4 +1,10 @@
 # **Changelog**
+### Version [1.12.2] - 2026-04-14
+#### Fixed
+* Dragonriding.lua
+    * The trigger now detects Druid Flight Form and the Evoker Soar ability.
+    * Fixed a false trigger in indoor areas by adding an isDragonridingArea check
+
 ### Version [1.12.1] - 2026-03-23
 #### Fixed
 * Dragonriding.lua -> The trigger was reworked because the previous version relied on the UNIT_POWER_BAR_SHOW event, which no longer fires following the removal of the power bar in the Midnight update.
