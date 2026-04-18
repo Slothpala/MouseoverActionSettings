@@ -5,6 +5,7 @@ addonTable.events["DUNGEON_UPDATE"] = false
 addonTable.events["RAID_UPDATE"] = false
 addonTable.events["SCENARIO_UPDATE"] = false
 addonTable.events["OPEN_WORLD_UPDATE"] = false
+addonTable.events["RESTED_AREA_UPDATE"] = false
 local CR = addonTable.callbackRegistry
 
 local function OnEvent()
@@ -15,6 +16,7 @@ local function OnEvent()
     local inRaid = instanceType == "raid" and true or false
     local inScenario = instanceType == "scenario" and true or false
     local inOpenWorld = not inInstance
+    local inRestedArea = IsResting()
     CR:Fire("BATTLEGROUND_UPDATE", inBattleground)
     addonTable.events["BATTLEGROUND_UPDATE"] = inBattleground
     CR:Fire("ARENA_UPDATE", inArena)
@@ -27,6 +29,8 @@ local function OnEvent()
     addonTable.events["SCENARIO_UPDATE"] = inScenario
     CR:Fire("OPEN_WORLD_UPDATE", inOpenWorld)
     addonTable.events["OPEN_WORLD_UPDATE"] = inOpenWorld
+    CR:Fire("RESTED_AREA_UPDATE", inRestedArea)
+    addonTable.events["RESTED_AREA_UPDATE"] = inRestedArea
 end
 
 local frame = nil
@@ -40,6 +44,7 @@ function zone_status:Start(event)
     end
     active_zone_events[event] = true
     frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+    frame:RegisterEvent("PLAYER_UPDATE_RESTING")
     OnEvent()
 end
 
@@ -59,3 +64,4 @@ CR:RegisterStatusEvent("DUNGEON_UPDATE", zone_status)
 CR:RegisterStatusEvent("RAID_UPDATE", zone_status)
 CR:RegisterStatusEvent("SCENARIO_UPDATE", zone_status)
 CR:RegisterStatusEvent("OPEN_WORLD_UPDATE", zone_status)
+CR:RegisterStatusEvent("RESTED_AREA_UPDATE", zone_status)

@@ -125,6 +125,8 @@ L["scenario_update_name"] = "В сценарии"
 L["scenario_update_desc"] = ""
 L["open_world_update_name"] = "В открытом мире"
 L["open_world_update_desc"] = ""
+L["rested_area_update_name"] = "В зоне отдыха"
+L["rested_area_update_desc"] = ""
 L["mount_update_name"] = "На маунте"
 L["mount_update_desc"] = ""
 L["party_group_update_name"] = "В группе"
@@ -181,4 +183,3 @@ L["right_click"] = "ПКМ:"
 L["text_after_right_click"] = "Выключить/Включить аддон"
 --
 L["combat_message"] = "Пожалуйста, выйдите из боя и попробуйте снова."
-
