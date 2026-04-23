@@ -1,7 +1,12 @@
 # **Changelog**
-### Version [1.12.3] - 2026-04-24
-#### Updated
-* Updated the supported interface version to 120005.
+### Version [1.13.0] - 2026-04-18
+#### Added
+* New Zone Trigger: Rested Area.
+
+#### Fixed
+* Tinker Zone
+    * Fixed a problem where links between custom modules could stop working after a UI reload due to the load order.
+    * Fixed a problem where custom modules could fail to load if their parent frames were created with a delay by other addons.
 
 ### Version [1.12.2] - 2026-04-14
 #### Fixed

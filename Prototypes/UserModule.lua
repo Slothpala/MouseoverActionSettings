@@ -28,20 +28,31 @@ local function findFrame(string)
     return frame
 end
 
-local function validateInfo(info)   
+local function validateInfo(info, printErrors)
     local Parents = {}
+    local missingParents = {}
     for _, name in pairs(info.Parents) do
         local parent = findFrame(name)
         if not parent then
-            addon:Print("Could not create user module: (" .. info.name .. ") because parent: (" .. name .. ") could not be found in the global environment")
+            table.insert(missingParents, name)
+        elseif parent == UIParent then
+            if printErrors then
+                addon:Print("Module: (" .. info.name .. ") tried to hide UIParent. The module was prevented from loading.")
+            end
             return false
         end
-        if parent == UIParent then
-            --just don't let anyone do this to prevent broken UIs
-            addon:Print("Module: (" .. info.name .. ") tried to hide UIParent. The module was prevented from loading.")
-            return false
+        if parent then
+            table.insert(Parents, parent)
         end
-        table.insert(Parents, parent)
+    end
+    if #missingParents > 0 then
+        if printErrors then
+            addon:Print(
+                "Could not create user module: (" .. info.name .. ") because parent frame(s) could not be found: "
+                .. table.concat(missingParents, ", ")
+            )
+        end
+        return false, missingParents
     end
     local scriptRegions = {}
     for _, name in pairs(info.scriptRegions) do
@@ -67,10 +78,10 @@ end
     }
 ]]
 
-function addon:NewUserModule(info)
-    local info = validateInfo(info)
+function addon:NewUserModule(info, printErrors)
+    local info, missingParents = validateInfo(info, printErrors)
     if not info then
-        return
+        return nil, nil, missingParents
     end
     local moduleName = "UserModule_" .. info.name
     local eventName = "USER_MODULE_" .. string.upper(info.name) .. "_UPDATE"

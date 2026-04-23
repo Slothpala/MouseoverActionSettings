@@ -171,6 +171,14 @@ options = {
             get = "GetTrigger",
             set = "SetTrigger",
         },
+        RESTED_AREA_UPDATE = {
+            order = 2.7,
+            name = L["rested_area_update_name"],
+            desc = L["rested_area_update_desc"],
+            type = "toggle",
+            get = "GetTrigger",
+            set = "SetTrigger",
+        },
         --[[config]]
         config_header = {
             order = 10,
