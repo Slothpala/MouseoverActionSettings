@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.12.3] - 2026-04-24
+#### Updated
+* Updated the supported interface version to 120005.
+
 ### Version [1.12.2] - 2026-04-14
 #### Fixed
 * Dragonriding.lua
