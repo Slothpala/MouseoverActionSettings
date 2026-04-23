@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.13.1] - 2026-04-24
+#### Updated
+* Updated the supported interface version to 120005.
+
 ### Version [1.13.0] - 2026-04-18
 #### Added
 * New Zone Trigger: Rested Area.
