@@ -109,6 +109,14 @@ options = {
             get = "GetTrigger",
             set = "SetTrigger",
         },
+        PLAYER_CASTING_HURTFUL_UPDATE = {
+            order = 1.1011,
+            name = L["player_casting_hurtful_update_name"],
+            desc = L["player_casting_hurtful_update_desc"],
+            type = "toggle",
+            get = "GetTrigger",
+            set = "SetTrigger",
+        },
         READY_CHECK_UPDATE = {
             order = 1.102,
             name = L["ready_check_update_name"],

@@ -2,6 +2,7 @@
 ### Version [1.13.2] - 2026-05-05
 #### Added
 * New Status: Not Max Level.
+* New Status: Casting (Hurtful).
 
 ### Version [1.13.1] - 2026-04-24
 #### Updated
