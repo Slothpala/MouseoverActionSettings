@@ -54,6 +54,7 @@ Statuses/UnitExists.lua
 Statuses/Moving.lua
 Statuses/TargetAttackable.lua
 Statuses/Casting.lua
+Statuses/CastingEmpowered.lua
 Statuses/CastingHurtful.lua
 Statuses/ReadyCheck.lua
 Statuses/PlayerNotMaxLevel.lua

@@ -107,6 +107,7 @@ local defaults = {
             NPC_UPDATE = 0,
             PLAYER_HEALTH_UPDATE = 2,
             PLAYER_CASTING_UPDATE = 0,
+            PLAYER_CASTING_EMPOWERED_UPDATE = 0,
             PLAYER_CASTING_HURTFUL_UPDATE = 0,
         },
         HotKeyFontSettings = {

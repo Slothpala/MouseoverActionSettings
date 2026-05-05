@@ -117,6 +117,14 @@ options = {
             get = "GetTrigger",
             set = "SetTrigger",
         },
+        PLAYER_CASTING_EMPOWERED_UPDATE = {
+            order = 1.1012,
+            name = L["player_casting_empowered_update_name"],
+            desc = L["player_casting_empowered_update_desc"],
+            type = "toggle",
+            get = "GetTrigger",
+            set = "SetTrigger",
+        },
         READY_CHECK_UPDATE = {
             order = 1.102,
             name = L["ready_check_update_name"],

@@ -3,6 +3,7 @@
 #### Added
 * New Status: Not Max Level.
 * New Status: Casting (Hurtful).
+* New Status: Casting (Empowered).
 
 ### Version [1.13.1] - 2026-04-24
 #### Updated
