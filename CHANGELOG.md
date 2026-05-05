@@ -1,4 +1,8 @@
 # **Changelog**
+### Version [1.13.2] - 2026-05-05
+#### Added
+* New Status: Not Max Level.
+
 ### Version [1.13.1] - 2026-04-24
 #### Updated
 * Updated the supported interface version to 120005.

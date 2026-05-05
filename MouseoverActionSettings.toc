@@ -55,6 +55,7 @@ Statuses/Moving.lua
 Statuses/TargetAttackable.lua
 Statuses/Casting.lua
 Statuses/ReadyCheck.lua
+Statuses/PlayerNotMaxLevel.lua
 
 #Prototypes
 Prototypes/MouseoverUnit.lua

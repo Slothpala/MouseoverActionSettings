@@ -117,6 +117,14 @@ options = {
             get = "GetTrigger",
             set = "SetTrigger",
         },
+        PLAYER_NOT_MAX_LEVEL_UPDATE = {
+            order = 1.103,
+            name = L["player_not_max_level_update_name"],
+            desc = L["player_not_max_level_update_desc"],
+            type = "toggle",
+            get = "GetTrigger",
+            set = "SetTrigger",
+        },
         --[[Zone]]--
         zone_header = {
             order = 2,

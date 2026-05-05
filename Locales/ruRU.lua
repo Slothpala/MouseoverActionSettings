@@ -143,6 +143,10 @@ L["player_health_update_name"] = "Здоровье"
 L["player_health_update_desc"] = "Это событие сработает, когда ваше здоровье опустится ниже определенного порога. Вы можете установить порог во вкладке Настройки."
 L["player_casting_update_name"] = "Кастинг"
 L["player_casting_update_desc"] = ""
+L["ready_check_update_name"] = "Проверка готовности"
+L["ready_check_update_desc"] = ""
+L["player_not_max_level_update_name"] = "Не максимальный уровень"
+L["player_not_max_level_update_desc"] = ""
 
 --Tweaks:
 L["custom_animation_toggle_name"] = "Настроить анимацию"
