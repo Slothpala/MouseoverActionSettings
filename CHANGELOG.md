@@ -1,5 +1,5 @@
 # **Changelog**
-### Version [1.13.3] - 2026-08-09
+### Version [1.13.4] - 2026-08-09
 * Updated the supported interface version to 120100.
 
 ### Version [1.13.3] - 2026-06-21
