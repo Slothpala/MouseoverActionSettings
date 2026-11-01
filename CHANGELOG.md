@@ -1,4 +1,7 @@
 # **Changelog**
+### Version [1.13.5] - 2026-11-01
+* Updated the supported interface version to 120105.
+
 ### Version [1.13.5] - 2026-09-19
 * Added support for "Forver"/16001
 
