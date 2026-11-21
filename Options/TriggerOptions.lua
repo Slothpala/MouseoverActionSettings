@@ -141,6 +141,22 @@ options = {
             get = "GetTrigger",
             set = "SetTrigger",
         },
+        PLAYER_NOT_FULL_HEALTH_UPDATE = {
+            order = 1.104,
+            name = L["player_not_full_health_update_name"],
+            desc = L["player_not_full_health_update_desc"],
+            type = "toggle",
+            get = "GetTrigger",
+            set = "SetTrigger",
+        },
+        PLAYER_NOT_FULL_MANA_UPDATE = {
+            order = 1.105,
+            name = L["player_not_full_mana_update_name"],
+            desc = L["player_not_full_mana_update_desc"],
+            type = "toggle",
+            get = "GetTrigger",
+            set = "SetTrigger",
+        },
         --[[Zone]]--
         zone_header = {
             order = 2,

@@ -168,6 +168,10 @@ L["ready_check_update_name"] = "Ready Check"
 L["ready_check_update_desc"] = ""
 L["player_not_max_level_update_name"] = "Not Max Level"
 L["player_not_max_level_update_desc"] = ""
+L["player_not_full_health_update_name"] = "Not Full Health"
+L["player_not_full_health_update_desc"] = "Stays visible while your health is below maximum. Shows and hides instantly, without a fade. Not available for the chat frame and minimap."
+L["player_not_full_mana_update_name"] = "Not Full Mana"
+L["player_not_full_mana_update_desc"] = "Stays visible while your mana is below maximum. Shows and hides instantly, without a fade. Has no effect on classes without mana. Not available for the chat frame and minimap."
 
 --Tweaks:
 L["custom_animation_toggle_name"] = "Customize Animation"

@@ -15,6 +15,16 @@ local AnimationQueue = {}
 
 local AnimationUpdateFrame = CreateFrame("Frame")
 
+local function SetAlpha(info, alpha)
+    if info.unit then
+        info.unit:ApplyAlpha(alpha)
+        return
+    end
+    for _, frame in next, info.frames do
+        frame:SetAlpha(alpha)
+    end
+end
+
 local function Animation_OnUpdate(_, elapsed)
     for id, info in next, AnimationQueue do
         if not info.playing then
@@ -26,17 +36,13 @@ local function Animation_OnUpdate(_, elapsed)
         if info.elapsed < info.duration then
             local alpha = info.startAlpha + ( ( info.endAlpha - info.startAlpha ) * ( info.elapsed / info.duration) )
             info.currentAlpha = alpha
-            for _, frame in next, info.frames do
-                frame:SetAlpha(alpha)
-            end
+            SetAlpha(info, alpha)
         else
             info.currentAlpha = info.endAlpha
             if info.onAnimationFinished then
                 info.onAnimationFinished(info)
             end
-            for _, frame in next, info.frames do
-                frame:SetAlpha(info.endAlpha)
-            end
+            SetAlpha(info, info.endAlpha)
             AnimationQueue[id] = nil
         end
     end
@@ -53,6 +59,7 @@ end
 function MouseoverUnitAnimationMixin:FadeIn()
     local info = {
         frames = self.Parents,
+        unit = self,
         duration = self.animationSpeed_In,
         startAlpha = self.minAlpha,
         endAlpha = self.maxAlpha,
@@ -66,6 +73,7 @@ end
 function MouseoverUnitAnimationMixin:FadeOut()
     local info = {
         frames = self.Parents,
+        unit = self,
         duration = self.animationSpeed_Out,
         startAlpha = self.maxAlpha,
         endAlpha = self.minAlpha,

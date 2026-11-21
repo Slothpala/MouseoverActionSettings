@@ -58,6 +58,7 @@ Statuses/CastingEmpowered.lua
 Statuses/CastingHurtful.lua
 Statuses/ReadyCheck.lua
 Statuses/PlayerNotMaxLevel.lua
+Statuses/PlayerNotFull.lua
 
 #Prototypes
 Prototypes/MouseoverUnit.lua
