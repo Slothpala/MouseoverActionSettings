@@ -39,6 +39,14 @@ function module:OnEnable()
         end
     end
     mo_unit:Enable()
+    -- Hooking OnEnter makes the containers catch the mouse; pass it on so the bars keep their
+    -- hover text. The call is blocked in combat, so skip it then: the frames keep the setting
+    -- from any earlier enable.
+    if not InCombatLockdown() then
+        for _, region in pairs(mo_unit.scriptRegions) do
+            region:SetPropagateMouseMotion(true)
+        end
+    end
 end
 
 function module:OnDisable()
