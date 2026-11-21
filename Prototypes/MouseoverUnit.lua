@@ -9,6 +9,7 @@ local MouseoverUnit = {
     isShown = true, --to guarantee that the frame can be hidden on first load
     minAlpha = 0,
     currentAlpha = 0,
+    baseAlpha = 1, --the alpha the fade logic wants, before the not full triggers
     maxAlpha = 1,
     scriptRegions = {},
     delay = 3,
@@ -37,6 +38,16 @@ function MouseoverUnit:Hide()
     end
     self:FadeOut()
     self.isShown = false
+end
+
+-- Every alpha change on the parents goes through here so the not full health/mana
+-- triggers can lift it without the fade logic knowing whether they are active.
+function MouseoverUnit:ApplyAlpha(alpha)
+    self.baseAlpha = alpha or self.baseAlpha
+    alpha = addonTable.NotFullAlpha(self.notFull, self.maxAlpha, self.baseAlpha)
+    for _, parent in pairs(self.Parents) do
+        parent:SetAlpha(alpha)
+    end
 end
 
 function MouseoverUnit:CreateHooks()
@@ -76,6 +87,8 @@ function MouseoverUnit:Disable()
     self:StopAnimation()
     CR:Fire(self.visibilityEvent, false)
     self.preventHiding = {}
+    self.notFull = {}
+    self.baseAlpha = nil
     for _, parent in pairs(self.Parents) do
         parent:SetAlpha(1)
     end
@@ -84,9 +97,20 @@ function MouseoverUnit:Disable()
 end
 
 function MouseoverUnit:Enable()
+    -- The chat frame and minimap bring their own fade that never calls ApplyAlpha,
+    -- so the not full triggers cannot work on them.
+    local usesApplyAlpha = self.FadeIn == addonTable.animations.FadeIn
     for i=1,#self.statusEvents do
         local event = self.statusEvents[i]
+        self.notFull[event] = usesApplyAlpha and addonTable.notFullAlpha[event] or nil
         local id = CR:RegisterCallback(event, function(...)
+            -- these events carry no status, they only ask for the alpha to be re-applied
+            if addonTable.notFullAlpha[event] then
+                if self.notFull[event] then
+                    self:ApplyAlpha()
+                end
+                return
+            end
             local status, delay = ...
             Timer:Stop(self.eventTimers[event])
             if status == true then       
@@ -117,6 +141,7 @@ function addon:NewMouseoverUnit(unit)
     --following attributes have to be unit specific 
     unit.callbacks = {}
     unit.preventHiding = {}
+    unit.notFull = {}
     unit.timer = {}
     unit.eventTimers = {}
     unit.animationInfo = {}
